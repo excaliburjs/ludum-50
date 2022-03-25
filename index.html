@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ludum Dare 50</title>
+    <script src="https://kit.fontawesome.com/61f8bdc05f.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js" crossorigin="anonymous"></script>
     <style>
         main {
             position: relative;
@@ -16,10 +18,36 @@
             bottom: 0;
             right: 0
         }
+        #menu {
+            position: fixed;
+            border: solid;
+            padding: 0.5em;
+            border-radius: 5px;
+            background-color: #111;
+        }
+
+        ul#menu {
+            list-style-type: none;
+            font-size: 1.5em;
+        }
+
+        ul#menu li {
+            display: inline-block;
+            margin: 0 0.5em;
+        }
     </style>
 </head>
 <body>
     <main>
+        <ul id="menu">
+            <li>
+                <a id="mute-music" href="#mute-music"><i class="fa fa-music"></i></a>
+            </li>
+            <li>
+                <a id="mute-all" href="#mute-all"><i class="fa fa-volume-up"></i></a>
+            </li>
+            <li><a href="credits.html">Credits</a></li>
+        </ul>
         <canvas id="game"></canvas>
         <a id="commitRef" href="https://github.com/excaliburjs/ludum-50/commit/{{ commitRef }}">{{ commitRef }}</a>
     </main>

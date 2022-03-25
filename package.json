@@ -18,8 +18,15 @@
   },
   "devDependencies": {
     "@parcel/transformer-glsl": "^2.4.0",
+    "@types/classnames": "2.3.1",
+    "@types/storejs": "2.0.3",
+    "@types/zepto": "1.0.32",
     "parcel": "2.4.0",
     "posthtml-expressions": "1.9.0",
     "typescript": "4.6.3"
+  },
+  "dependencies": {
+    "classnames": "2.3.1",
+    "store": "2.0.12"
   }
 }
