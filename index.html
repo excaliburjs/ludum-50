@@ -5,9 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ludum Dare 50</title>
+    <style>
+        main {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        #commitRef {
+            position: absolute;
+            bottom: 0;
+            right: 0
+        }
+    </style>
 </head>
 <body>
-    <a id="commitRef" href="https://github.com/excaliburjs/ludum-50/commit/{{ commitRef }}">{{ commitRef }}</a>
+    <main>
+        <canvas id="game"></canvas>
+        <a id="commitRef" href="https://github.com/excaliburjs/ludum-50/commit/{{ commitRef }}">{{ commitRef }}</a>
+    </main>
     <script type="module" src="./src/main.ts"></script>
 </body>
 </html>

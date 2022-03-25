@@ -4,7 +4,7 @@ Visit https://excaliburjs.com/ludum-50/ to play!
 
 ### Prequisites:
 
-- NodeJS
+- NodeJS 16.x
 - Git
 
 ### Local Dev
