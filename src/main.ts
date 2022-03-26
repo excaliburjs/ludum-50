@@ -3,10 +3,12 @@ import { loadPreferences } from "./preferences";
 import { Level } from "./level";
 import { Resources } from "./resources";
 import { SoundManager } from "./sound-manager";
+import { DevTool } from "@excaliburjs/dev-tools";
 
 loadPreferences();
 SoundManager.init();
 export class Game extends Engine {
+    showDevTool: boolean = true;
     constructor() {
         super({
             canvasElementId: 'game',
@@ -15,6 +17,10 @@ export class Game extends Engine {
     }
 
     init() {
+        if (this.showDevTool) {
+            const devtool = new DevTool(this);
+        }
+
         this.startLevel();
         const loader = new Loader();
         for (const resource of Object.values(Resources)) {
