@@ -119,6 +119,7 @@ export class Enemy extends Actor {
     }
 }
 
+// The values for these enemy types must match the property names of config.enemy 
 export enum EnemyType {
     Crab = 'crab',
     Turtle = 'turtle',

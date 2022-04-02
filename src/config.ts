@@ -21,23 +21,21 @@ export default {
     healthBarWidthPixels: 64 - 10,
 
     tower: {
-        default: { // rename this type?
+        default: { // rename this tower type?
             bulletSpeedPixelsPerSecond: 100,
             bulletRadius: 10,
             baseTowerFireRateMs: 5000,
         }
-        // other types?
+        // other tower types?
     },
-
-    // Enemies
     
     enemy: {
         crab: {
             width: 50,
             height: 50,
             health: 3,
-            damage: 2, // how much damage this enemy does
-            damageTimerMs: 1000, // how frequently this enemy attacks / enemyDamageTimerMs
+            damage: 2, // how much damage this enemy type does
+            damageTimerMs: 1000, // how frequently this enemy type attacks
             speed: 15, // (pixels/second)
             color: Color.Red // the color of the actor when it doesn't have any art applied
             // TODO art and animations?
@@ -51,7 +49,8 @@ export default {
             speed: 8,
             color: Color.Green,
             // TODO art and animations?
-        }
+        },
+        // other enemy types?
     }
 
 }
