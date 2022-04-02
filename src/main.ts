@@ -61,8 +61,8 @@ export class Game extends Engine {
 export const game = new Game();
 
 // debugging hotkeys
-// pressing 'p' will toggle pause/resume of the game
-// pressing ';' will toggle debug (will not update unless game is resuming)
+// Pressing 'p' on the keyboard will toggle pause/resume of the game
+// Pressing ';' will toggle excalibur debug mode (this won't update unless game is running)
 game.input.keyboard.on('release', (event) => {
     switch(event.key) {
         case Input.Keys.P : 

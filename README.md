@@ -39,3 +39,12 @@ Updating your local copy with `git pull -r` to rebase your local commits on top 
         npm start
 
 8. Make your changes, commit directly to the 'main' branch, update your local copy with `git pull -r`, and then push to the remote repository.
+
+### Debugging tools
+
+We have excalibur dev-tools running by default. It shows up in the top right corner of the browser tab.
+
+### Debugging hotkeys
+
+- Pressing `p` on the keyboard will toggle pause/resume of the game.
+- Pressing `;` will toggle excalibur debug mode (this won't update unless game is running). This can also be toggled at the top of the excalibur dev-tools window.
