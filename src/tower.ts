@@ -84,5 +84,11 @@ export class Tower extends Actor {
             this._grid.tileMap.getTileByPoint(this.pos).data.delete("tower");
             this.kill();
         }
+        else if (this.currentHp <= (this.maxHealth/4)) {
+            this.healthBar.color = Color.Red;
+        }
+        else if (this.currentHp <= (this.maxHealth/2)) {
+            this.healthBar.color = Color.Yellow;
+        }
     }
 }
