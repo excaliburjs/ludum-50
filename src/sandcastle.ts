@@ -27,7 +27,8 @@ export class SandCastle extends Actor {
             name: 'Healthbar',
             width: config.healthBarWidthPixels,
             height: 5,
-            color: Color.Green
+            color: Color.Green,
+            collisionType: CollisionType.PreventCollision
         });
         this.addChild(this.healthBar);
     }
