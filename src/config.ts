@@ -16,8 +16,9 @@ export default {
 
     sandcastle: {
         maxHealth: 10,
-        healthBarWidthPixels: 64 - 10,
     },
+
+    healthBarWidthPixels: 64 - 10,
 
     tower: {
         default: { // rename this type?

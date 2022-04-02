@@ -25,7 +25,7 @@ export class SandCastle extends Actor {
         // draw health bar
         this.healthBar = new Actor({
             name: 'Healthbar',
-            width: config.sandcastle.healthBarWidthPixels,
+            width: config.healthBarWidthPixels,
             height: 5,
             color: Color.Green,
             collisionType: CollisionType.PreventCollision
@@ -40,7 +40,7 @@ export class SandCastle extends Actor {
 
     takeDamage() {
         this.currentHp -= 1;
-        const pixelsPerHp = config.sandcastle.healthBarWidthPixels / config.sandcastle.maxHealth;
+        const pixelsPerHp = config.healthBarWidthPixels / config.sandcastle.maxHealth;
         const graphic = this.healthBar.graphics.current[0].graphic;
         graphic.width = this.currentHp * pixelsPerHp;
         if (this.currentHp <= 0) {
