@@ -16,6 +16,8 @@ export class Enemy extends Actor {
             width: configValues.width, 
             height: configValues.height, 
             color: configValues.color, 
+            collisionType: CollisionType.Active,
+            collisionGroup: Enemy.CollisionGroup,
             vel: new Vector(-1 * configValues.speed, 0), // moves horizontally, right to left
         });
         this.type = type;
