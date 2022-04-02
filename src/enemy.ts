@@ -1,8 +1,6 @@
 import config from "./config";
-import { Actor, Color, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, KillEvent, Engine, Tile } from "excalibur";
+import { Actor, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, KillEvent, Engine, Tile } from "excalibur";
 import { Tower } from "./tower";
-import { EnemyGenerator } from "enemyGenerator";
-import { enumToControlSelectOptions } from "../lib/excalibur/src/stories/utils";
 import { Grid } from "grid";
 
 export class Enemy extends Actor {
@@ -84,15 +82,15 @@ export class Enemy extends Actor {
     }
 
     claimTile(tile: Tile) {
-        if(this._occupiedTile != tile)
-        {
-            if (this._occupiedTile != null) {
-                Enemy.removeEnemyFromTile(this._occupiedTile);
-            }
-            this._occupiedTile = tile;
-            if (this._occupiedTile != null) {
-                Enemy.addEnemyToTile(this._occupiedTile);
-            }
+        if(this._occupiedTile == tile)
+            return;
+
+        if (this._occupiedTile != null) {
+            Enemy.removeEnemyFromTile(this._occupiedTile);
+        }
+        this._occupiedTile = tile;
+        if (this._occupiedTile != null) {
+            Enemy.addEnemyToTile(this._occupiedTile);
         }
     }
 
@@ -110,7 +108,7 @@ export class Enemy extends Actor {
 
     onPostUpdate(_engine: Engine, deltaMs: number) {
         this._damageTimer -= deltaMs;
-        const curTile = this._grid.tileMap.getTileByPoint(new Vector(this.pos.x, this.pos.y));
+        const curTile = this._grid.tileMap.getTileByPoint(this.pos);
         this.claimTile(curTile);
 
         if (!this.isAttacking()) {
