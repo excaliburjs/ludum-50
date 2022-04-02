@@ -10,6 +10,7 @@ export class Tower extends Actor {
     healthBar: Actor;
     currentHp: number = 5;
     maxHealth: number = 5;
+    damage: number = 1;
     private healthBarOpacity: number = 1;
     private healthBarOpacityFade : number = 3;
     private row: Tile[];
@@ -75,7 +76,7 @@ export class Tower extends Actor {
 
         bullet.on('precollision', (evt) => {
             const enemy = evt.other as Enemy;
-            enemy.takeDamage();
+            enemy.takeDamage(this.damage);
             bullet.kill();
         })
 
@@ -86,8 +87,8 @@ export class Tower extends Actor {
         this._engine.add(bullet);
     }
 
-    takeDamage() {
-        this.currentHp -= 1;
+    takeDamage(damage: number) {
+        this.currentHp -= damage;
         const pixelsPerHp = config.healthBarWidthPixels / this.maxHealth;
         const graphic = this.healthBar.graphics.current[0].graphic;
         graphic.width = this.currentHp * pixelsPerHp;

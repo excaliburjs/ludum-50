@@ -53,16 +53,17 @@ export class Enemy extends Actor {
         this.addChild(this.healthBar);
     }
 
-    takeDamage() {
-        this.currentHp--;
+    takeDamage(damage: number) {
+        this.currentHp-= damage;
+      
+        if (this.currentHp <= 0) {
+            this.kill();
+        }
+
         const pixelsPerHp = config.healthBarWidthPixels / this.maxHealth;
         const graphic = this.healthBar.graphics.current[0].graphic;
         graphic.width = this.currentHp * pixelsPerHp;
         this.healthBarOpacity = 1;
-
-        if (this.currentHp <= 0) {
-            this.kill();
-        }
     }
 
     isAttacking() {
@@ -122,7 +123,7 @@ export class Enemy extends Actor {
             if (this._damageTimer <= 0) {
                 this._damageTimer = this._configValues.damageTimerMs;
                 const tower = evt.other as Tower;
-                tower.takeDamage();
+                tower.takeDamage(this.damage);
             }
             this.vel = new Vector(0,0);
         }
