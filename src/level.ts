@@ -5,6 +5,7 @@ import { Grid } from "./grid";
 import { SandCastle } from "./sandcastle";
 import { EnemyGenerator } from "./enemyGenerator";
 import { Enemy } from "./enemy";
+import { Tower } from "./tower";
 
 export class Level extends Scene {
     random = new Random(config.Seed);
@@ -25,6 +26,11 @@ export class Level extends Scene {
         }
 
         this.enemyGenerator.spawnEnemy();
+        // Tower Test
+        const tower = new Tower(this.grid, 5, 3);
+        this.add(tower);
+
+        // TODO tower placement
     }
 
 }

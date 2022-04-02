@@ -26,5 +26,9 @@ export default {
     // Turtle?
 
     // Something else?
+    // Tower
+    bulletSpeedPixelsPerSecond: 100,
+    bulletRadius: 10,
+    baseTowerFireRateMs: 5000,
 
 }
