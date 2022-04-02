@@ -1,4 +1,4 @@
-import { DisplayMode, Engine, Loader } from "excalibur";
+import { DisplayMode, Engine, Loader, Input, Logger } from "excalibur";
 import { loadPreferences } from "./preferences";
 import { Level } from "./level";
 import { Resources } from "./resources";
@@ -59,5 +59,25 @@ export class Game extends Engine {
 }
 
 export const game = new Game();
+
+// debugging hotkeys
+// pressing 'p' will toggle pause/resume of the game
+// pressing ';' will toggle debug (will not update unless game is resuming)
+game.input.keyboard.on('release', (event) => {
+    switch(event.key) {
+        case Input.Keys.P : 
+            if (game.isRunning()) {
+                game.stop();
+                Logger.getInstance().info('game paused');
+            } else {
+                game.start();
+                Logger.getInstance().info('game resumed');
+            }
+            break;
+        case Input.Keys.Semicolon :
+            game.toggleDebug();
+            break;
+    }
+});
 
 game.init();
