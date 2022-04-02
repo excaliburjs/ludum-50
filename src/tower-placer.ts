@@ -41,8 +41,13 @@ export class TowerPlacer {
 
     onConfirm() {
         if (this._highlightedTile) {
-            const tower = new Tower(this._grid, this._highlightedTile.x, this._highlightedTile.y);
-            this._engine.add(tower);
+            if (!this._highlightedTile.data.has("tower")) {
+                const tower = new Tower(this._grid, this._highlightedTile.x, this._highlightedTile.y);
+                this._highlightedTile.data.set("tower", tower);
+                this._engine.add(tower);
+            } else {
+                console.log("Tower already there!")
+            }
         }
         this._highlightedTile = null;
     }

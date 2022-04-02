@@ -29,6 +29,7 @@ export class Level extends Scene {
 
         // Tower Test
         const tower = new Tower(this.grid, 5, 3);
+        this.grid.tileMap.getTile(5, 3).data.set("tower", tower);
         this.add(tower);
 
         // Tower placement
