@@ -1,5 +1,5 @@
 import config from "./config";
-import { Actor, CollisionGroup, CollisionType, Color, Engine, vec, Vector } from "excalibur";
+import { Actor, CollisionGroup, CollisionType, Color, Engine, Tile, vec, Vector } from "excalibur";
 import { Resources } from "./resources";
 import { Grid } from "./grid";
 import { Enemy } from "./enemy";
@@ -10,6 +10,7 @@ export class Tower extends Actor {
     healthBar: Actor;
     currentHp: number = 5;
     maxHealth: number = 5;
+    row: Tile[];
     constructor(grid: Grid, x: number, y: number) {
         super({
             name: "Base Tower",
@@ -21,6 +22,7 @@ export class Tower extends Actor {
         });
 
         this._grid = grid;
+        this.row = this._grid.tileMap.getRows()[y];
         const towerSprite = Resources.BaseTower.toSprite()
 
         this.graphics.use(towerSprite);
@@ -41,9 +43,11 @@ export class Tower extends Actor {
         this._engine = engine;
     }
 
-    private _currentFireTimer = 0;
+    private _currentFireTimer: number = 0;
     onPostUpdate(_engine: Engine, updateMs: number) {
-        this._currentFireTimer += updateMs;
+        if(this.row.find(tile => Enemy.enemiesInTile(tile))){
+            this._currentFireTimer += updateMs;
+        }
         if (this._currentFireTimer > config.tower.default.baseTowerFireRateMs) {
             this.fire();
             this._currentFireTimer = 0;
