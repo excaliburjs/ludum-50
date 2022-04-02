@@ -10,6 +10,7 @@ export class TowerPlacer {
     private _engine: Engine;
     private _highlightedTile: Tile | null = null;
     private _highlight: Actor;
+    selectedTowerType: TowerType = TowerType.default;
     constructor(grid: Grid, engine: Engine) {
         this._grid = grid;
         this._engine = engine;
@@ -49,7 +50,7 @@ export class TowerPlacer {
                 console.log("Enemy already there!")
             }
             else {
-                const tower = new Tower(TowerType.default, this._grid, this._highlightedTile.x, this._highlightedTile.y);
+                const tower = new Tower(this.selectedTowerType, this._grid, this._highlightedTile.x, this._highlightedTile.y);
                 if(PlayerState.SubtractMoney(tower.cost)){
                     this._highlightedTile.data.set("tower", tower);
                     this._engine.add(tower);

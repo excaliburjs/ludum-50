@@ -1,5 +1,5 @@
 import { Color } from "excalibur";
-
+import { Resources } from "./resources";
 export interface WavesDescriptor {
     [waveIndex: number] : {
         name: string;
@@ -42,8 +42,24 @@ export default {
             bulletDamage: 1,
             maxHealth: 5, 
             cost: 1,
+            resourceSpawnTimer: 0,
+            resourceSpawnValue: 0,
+            sprite: Resources.BaseTower,
+            firesBullets: true,
+            color: Color.Orange
+        },
+        sandBucket: {
+            bulletSpeedPixelsPerSecond: 0,
+            bulletRadius: 0,
+            baseTowerFireRateMs: 0,
+            bulletDamage: 0,
+            maxHealth: 5, 
+            cost: 1,
             resourceSpawnTimer: 5,
             resourceSpawnValue: 1,
+            sprite: null,
+            firesBullets: false,
+            color: Color.Azure
         }
         // other tower types?
     },

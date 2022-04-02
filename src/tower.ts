@@ -1,10 +1,8 @@
 import config from "./config";
-import { Actor, CollisionGroup, CollisionType, Color, Engine, Tile, vec, Vector } from "excalibur";
-import { Resources } from "./resources";
+import { Actor, CollisionGroup, CollisionType, Color, Engine, ImageSource, Tile, vec, Vector } from "excalibur";
 import { Grid } from "./grid";
 import { Enemy } from "./enemy";
 import { PlayerState } from "./playerState";
-
 export class Tower extends Actor {
     private _engine!: Engine;
     private _grid: Grid;
@@ -24,6 +22,7 @@ export class Tower extends Actor {
             height: config.grid.tileHeight,
             collisionType: CollisionType.Fixed,
             collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
+            color: config.tower[towerType].color
         });
 
         this._grid = grid;
@@ -32,9 +31,8 @@ export class Tower extends Actor {
         this.maxHealth = config.tower[this.type].maxHealth;
         this.cost = config.tower[this.type].cost;
 
-        const towerSprite = Resources.BaseTower.toSprite()
-
-        this.graphics.use(towerSprite);
+        const towerSprite = config.tower[this.type].sprite?.toSprite()
+        if(towerSprite) this.graphics.use(towerSprite);
 
         // draw health bar
         this.healthBar = new Actor({
@@ -56,6 +54,7 @@ export class Tower extends Actor {
     private _currentFireTimer: number = 0;
     private _resourceTimer: number = 0;
     onPostUpdate(_engine: Engine, updateMs: number) {
+        this._resourceTimer += updateMs / 1000;
         if(this.row.find(tile => Enemy.enemiesInTile(tile))){
             this._currentFireTimer += updateMs;
         }
@@ -69,11 +68,12 @@ export class Tower extends Actor {
         }
         if (this._resourceTimer > config.tower[this.type].resourceSpawnTimer) {
             this._resourceTimer = 0;
-            PlayerState.moneyResource += config.tower[this.type].resourceSpawnValue;
+            PlayerState.AddMoney(config.tower[this.type].resourceSpawnValue);
         }
     }
 
     fire = () => {
+        if(!config.tower[this.type].firesBullets) return;
         // Fire bullet and add to engine
         const bullet = new Actor({
             name: "Tower Bullet",
@@ -119,5 +119,6 @@ export class Tower extends Actor {
 }
 
 export enum TowerType {
-    default = 'default'
+    default = 'default',
+    sandBucket = 'sandBucket'
 }
