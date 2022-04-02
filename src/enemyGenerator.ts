@@ -14,6 +14,12 @@ export class EnemyGenerator {
         }
     }
 
+    /**
+     * 
+     * @param type the EnemyType
+     * @param gridX the grid square x coordinate ('2' would be the third square from the left)
+     * @param gridY the grid square y coordinate ('1' would be the second square from the top)
+     */
     public spawnEnemy(type: EnemyType, gridX: number, gridY: number) {
         const enemySpawnTile = this.level.grid.tileMap.getTile(gridX, gridY);
         const enemy = new Enemy(type, enemySpawnTile.pos.x + config.grid.tileWidth / 2, enemySpawnTile.pos.y + config.grid.tileHeight / 2);

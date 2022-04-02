@@ -1,5 +1,5 @@
 import config from "./config";
-import { Actor, Color, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, Engine } from "excalibur";
+import { Actor, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, Engine } from "excalibur";
 import { Tower } from "./tower";
 
 export class Enemy extends Actor {
@@ -64,6 +64,7 @@ export class Enemy extends Actor {
     }
 }
 
+// The values for these enemy types must match the property names of config.enemy 
 export enum EnemyType {
     Crab = 'crab',
     Turtle = 'turtle',
