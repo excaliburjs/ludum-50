@@ -8,6 +8,10 @@ export default {
     tileHeight: 64,
     width: 9,
     height: 5,
-    padding: 1
+    padding: 1,
+
+    // Sandcastle
+    maxHealth: 10,
+    healthBarWidthPixels: 64 - 10
 
 }
