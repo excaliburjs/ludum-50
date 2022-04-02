@@ -18,4 +18,8 @@ export class Enemy extends Actor {
             collisionGroup: Enemy.CollisionGroup
         });
     }
+
+    takeDamage() {
+        this.kill();
+    }
 }

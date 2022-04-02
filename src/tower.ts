@@ -12,7 +12,8 @@ export class Tower extends Actor {
             pos: grid.tileMap.getTile(x, y).pos.add(vec(config.tileWidth/2, config.tileHeight/2)),
             width: config.tileWidth,
             height: config.tileHeight,
-            collisionType: CollisionType.Fixed
+            collisionType: CollisionType.Fixed,
+            collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
         });
 
         const towerSprite = Resources.BaseTower.toSprite()
@@ -41,7 +42,14 @@ export class Tower extends Actor {
             vel: vec(config.bulletSpeedPixelsPerSecond, 0),
             radius: config.bulletRadius,
             color: Color.Black,
-            collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup])
+            collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
+            collisionType: CollisionType.Active
+        })
+
+        bullet.on('postcollision', (evt) => {
+            const enemy = evt.other as Enemy;
+            enemy.takeDamage();
+            bullet.kill();
         })
 
         this._engine.add(bullet);
