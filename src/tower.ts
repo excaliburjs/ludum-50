@@ -9,8 +9,8 @@ export class Tower extends Actor {
     private _grid: Grid;
     healthBar: Actor;
     currentHp: number = 5;
-    maxHealth: number = 5;
-    damage: number = 1;
+    maxHealth: number = config.tower.default.maxHealth;
+    damage: number = config.tower.default.bulletDamage;
     private healthBarOpacity: number = 1;
     private healthBarOpacityFade : number = 3;
     private row: Tile[];

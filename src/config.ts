@@ -25,6 +25,8 @@ export default {
             bulletSpeedPixelsPerSecond: 100,
             bulletRadius: 10,
             baseTowerFireRateMs: 5000,
+            bulletDamage: 1,
+            maxHealth: 5
         }
         // other tower types?
     },
