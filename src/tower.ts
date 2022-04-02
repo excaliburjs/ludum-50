@@ -3,6 +3,7 @@ import { Actor, CollisionGroup, CollisionType, Color, Engine, Tile, vec, Vector 
 import { Resources } from "./resources";
 import { Grid } from "./grid";
 import { Enemy } from "./enemy";
+import { PlayerState } from "./playerState";
 
 export class Tower extends Actor {
     private _engine!: Engine;
@@ -53,6 +54,7 @@ export class Tower extends Actor {
     }
 
     private _currentFireTimer: number = 0;
+    private _resourceTimer: number = 0;
     onPostUpdate(_engine: Engine, updateMs: number) {
         if(this.row.find(tile => Enemy.enemiesInTile(tile))){
             this._currentFireTimer += updateMs;
@@ -64,6 +66,10 @@ export class Tower extends Actor {
         if (this._currentFireTimer > config.tower[this.type].baseTowerFireRateMs) {
             this.fire();
             this._currentFireTimer = 0;
+        }
+        if (this._resourceTimer > config.tower[this.type].resourceSpawnTimer) {
+            this._resourceTimer = 0;
+            PlayerState.moneyResource += config.tower[this.type].resourceSpawnValue;
         }
     }
 

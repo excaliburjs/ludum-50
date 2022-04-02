@@ -7,6 +7,9 @@
     <title>Ludum Dare 50</title>
     <script src="https://kit.fontawesome.com/61f8bdc05f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap" rel="stylesheet"> 
     <style>
         main {
             position: relative;
@@ -37,6 +40,12 @@
             display: inline-block;
             margin: 0 0.5em;
         }
+
+        #moneyDisplay {
+            font-family: 'Kanit', sans-serif;
+            font-size: 64px;
+            position: absolute;
+        }
     </style>
 </head>
 <body>
@@ -51,6 +60,7 @@
             <li><a href="credits.html">Credits</a></li>
         </ul>
         <canvas id="game"></canvas>
+        <div id="moneyDisplay"></div>
         <a id="commitRef" href="https://github.com/excaliburjs/ludum-50/commit/{{ commitRef }}">{{ commitRef }}</a>
     </main>
     <script type="module" src="./src/main.ts"></script>

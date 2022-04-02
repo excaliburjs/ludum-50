@@ -42,6 +42,8 @@ export default {
             bulletDamage: 1,
             maxHealth: 5, 
             cost: 1,
+            resourceSpawnTimer: 5,
+            resourceSpawnValue: 1,
         }
         // other tower types?
     },

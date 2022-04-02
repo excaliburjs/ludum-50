@@ -50,10 +50,9 @@ export class TowerPlacer {
             }
             else {
                 const tower = new Tower(TowerType.default, this._grid, this._highlightedTile.x, this._highlightedTile.y);
-                if(PlayerState.moneyResource - tower.cost >= 0){
+                if(PlayerState.SubtractMoney(tower.cost)){
                     this._highlightedTile.data.set("tower", tower);
                     this._engine.add(tower);
-                    PlayerState.moneyResource -= tower.cost;
                 }
             }
         }
