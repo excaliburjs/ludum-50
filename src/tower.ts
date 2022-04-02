@@ -43,10 +43,10 @@ export class Tower extends Actor {
             radius: config.bulletRadius,
             color: Color.Black,
             collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
-            collisionType: CollisionType.Active
+            collisionType: CollisionType.Passive
         })
 
-        bullet.on('postcollision', (evt) => {
+        bullet.on('precollision', (evt) => {
             const enemy = evt.other as Enemy;
             enemy.takeDamage();
             bullet.kill();
