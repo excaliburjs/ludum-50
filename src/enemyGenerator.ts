@@ -15,9 +15,7 @@ export class EnemyGenerator {
     }
 
     public spawnEnemy(type: EnemyType, gridX: number, gridY: number) {
-        // const enemySpawnTile = this.level.grid.tileMap.getTile(config.gridWidth - 1, 2);
         const enemySpawnTile = this.level.grid.tileMap.getTile(gridX, gridY);
-        console.log({enemySpawnTile});
         const enemy = new Enemy(type, enemySpawnTile.pos.x + config.grid.tileWidth / 2, enemySpawnTile.pos.y + config.grid.tileHeight / 2);
         this.level.add(enemy);
     }
