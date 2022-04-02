@@ -1,5 +1,15 @@
 import { Color } from "excalibur";
 
+export interface WavesDescriptor {
+    [waveIndex: number] : {
+        name: string;
+        start: number;
+        offsets: {
+            [offsetTimeSeconds: number]: { type: 'crab' | 'turtle', count: number}[]
+        }
+    }
+}
+
 export default {
     ShowDevTool: true,
     SoundVolume: 0.3,
@@ -58,6 +68,36 @@ export default {
             // TODO art and animations?
         },
         // other enemy types?
-    }
+    },
+
+    waves: {
+        1: {
+            name: "Wave 1",
+            start: 2,
+            offsets: {
+                2 : [
+                    { type: 'crab', count: 1 },
+                    // { type: 'turtle', count: 3 }
+                ],
+                6 : [
+                    // { type: 'crab', count: 3 },
+                    { type: 'turtle', count: 2 }
+                ],
+                12 : [
+                    { type: 'crab', count: 4 },
+                    { type: 'turtle', count: 3 }
+                ]
+            }
+        },
+        2: {
+            name: "Wave 2",
+            start: 10,
+            offsets: {
+                2: [
+                    {type: 'crab', count: 4 }
+                ]
+            }
+        }
+    } as WavesDescriptor
 
 }

@@ -25,6 +25,7 @@ export class EnemyGenerator {
         const enemy = new Enemy(type, this.level.grid, enemySpawnTile.pos.x + config.grid.tileWidth / 2, enemySpawnTile.pos.y + config.grid.tileHeight / 2);
         this.level.add(enemy);
         enemy.claimTile(enemySpawnTile);
+        return enemy;
     }
 
     /**
@@ -32,7 +33,7 @@ export class EnemyGenerator {
      */
     public spawnEnemyAtRandomTile(type: EnemyType) {
         const randomYIndex = randomIntInRange(0, this.possibleSpawnTiles.length - 1);
-        this.spawnEnemy(type, config.grid.width - 1, randomYIndex);
+        return this.spawnEnemy(type, config.grid.width - 1, randomYIndex);
     }
 
 }

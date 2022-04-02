@@ -7,6 +7,7 @@ import { EnemyGenerator } from "./enemyGenerator";
 import { Enemy, EnemyType } from "./enemy";
 import { Tower, TowerType } from "./tower";
 import { TowerPlacer } from "./tower-placer";
+import { WaveDispatcher } from "./wave-dispatcher";
 
 export class Level extends Scene {
     random = new Random(config.Seed);
@@ -14,6 +15,7 @@ export class Level extends Scene {
     sandCastles: SandCastle[] = [];
     enemyGenerator: EnemyGenerator | undefined;
     towerPlacer!: TowerPlacer;
+    waveDispatcher!: WaveDispatcher;
 
     onInitialize(engine: Engine): void {
         // Sand grid
@@ -37,12 +39,15 @@ export class Level extends Scene {
         // Tower placement
         this.towerPlacer = new TowerPlacer(this.grid, engine)
 
+        this.waveDispatcher = new WaveDispatcher(this.enemyGenerator);
+        this.add(this.waveDispatcher);
+
         // enemy spawn test
-        this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.grid.width - 1, 0);
-        this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.grid.width - 1, 1);
-        this.enemyGenerator.spawnEnemy(EnemyType.Turtle, config.grid.width - 1, 2);
-        this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.grid.width - 1, 3);
-        this.enemyGenerator.spawnEnemy(EnemyType.Turtle, config.grid.width - 1, 4);
+        // this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.grid.width - 1, 0);
+        // this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.grid.width - 1, 1);
+        // this.enemyGenerator.spawnEnemy(EnemyType.Turtle, config.grid.width - 1, 2);
+        // this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.grid.width - 1, 3);
+        // this.enemyGenerator.spawnEnemy(EnemyType.Turtle, config.grid.width - 1, 4);
 
         // random enemy spawn test
         // this.enemyGenerator.spawnEnemyAtRandomTile(EnemyType.Crab);
