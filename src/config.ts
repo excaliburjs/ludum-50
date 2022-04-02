@@ -1,3 +1,5 @@
+import { Color } from "excalibur";
+
 export default {
     ShowDevTool: true,
     SoundVolume: 0.3,
@@ -14,21 +16,31 @@ export default {
     maxHealth: 10,
     healthBarWidthPixels: 64 - 10,
 
-    // Enemies //
-
-    // Crab
-    crabWidth: 50,
-    crabHeight: 50,
-    crabHealth: 3,
-    crabSpeed: 15, // (pixels/second)
-    crabDamage: 1, // how much damage this enemy does to the castle
-
-    // Turtle?
-
-    // Something else?
     // Tower
     bulletSpeedPixelsPerSecond: 100,
     bulletRadius: 10,
     baseTowerFireRateMs: 5000,
+    
+    // Enemies
+    enemy: {
+        crab: {
+            width: 50,
+            height: 50,
+            health: 3,
+            damage: 2, // how much damage this enemy does to the castle
+            speed: 15, // (pixels/second)
+            color: Color.Red // the color of the actor when it doesn't have any art applied
+            // TODO art and animations?
+        },
+        turtle: {
+            width: 50,
+            height: 50,
+            health: 5,
+            damage: 1,
+            speed: 8,
+            color: Color.Green,
+            // TODO art and animations?
+        }
+    }
 
 }

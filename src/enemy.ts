@@ -4,22 +4,32 @@ import { Actor, Color, Vector, CollisionGroupManager, CollisionType } from "exca
 export class Enemy extends Actor {
     public static CollisionGroup = CollisionGroupManager.create("enemy");
 
-    public health = config.crabHealth;
+    public health: number;
+    public damage: number;
+    type: EnemyType;
 
-    constructor(x: number, y: number) {
+    constructor(type: EnemyType, x: number, y: number) {
+        const configValues = config.enemy[type];
         super({
-            name: "Enemey",
+            name: "Enemy",
             x, y, 
-            width: config.crabWidth, 
-            height: config.crabHeight, 
-            color: Color.Red, 
-            vel: new Vector(-1 * config.crabSpeed, 0),
-            collisionType: CollisionType.Active,
-            collisionGroup: Enemy.CollisionGroup
+            width: configValues.width, 
+            height: configValues.height, 
+            color: configValues.color, 
+            vel: new Vector(-1 * configValues.speed, 0), // moves horizontally, right to left
         });
+        this.type = type;
+        this.health = configValues.health;
+        this.damage = configValues.damage;
     }
 
     takeDamage() {
         this.kill();
     }
+}
+
+export enum EnemyType {
+    Crab = 'crab',
+    Turtle = 'turtle',
+    // others?
 }

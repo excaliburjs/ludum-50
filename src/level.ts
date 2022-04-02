@@ -4,7 +4,7 @@ import config from "./config";
 import { Grid } from "./grid";
 import { SandCastle } from "./sandcastle";
 import { EnemyGenerator } from "./enemyGenerator";
-import { Enemy } from "./enemy";
+import { Enemy, EnemyType } from "./enemy";
 import { Tower } from "./tower";
 import { TowerPlacer } from "./tower-placer";
 
@@ -27,13 +27,19 @@ export class Level extends Scene {
             this.add(sandcastle);
         }
 
-        this.enemyGenerator.spawnEnemy();
         // Tower Test
         const tower = new Tower(this.grid, 5, 3);
         this.add(tower);
 
         // Tower placement
         this.towerPlacer = new TowerPlacer(this.grid, engine)
+
+        // enemy test
+        this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.gridWidth - 1, 0);
+        this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.gridWidth - 1, 1);
+        this.enemyGenerator.spawnEnemy(EnemyType.Turtle, config.gridWidth - 1, 2);
+        this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.gridWidth - 1, 3);
+        this.enemyGenerator.spawnEnemy(EnemyType.Turtle, config.gridWidth - 1, 4);
     }
 
 }
