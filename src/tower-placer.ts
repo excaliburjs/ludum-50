@@ -2,6 +2,7 @@ import { Engine, Input, Tile, Actor, Color, Rectangle, vec } from "excalibur";
 import { Tower } from "./tower";
 import { Grid } from "./grid";
 import config from "./config";
+import { Enemy } from "./enemy";
 
 
 export class TowerPlacer {
@@ -41,12 +42,16 @@ export class TowerPlacer {
 
     onConfirm() {
         if (this._highlightedTile) {
-            if (!this._highlightedTile.data.has("tower")) {
+            if (this._highlightedTile.data.has("tower")) {
+                console.log("Tower already there!")
+            } 
+            else if (Enemy.enemiesInTile(this._highlightedTile) > 0) {
+                console.log("Enemy already there!")
+            }
+            else {
                 const tower = new Tower(this._grid, this._highlightedTile.x, this._highlightedTile.y);
                 this._highlightedTile.data.set("tower", tower);
                 this._engine.add(tower);
-            } else {
-                console.log("Tower already there!")
             }
         }
         this._highlightedTile = null;
