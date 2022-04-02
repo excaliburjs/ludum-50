@@ -58,4 +58,8 @@ export class Tower extends Actor {
 
         this._engine.add(bullet);
     }
+
+    takeDamage() {
+        this.kill();
+    }
 }
