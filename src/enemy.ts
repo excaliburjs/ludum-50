@@ -26,7 +26,10 @@ export class Enemy extends Actor {
     }
 
     takeDamage() {
-        this.kill();
+        this.health--;
+        if (this.health <= 0) {
+            this.kill();
+        }
     }
 }
 
