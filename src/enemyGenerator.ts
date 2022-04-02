@@ -1,8 +1,7 @@
 import config from "./config";
-import { Timer, Tile, randomIntInRange } from "excalibur";
+import { Tile, randomIntInRange } from "excalibur";
 import { Level } from "./level";
 import { Enemy, EnemyType } from "./enemy";
-import { Util } from "../lib/excalibur/src/engine";
 
 export class EnemyGenerator {
 
