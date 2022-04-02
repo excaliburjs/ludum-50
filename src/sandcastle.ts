@@ -1,6 +1,6 @@
 import { Grid } from "./grid";
 import config from "./config";
-import { Actor, Color, vec } from "excalibur";
+import { Actor, CollisionType, Color, vec } from "excalibur";
 import { Resources } from "./resources";
 
 export class SandCastle extends Actor {
@@ -12,7 +12,8 @@ export class SandCastle extends Actor {
             name: 'Sand Castle',
             pos: grid.tileMap.pos.add(vec(0, row * config.tileHeight + config.tileHeight/2)),
             width: config.tileWidth,
-            height: config.tileHeight
+            height: config.tileHeight,
+            collisionType: CollisionType.Fixed
         });
         const sandcastle = Resources.SandCastle.toSprite();
         this.graphics.use(sandcastle);
