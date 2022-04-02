@@ -37,14 +37,15 @@ export class Level extends Scene {
         // Tower placement
         this.towerPlacer = new TowerPlacer(this.grid, engine)
 
-        // enemy test
-        // this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.gridWidth - 1, 0);
-        // this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.gridWidth - 1, 1);
-        // this.enemyGenerator.spawnEnemy(EnemyType.Turtle, config.gridWidth - 1, 2);
-        // this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.gridWidth - 1, 3);
-        // this.enemyGenerator.spawnEnemy(EnemyType.Turtle, config.gridWidth - 1, 4);
+        // enemy spawn test
+        this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.gridWidth - 1, 0);
+        this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.gridWidth - 1, 1);
+        this.enemyGenerator.spawnEnemy(EnemyType.Turtle, config.gridWidth - 1, 2);
+        this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.gridWidth - 1, 3);
+        this.enemyGenerator.spawnEnemy(EnemyType.Turtle, config.gridWidth - 1, 4);
 
-        this.enemyGenerator.spawnEnemyAtRandomTile(EnemyType.Crab);
+        // random enemy spawn test
+        // this.enemyGenerator.spawnEnemyAtRandomTile(EnemyType.Crab);
         // this.enemyGenerator.spawnEnemyAtRandomTile(EnemyType.Crab);
         // this.enemyGenerator.spawnEnemyAtRandomTile(EnemyType.Crab);
     }
