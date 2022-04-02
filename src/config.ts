@@ -20,7 +20,7 @@ export default {
     bulletSpeedPixelsPerSecond: 100,
     bulletRadius: 10,
     baseTowerFireRateMs: 5000,
-    
+
     // Enemies
     enemy: {
         crab: {

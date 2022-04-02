@@ -1,15 +1,16 @@
 import config from "./config";
-import { Timer, Tile } from "excalibur";
+import { Timer, Tile, randomIntInRange } from "excalibur";
 import { Level } from "./level";
 import { Enemy, EnemyType } from "./enemy";
+import { Util } from "../lib/excalibur/src/engine";
 
 export class EnemyGenerator {
 
     possibleSpawnTiles: Tile[] = [];
 
     constructor(private level: Level) {
-        // might be useful for randomly picking a tile to spawn from
-        for (let i = 0; i < config.gridHeight, i++;) {
+        // Currently, this only picks the tiles from the furthest right column of the grid.
+        for (let i = 0; i < config.gridHeight; i++) {
             this.possibleSpawnTiles.push(this.level.grid.tileMap.getTile(config.gridWidth - 1, i));
         }
     }
@@ -25,8 +26,9 @@ export class EnemyGenerator {
     /**
      * Spawns an enemy at a random tile from the available possible spawn tiles
      */
-    public spawnEnemyAtRandomTile() {
-        // TODO
+    public spawnEnemyAtRandomTile(type: EnemyType) {
+        const randomYIndex = randomIntInRange(0, this.possibleSpawnTiles.length - 1);
+        this.spawnEnemy(type, config.gridWidth - 1, randomYIndex);
     }
 
 }
