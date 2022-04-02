@@ -45,6 +45,7 @@ export class WaveDispatcher extends Actor {
         if (config.waves[this._currentWave]) {
             if (this._dispatched.length === Object.keys(config.waves[this._currentWave].offsets).length && this.enemiesComplete()) {
                 this._currentWave++;
+                this._currentTime = 0;
                 this._dispatched.length = 0;
                 this._currentEnemies.length = 0;
                 console.log('Wave Complete');
@@ -63,9 +64,7 @@ export class WaveDispatcher extends Actor {
                         }
                         this._dispatched.push(Number(offset));
                         for(let enemyDescriptor of waveConfig.offsets[offset]) {
-                            for (let i = 0; i < enemyDescriptor.count; i++) {
-                                this._currentEnemies.push(this._spawner.spawnEnemyAtRandomTile(enemyDescriptor.type as EnemyType));
-                            }
+                            this._currentEnemies = this._currentEnemies.concat(this._spawner.spawnEnemies(enemyDescriptor.type as EnemyType, enemyDescriptor.count));
                         }
                     }
                 }
@@ -82,7 +81,8 @@ export class WaveDispatcher extends Actor {
     }
 
     showWaveBanner() {
-        this._text.text = 'Wave ' + this._currentWave;
+        const waveConfig = config.waves[this._currentWave];
+        this._text.text = waveConfig.name;
         this._textActor.actions.easeTo(this._textActor.pos.add(vec(200, 0)), 1000, EasingFunctions.EaseInOutCubic);
         this._textActor.actions.delay(1000);
         this._textActor.actions.easeTo(this._textActor.pos.add(vec(1000, 0)), 1000, EasingFunctions.EaseInOutCubic);

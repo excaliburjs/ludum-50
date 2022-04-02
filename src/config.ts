@@ -3,7 +3,6 @@ import { Resources } from "./resources";
 export interface WavesDescriptor {
     [waveIndex: number] : {
         name: string;
-        start: number;
         offsets: {
             [offsetTimeSeconds: number]: { type: 'crab' | 'turtle', count: number}[]
         }
@@ -91,7 +90,6 @@ export default {
     waves: {
         1: {
             name: "Wave 1",
-            start: 2,
             offsets: {
                 2 : [
                     { type: 'crab', count: 1 },
@@ -101,18 +99,60 @@ export default {
                     // { type: 'crab', count: 3 },
                     { type: 'turtle', count: 2 }
                 ],
-                12 : [
-                    { type: 'crab', count: 4 },
+                15 : [
+                    { type: 'crab', count: 2 },
                     { type: 'turtle', count: 3 }
                 ]
             }
         },
         2: {
             name: "Wave 2",
-            start: 10,
+            offsets: {
+                2: [
+                    {type: 'crab', count: 5 }
+                ],
+                5: [
+                    {type: 'crab', count: 5 }
+                ],
+                15: [
+                    {type: 'crab', count: 5 }
+                ]
+            }
+        },
+        3: {
+            name: "Wave Butts",
             offsets: {
                 2: [
                     {type: 'crab', count: 4 }
+                ],
+                5: [
+                    {type: 'crab', count: 4 }
+                ],
+                15: [
+                    {type: 'crab', count: 4 }
+                ]
+            }
+        },
+        4: {
+            name: "Wave INEVITABLE",
+            offsets: {
+                2: [
+                    {type: 'crab', count: 5 }
+                ],
+                7: [
+                    {type: 'crab', count: 5 }
+                ],
+                12: [
+                    {type: 'crab', count: 5 }
+                ],
+                17: [
+                    {type: 'crab', count: 5 }
+                ],
+                22: [
+                    {type: 'crab', count: 5 }
+                ],
+                27: [
+                    {type: 'crab', count: 5 }
                 ]
             }
         }

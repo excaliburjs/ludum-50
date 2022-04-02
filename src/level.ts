@@ -22,7 +22,7 @@ export class Level extends Scene {
         this.grid = new Grid(vec(config.grid.tileWidth/2, config.grid.tileHeight/2), config.grid.height, config.grid.width, config.grid.tileWidth, config.grid.tileHeight);
         this.add(this.grid.tileMap);
 
-        this.enemyGenerator = new EnemyGenerator(this);
+        this.enemyGenerator = new EnemyGenerator(this, this.random);
 
         // Sandcastle(s)
         for (let y = 0; y < config.grid.height; y++) {
