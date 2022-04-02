@@ -1,12 +1,13 @@
 import config from "./config";
-import { Actor, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, KillEvent, Engine, Tile } from "excalibur";
+import { Actor, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, KillEvent, Engine, Tile, Color, vec } from "excalibur";
 import { Tower } from "./tower";
 import { Grid } from "grid";
 
 export class Enemy extends Actor {
     public static CollisionGroup = CollisionGroupManager.create("enemy");
 
-    public health: number;
+    public maxHealth: number;
+    private currentHp: number;
     public damage: number;
     type: EnemyType;
     private _grid: Grid;
@@ -14,6 +15,9 @@ export class Enemy extends Actor {
     private _currentAttackingTower: Tower | null = null;
     private _occupiedTile: Tile | null = null;
     private static TileDataEnemyCounterKey = "enemies";
+    healthBar: Actor;
+    private healthBarOpacity: number = 1;
+    private healthBarOpacityFade : number = 3;
 
     constructor(type: EnemyType, grid: Grid, x: number, y: number) {
         const configValues = config.enemy[type];
@@ -30,15 +34,33 @@ export class Enemy extends Actor {
         this.type = type;
         this._grid = grid;
         this._configValues = configValues;
-        this.health = this._configValues.health;
+        this.maxHealth = this._configValues.health;
+        this.currentHp = this.maxHealth;
         this.damage = this._configValues.damage;
         this.on('postcollision', (evt) => this.onPostCollision(evt));
         this.on('kill', (ke) => this.onKill(ke));
+
+          // draw health bar
+          this.healthBar = new Actor({
+            name: 'Healthbar',
+            pos: vec(0, -10),
+            width: config.healthBarWidthPixels,
+            height: 5,
+            color: Color.Green,
+            collisionType: CollisionType.PreventCollision
+        });
+
+        this.addChild(this.healthBar);
     }
 
     takeDamage() {
-        this.health--;
-        if (this.health <= 0) {
+        this.currentHp--;
+        const pixelsPerHp = config.healthBarWidthPixels / this.maxHealth;
+        const graphic = this.healthBar.graphics.current[0].graphic;
+        graphic.width = this.currentHp * pixelsPerHp;
+        this.healthBarOpacity = 1;
+
+        if (this.currentHp <= 0) {
             this.kill();
         }
     }
@@ -113,6 +135,10 @@ export class Enemy extends Actor {
 
         if (!this.isAttacking()) {
             this.vel = new Vector(-1 * config.enemy[this.type].speed, 0)
+        }
+        if(this.healthBarOpacity > 0){
+            this.healthBarOpacity =  this.healthBarOpacity - 1 * deltaMs / 1000 / this.healthBarOpacityFade;
+            this.healthBar.graphics.opacity = this.healthBarOpacity;
         }
     }
 }
