@@ -6,6 +6,7 @@ import { Enemy } from "./enemy";
 
 export class Tower extends Actor {
     private _engine!: Engine;
+    private _grid: Grid;
     healthBar: Actor;
     currentHp: number = 5;
     maxHealth: number = 5;
@@ -19,6 +20,7 @@ export class Tower extends Actor {
             collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
         });
 
+        this._grid = grid;
         const towerSprite = Resources.BaseTower.toSprite()
 
         this.graphics.use(towerSprite);
@@ -79,6 +81,7 @@ export class Tower extends Actor {
         const graphic = this.healthBar.graphics.current[0].graphic;
         graphic.width = this.currentHp * pixelsPerHp;
         if (this.currentHp <= 0) {
+            this._grid.tileMap.getTileByPoint(this.pos).data.delete("tower");
             this.kill();
         }
     }
