@@ -6,14 +6,16 @@ import { SandCastle } from "./sandcastle";
 import { EnemyGenerator } from "./enemyGenerator";
 import { Enemy } from "./enemy";
 import { Tower } from "./tower";
+import { TowerPlacer } from "./tower-placer";
 
 export class Level extends Scene {
     random = new Random(config.Seed);
     grid!: Grid;
     sandCastles: SandCastle[] = [];
     enemyGenerator = new EnemyGenerator(this);
+    towerPlacer!: TowerPlacer;
 
-    onInitialize(_engine: Engine): void {
+    onInitialize(engine: Engine): void {
         // Sand grid
         this.grid = new Grid(vec(config.tileWidth/2, config.tileHeight/2), config.gridHeight, config.gridWidth, config.tileWidth, config.tileHeight);
         this.add(this.grid.tileMap);
@@ -30,7 +32,8 @@ export class Level extends Scene {
         const tower = new Tower(this.grid, 5, 3);
         this.add(tower);
 
-        // TODO tower placement
+        // Tower placement
+        this.towerPlacer = new TowerPlacer(this.grid, engine)
     }
 
 }

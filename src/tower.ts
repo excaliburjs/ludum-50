@@ -52,6 +52,10 @@ export class Tower extends Actor {
             bullet.kill();
         })
 
+        bullet.on('exitviewport', () => {
+            bullet.kill();
+        });
+
         this._engine.add(bullet);
     }
 }
