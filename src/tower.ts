@@ -13,9 +13,9 @@ export class Tower extends Actor {
     constructor(grid: Grid, x: number, y: number) {
         super({
             name: "Base Tower",
-            pos: grid.tileMap.getTile(x, y).pos.add(vec(config.tileWidth/2, config.tileHeight/2)),
-            width: config.tileWidth,
-            height: config.tileHeight,
+            pos: grid.tileMap.getTile(x, y).pos.add(vec(config.grid.tileWidth/2, config.grid.tileHeight/2)),
+            width: config.grid.tileWidth,
+            height: config.grid.tileHeight,
             collisionType: CollisionType.Fixed,
             collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
         });
@@ -44,7 +44,7 @@ export class Tower extends Actor {
     private _currentFireTimer = 0;
     onPostUpdate(_engine: Engine, updateMs: number) {
         this._currentFireTimer += updateMs;
-        if (this._currentFireTimer > config.baseTowerFireRateMs) {
+        if (this._currentFireTimer > config.tower.default.baseTowerFireRateMs) {
             this.fire();
             this._currentFireTimer = 0;
         }
@@ -55,8 +55,8 @@ export class Tower extends Actor {
         const bullet = new Actor({
             name: "Tower Bullet",
             pos: this.pos,
-            vel: vec(config.bulletSpeedPixelsPerSecond, 0),
-            radius: config.bulletRadius,
+            vel: vec(config.tower.default.bulletSpeedPixelsPerSecond, 0),
+            radius: config.tower.default.bulletRadius,
             color: Color.Black,
             collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
             collisionType: CollisionType.Passive

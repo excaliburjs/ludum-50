@@ -18,8 +18,8 @@ export class TowerPlacer {
             pos: vec(-100, -100) // default offscreen
         })
         const rect = new Rectangle({
-            width: config.tileWidth,
-            height: config.tileHeight,
+            width: config.grid.tileWidth,
+            height: config.grid.tileHeight,
             color: Color.Transparent,
             strokeColor: Color.Green,
             lineWidth: 3,
@@ -35,7 +35,7 @@ export class TowerPlacer {
 
         if (maybeTile) {
             this._highlightedTile = maybeTile;
-            this._highlight.pos = this._highlightedTile.pos.add(vec(config.tileWidth/2, config.tileHeight/2));
+            this._highlight.pos = this._highlightedTile.pos.add(vec(config.grid.tileWidth/2, config.grid.tileHeight/2));
         }
     }
 

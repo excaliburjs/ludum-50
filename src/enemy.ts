@@ -8,6 +8,7 @@ export class Enemy extends Actor {
     public health: number;
     public damage: number;
     type: EnemyType;
+    private _configValues;
     private _currentAttackingTower: Tower | null = null;
 
     constructor(type: EnemyType, x: number, y: number) {
@@ -23,8 +24,9 @@ export class Enemy extends Actor {
             vel: new Vector(-1 * configValues.speed, 0), // moves horizontally, right to left
         });
         this.type = type;
-        this.health = configValues.health;
-        this.damage = configValues.damage;
+        this._configValues = configValues;
+        this.health = this._configValues.health;
+        this.damage = this._configValues.damage;
         this.on('postcollision', (evt) => this.onPostCollision(evt));
     }
 
@@ -46,7 +48,7 @@ export class Enemy extends Actor {
     onPostCollision(evt: PostCollisionEvent) {
         if (evt.other instanceof Tower) {
             if (this._damageTimer <= 0) {
-                this._damageTimer = config.enemyDamageTimerMs;
+                this._damageTimer = this._configValues.damageTimerMs;
                 const tower = evt.other as Tower;
                 tower.takeDamage();
             }

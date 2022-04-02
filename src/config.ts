@@ -5,30 +5,38 @@ export default {
     SoundVolume: 0.3,
     Seed: 1337,
 
-    // Grid
-    tileWidth: 64,
-    tileHeight: 64,
-    gridWidth: 9,
-    gridHeight: 5,
-    gridPadding: 1,
+    // Grid (the "board" of the game)
+    grid: {
+        width: 9,
+        height: 5,
+        padding: 1,
+        tileWidth: 64,
+        tileHeight: 64,
+    },
 
-    // Sandcastle
-    maxHealth: 10,
-    healthBarWidthPixels: 64 - 10,
+    sandcastle: {
+        maxHealth: 10,
+        healthBarWidthPixels: 64 - 10,
+    },
 
-    // Tower
-    bulletSpeedPixelsPerSecond: 100,
-    bulletRadius: 10,
-    baseTowerFireRateMs: 5000,
+    tower: {
+        default: { // rename this type?
+            bulletSpeedPixelsPerSecond: 100,
+            bulletRadius: 10,
+            baseTowerFireRateMs: 5000,
+        }
+        // other types?
+    },
 
     // Enemies
-    enemyDamageTimerMs: 1000,
+    
     enemy: {
         crab: {
             width: 50,
             height: 50,
             health: 3,
-            damage: 2, // how much damage this enemy does to the castle
+            damage: 2, // how much damage this enemy does
+            damageTimerMs: 1000, // how frequently this enemy attacks / enemyDamageTimerMs
             speed: 15, // (pixels/second)
             color: Color.Red // the color of the actor when it doesn't have any art applied
             // TODO art and animations?
@@ -38,6 +46,7 @@ export default {
             height: 50,
             health: 5,
             damage: 1,
+            damageTimerMs: 1000,
             speed: 8,
             color: Color.Green,
             // TODO art and animations?

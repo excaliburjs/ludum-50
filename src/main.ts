@@ -17,7 +17,7 @@ export class Game extends Engine {
             displayMode: DisplayMode.FitScreen,
             antialiasing: false,
             // .5 tile of padding for now
-            resolution: { width: config.tileWidth * (config.gridWidth + config.gridPadding), height: config.tileHeight * (config.gridHeight + config.gridPadding) }
+            resolution: { width: config.grid.tileWidth * (config.grid.width + config.grid.padding), height: config.grid.tileHeight * (config.grid.height + config.grid.padding) }
         });
     }
 
