@@ -20,13 +20,18 @@ export default {
 
     healthBarWidthPixels: 64 - 10,
 
+    player: {
+        startingMonies: 5,
+    },
+
     tower: {
         default: { // rename this tower type?
             bulletSpeedPixelsPerSecond: 100,
             bulletRadius: 10,
             baseTowerFireRateMs: 5000,
             bulletDamage: 1,
-            maxHealth: 5
+            maxHealth: 5, 
+            cost: 1,
         }
         // other tower types?
     },

@@ -1,9 +1,9 @@
 import { Engine, Input, Tile, Actor, Color, Rectangle, vec } from "excalibur";
-import { Tower } from "./tower";
+import { Tower, TowerType } from "./tower";
 import { Grid } from "./grid";
 import config from "./config";
 import { Enemy } from "./enemy";
-
+import {PlayerState} from "./playerState";
 
 export class TowerPlacer {
     private _grid: Grid;
@@ -49,9 +49,12 @@ export class TowerPlacer {
                 console.log("Enemy already there!")
             }
             else {
-                const tower = new Tower(this._grid, this._highlightedTile.x, this._highlightedTile.y);
-                this._highlightedTile.data.set("tower", tower);
-                this._engine.add(tower);
+                const tower = new Tower(TowerType.default, this._grid, this._highlightedTile.x, this._highlightedTile.y);
+                if(PlayerState.moneyResource - tower.cost >= 0){
+                    this._highlightedTile.data.set("tower", tower);
+                    this._engine.add(tower);
+                    PlayerState.moneyResource -= tower.cost;
+                }
             }
         }
         this._highlightedTile = null;

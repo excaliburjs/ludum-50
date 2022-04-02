@@ -9,12 +9,13 @@ export class Tower extends Actor {
     private _grid: Grid;
     healthBar: Actor;
     currentHp: number = 5;
-    maxHealth: number = config.tower.default.maxHealth;
-    damage: number = config.tower.default.bulletDamage;
+    maxHealth: number;
+    cost: number;
+    type: TowerType;
     private healthBarOpacity: number = 1;
     private healthBarOpacityFade : number = 3;
     private row: Tile[];
-    constructor(grid: Grid, x: number, y: number) {
+    constructor(towerType: TowerType, grid: Grid, x: number, y: number) {
         super({
             name: "Base Tower",
             pos: grid.tileMap.getTile(x, y).pos.add(vec(config.grid.tileWidth/2, config.grid.tileHeight/2)),
@@ -26,6 +27,10 @@ export class Tower extends Actor {
 
         this._grid = grid;
         this.row = this._grid.tileMap.getRows()[y];
+        this.type = towerType;
+        this.maxHealth = config.tower[this.type].maxHealth;
+        this.cost = config.tower[this.type].cost;
+
         const towerSprite = Resources.BaseTower.toSprite()
 
         this.graphics.use(towerSprite);
@@ -56,7 +61,7 @@ export class Tower extends Actor {
             this.healthBarOpacity =  this.healthBarOpacity - 1 * updateMs / 1000 / this.healthBarOpacityFade;
             this.healthBar.graphics.opacity = this.healthBarOpacity;
         }
-        if (this._currentFireTimer > config.tower.default.baseTowerFireRateMs) {
+        if (this._currentFireTimer > config.tower[this.type].baseTowerFireRateMs) {
             this.fire();
             this._currentFireTimer = 0;
         }
@@ -67,8 +72,8 @@ export class Tower extends Actor {
         const bullet = new Actor({
             name: "Tower Bullet",
             pos: this.pos,
-            vel: vec(config.tower.default.bulletSpeedPixelsPerSecond, 0),
-            radius: config.tower.default.bulletRadius,
+            vel: vec(config.tower[this.type].bulletSpeedPixelsPerSecond, 0),
+            radius: config.tower[this.type].bulletRadius,
             color: Color.Black,
             collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
             collisionType: CollisionType.Passive
@@ -76,7 +81,7 @@ export class Tower extends Actor {
 
         bullet.on('precollision', (evt) => {
             const enemy = evt.other as Enemy;
-            enemy.takeDamage(this.damage);
+            enemy.takeDamage(config.tower[this.type].bulletDamage);
             bullet.kill();
         })
 
@@ -105,4 +110,8 @@ export class Tower extends Actor {
             this.healthBar.color = Color.Yellow;
         }
     }
+}
+
+export enum TowerType {
+    default = 'default'
 }
