@@ -22,6 +22,7 @@ export default {
     baseTowerFireRateMs: 5000,
 
     // Enemies
+    enemyDamageTimerMs: 1000,
     enemy: {
         crab: {
             width: 50,

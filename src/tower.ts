@@ -6,6 +6,9 @@ import { Enemy } from "./enemy";
 
 export class Tower extends Actor {
     private _engine!: Engine;
+    healthBar: Actor;
+    currentHp: number = 5;
+    maxHealth: number = 5;
     constructor(grid: Grid, x: number, y: number) {
         super({
             name: "Base Tower",
@@ -19,6 +22,17 @@ export class Tower extends Actor {
         const towerSprite = Resources.BaseTower.toSprite()
 
         this.graphics.use(towerSprite);
+
+        // draw health bar
+        this.healthBar = new Actor({
+            name: 'Healthbar',
+            pos: vec(0, -10),
+            width: config.healthBarWidthPixels,
+            height: 5,
+            color: Color.Green,
+            collisionType: CollisionType.PreventCollision
+        });
+        this.addChild(this.healthBar);
     }
 
     onInitialize(engine: Engine) {
@@ -60,6 +74,12 @@ export class Tower extends Actor {
     }
 
     takeDamage() {
-        this.kill();
+        this.currentHp -= 1;
+        const pixelsPerHp = config.healthBarWidthPixels / this.maxHealth;
+        const graphic = this.healthBar.graphics.current[0].graphic;
+        graphic.width = this.currentHp * pixelsPerHp;
+        if (this.currentHp <= 0) {
+            this.kill();
+        }
     }
 }
