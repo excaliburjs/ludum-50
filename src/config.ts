@@ -1,5 +1,13 @@
 export default {
-    DebugMenuEnabled: false,
+    ShowDevTool: true,
     SoundVolume: 0.3,
-    Seed: 1337
+    Seed: 1337,
+
+    // Grid
+    tileWidth: 64,
+    tileHeight: 64,
+    width: 9,
+    height: 5,
+    padding: 1
+
 }
