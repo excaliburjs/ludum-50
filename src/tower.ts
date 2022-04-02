@@ -1,7 +1,8 @@
 import config from "./config";
-import { Actor, CollisionType, Color, Engine, vec, Vector } from "excalibur";
+import { Actor, CollisionGroup, CollisionType, Color, Engine, vec, Vector } from "excalibur";
 import { Resources } from "./resources";
 import { Grid } from "./grid";
+import { Enemy } from "./enemy";
 
 export class Tower extends Actor {
     private _engine!: Engine;
@@ -39,7 +40,8 @@ export class Tower extends Actor {
             pos: this.pos,
             vel: vec(config.bulletSpeedPixelsPerSecond, 0),
             radius: config.bulletRadius,
-            color: Color.Black
+            color: Color.Black,
+            collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup])
         })
 
         this._engine.add(bullet);

@@ -1,7 +1,8 @@
 import { Grid } from "./grid";
 import config from "./config";
-import { Actor, CollisionType, Color, vec } from "excalibur";
+import { Actor, CollisionGroup, CollisionType, Color, vec, PostCollisionEvent } from "excalibur";
 import { Resources } from "./resources";
+import { Enemy } from "./enemy";
 
 export class SandCastle extends Actor {
     maxHp: number = config.maxHealth;
@@ -13,8 +14,11 @@ export class SandCastle extends Actor {
             pos: grid.tileMap.pos.add(vec(0, row * config.tileHeight + config.tileHeight/2)),
             width: config.tileWidth,
             height: config.tileHeight,
-            collisionType: CollisionType.Fixed
+            collisionType: CollisionType.Fixed,
+            collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup])
         });
+        this.on('postcollision', evt => this.onPostCollision(evt));
+
         const sandcastle = Resources.SandCastle.toSprite();
         this.graphics.use(sandcastle);
 
@@ -26,6 +30,11 @@ export class SandCastle extends Actor {
             color: Color.Green
         });
         this.addChild(this.healthBar);
+    }
+
+    onPostCollision(evt: PostCollisionEvent) {
+        this.takeDamage();
+        evt.other.kill();
     }
 
     takeDamage() {
