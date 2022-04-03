@@ -13,6 +13,7 @@ import sandWall from "./images/sandwall.png"
 // Sounds
 import clankUrl from "./sounds/clank.wav";
 import bgAmbiance from './sounds/bg-beach.mp3';
+import bgMusic from './sounds/bg-music.mp3';
 
 export const Resources = {
     // Images
@@ -26,5 +27,6 @@ export const Resources = {
     Sandwall: new ImageSource(sandWall, false, ImageFiltering.Pixel),
     // Sounds
     Clank: new Sound(clankUrl),
-    BackgroundAmbiance: new Sound(bgAmbiance)
+    BackgroundAmbiance: new Sound(bgAmbiance),
+    BackgroundMusic: new Sound(bgMusic)
 }

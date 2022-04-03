@@ -12,7 +12,8 @@ export interface WavesDescriptor {
 export default {
     ShowDevTool: true,
     SoundVolume: 0.3,
-    BackgroundAmbianceVolume: 0.4,
+    BackgroundAmbianceVolume: 1.0,
+    BackgroundMusicVolume: 0.2,
     Seed: 1337,
 
     // Grid (the "board" of the game)

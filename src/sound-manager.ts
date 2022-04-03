@@ -77,11 +77,20 @@ export class SoundManager {
     Resources.BackgroundAmbiance.loop = true;
     if (!Resources.BackgroundAmbiance.isPlaying())
       Resources.BackgroundAmbiance.play();
+
+    Resources.BackgroundMusic.volume = Preferences.muteBackgroundMusic
+      ? 0
+      : Config.BackgroundMusicVolume;
+
+    Resources.BackgroundMusic.loop = true;
+    if (!Resources.BackgroundMusic.isPlaying())
+      Resources.BackgroundMusic.play();
   }
 
   static stopBackgroundMusic() {
     // stop bg music
     Resources.BackgroundAmbiance.loop = false;
+    Resources.BackgroundMusic.loop = false;
   }
 
   static muteBackgroundMusic() {
@@ -89,6 +98,7 @@ export class SoundManager {
 
     // mute bg music
     Resources.BackgroundAmbiance.volume = 0;
+    Resources.BackgroundMusic.volume = 0;
     SoundManager._updateMusicButton();
   }
 
@@ -97,6 +107,7 @@ export class SoundManager {
 
     // unmute bg music
     Resources.BackgroundAmbiance.volume = Config.BackgroundAmbianceVolume;
+    Resources.BackgroundMusic.volume = Config.BackgroundMusicVolume;
     SoundManager._updateMusicButton();
   }
 
