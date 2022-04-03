@@ -14,7 +14,7 @@ export class PlayerState {
 
     private static updateDisplay(){
         const display = document.getElementById("moneyDisplay")!;
-        display.innerText = `Compacted Sand: ${this.moneyResource.toString()}`;
+        display.innerText = `Sand: ${this.moneyResource.toString()}`;
         const pos = game.screen.worldToScreenCoordinates(vec(0,0));
         display.style.left = pos.x.toString();
         display.style.top = pos.y.toString();
