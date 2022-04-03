@@ -9,6 +9,7 @@ import { Tower, TowerType } from "./tower";
 import { TowerPlacer } from "./tower-placer";
 import { WaveDispatcher } from "./wave-dispatcher";
 import { GameOver } from "./game-over";
+import { SoundManager } from "./sound-manager";
 
 export class Level extends Scene {
     random = new Random(config.Seed);
@@ -20,6 +21,8 @@ export class Level extends Scene {
     gameOver!: GameOver;
 
     onInitialize(engine: Engine): void {
+        SoundManager.startBackgroundMusic();
+        
         // Sand grid
         this.grid = new Grid(vec(config.grid.tileWidth/2, config.grid.tileHeight/2), config.grid.height, config.grid.width, config.grid.tileWidth, config.grid.tileHeight);
         this.add(this.grid.tileMap);

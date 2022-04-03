@@ -29,7 +29,7 @@ export class Game extends Engine {
         }
         this.start(loader).then(() => {
             // game start stuff
-           this.setupDevTool();
+           this.setupDevTool();           
         });
 
     }
