@@ -108,7 +108,8 @@ export default {
             damage: 2, // how much damage this enemy type does
             damageTimerMs: 1000, // how frequently this enemy type attacks
             speed: 15, // (pixels/second)
-            color: Color.Red // the color of the actor when it doesn't have any art applied
+            color: Color.Red, // the color of the actor when it doesn't have any art applied
+            sprite: null,
             // TODO art and animations?
         },
         turtle: {
@@ -119,6 +120,7 @@ export default {
             damageTimerMs: 1000,
             speed: 8,
             color: Color.Green,
+            sprite: null,
             // TODO art and animations?
         },
         // other enemy types?

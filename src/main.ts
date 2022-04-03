@@ -5,7 +5,7 @@ import { Resources } from "./resources";
 import { SoundManager } from "./sound-manager";
 import { DevTool } from "@excaliburjs/dev-tools";
 import config from "./config";
-import dat from "dat.gui"
+import * as dat from "dat.gui"
 
 const getNumDigits = (val: any) => {
     return (`${val}`.match(/\d/g) || []).length //a regex to compute the number of digits in a number. Note that decimals will get counted as digits, which is why to establish our limit and step we rounded
@@ -15,7 +15,7 @@ const buildGui = (gui: any, folder: any,  obj: any) => {
         if (obj.hasOwnProperty(key)) {
             let val = obj[key];
             if (typeof val == 'number') { //if the value of the object key is a number, establish limits and step
-                const numDigits = getNumDigits(val);
+                const numgiDigits = getNumDigits(val);
                 let step, limit;
                 if (val > -1 && val < 1) { //if it's a small decimal number, give it a GUI range of -1,1 with a step of 0.1...
                     step = 0.1;
@@ -67,7 +67,7 @@ export class Game extends Engine {
         }
         this.start(loader).then(() => {
             // game start stuff
-           
+           this.setupDevTool();           
         });
 
     }
@@ -135,7 +135,6 @@ game.input.keyboard.on('release', (event) => {
             }
             break;
         case Input.Keys.Semicolon :
-            game.setupDevTool();
             game.toggleDebug();
             break;
     }

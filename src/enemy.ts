@@ -42,6 +42,11 @@ export class Enemy extends Actor {
         this.on('postcollision', (evt) => this.onPostCollision(evt));
         this.on('kill', (ke) => this.onKill(ke));
 
+
+        // @ts-ignore
+        const enemySprite = config.enemy[this.type].sprite?.toSprite();
+        if (enemySprite) this.graphics.use(enemySprite);
+
           // draw health bar
         this.healthBar = new Healthbar(this.maxHealth);
         this.addChild(this.healthBar);
