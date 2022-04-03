@@ -17,7 +17,7 @@ export class PlayerState {
         moneyContainer.style.visibility = 'visible';
         const moneyText = document.getElementById("moneyDisplay")!;
         moneyText.innerText = `${this.moneyResource.toString()}`;
-        const pos = game.screen.worldToScreenCoordinates(vec(175,30));
+        const pos = game.screen.worldToScreenCoordinates(vec(config.grid.tileWidth / 2, config.grid.tileHeight / 2));
         moneyContainer.style.left = pos.x.toString()+'px';
         moneyContainer.style.top = pos.y.toString()+'px';
 
