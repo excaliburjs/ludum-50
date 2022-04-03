@@ -19,7 +19,7 @@ export class TowerPlacer {
     this._grid = grid;
     this._engine = engine;
     engine.input.pointers.primary.on("move", (evt) => this.onPointerMove(evt));
-    engine.input.pointers.primary.on("down", () => this.onConfirm());
+    engine.input.pointers.primary.on("down", (evt) => this.onConfirm(evt));
     this._highlight = new Actor({
       pos: vec(-100, -100), // default offscreen
     });
@@ -66,9 +66,16 @@ export class TowerPlacer {
     }
   }
 
-  onConfirm() {
+  onConfirm(evt: Input.PointerEvent) {
+    // Ignore right clicks
+    if (evt.pointerType === Input.PointerType.Mouse) {
+        const mouse = evt.nativeEvent as MouseEvent;
+        if (mouse.button === 2) {
+            return;
+        }
+    }
     if (this._highlightedTile) {
-      if (this._highlightedTile.data.has("tower")) {
+      if (this._highlightedTile.data.has("tower") || this._highlightedTile.data.has("water")) {
         console.log("Tower already there!");
       } else if (Enemy.enemiesInTile(this._highlightedTile) > 0) {
         console.log("Enemy already there!");
