@@ -30,10 +30,12 @@ export class TowerPlacer {
 
       if (this._highlightedTile.data.has("tower")) {
         this._rect.strokeColor = Color.Yellow;
+        this.ghostTower.graphics.visible = false;
       } else if (Enemy.enemiesInTile(this._highlightedTile) > 0 || this._highlightedTile.data.has("water")) {
         this._rect.strokeColor = Color.Red;
       } else {
         this._rect.strokeColor = Color.Green;
+        this.ghostTower.graphics.visible = true;
       }
     };
     this._rect = new Rectangle({
