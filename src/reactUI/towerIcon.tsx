@@ -7,7 +7,7 @@ import './towerControl.css'
 type Props = {
     towerName: string,
     selectedTower: string,
-    selectHandler: any
+    selectHandler: Function
 };
 type State = {
     selected: boolean
@@ -19,7 +19,7 @@ export class TowerIcon extends React.Component<Props, State> {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick = (event: any) =>{
+    handleClick = (event: any) => {
         event.preventDefault();
         this.props.selectHandler(this.props.towerName);
     }
@@ -46,7 +46,7 @@ export class TowerIcon extends React.Component<Props, State> {
                         </div>)
                     : (<div className='cost'>
                             Generates: {config.tower[towerType].resourceSpawnValue} per {config.tower[towerType].resourceSpawnTimer}s
-                    </div>) }
+                </div>) }
                 <div className='cost'>
                     Health: {config.tower[towerType].maxHealth}
                 </div>
@@ -55,4 +55,4 @@ export class TowerIcon extends React.Component<Props, State> {
             </>
         )    
     }
-}0
+}

@@ -23,7 +23,6 @@ export class TowerPickerUI extends React.Component<Props, State> {
   };
 
   setSelectedTower = (tower: TowerType) => {
-    console.log(tower);
     Resources.UiPickTower.play();
     this.setState({
       selectedTower: tower,
