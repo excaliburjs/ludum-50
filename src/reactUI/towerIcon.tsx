@@ -21,6 +21,7 @@ export class TowerIcon extends React.Component<Props, State> {
 
     handleClick = (event: any) => {
         event.preventDefault();
+        console.log("butts");
         this.props.selectHandler(this.props.towerName);
     }
 
@@ -40,7 +41,7 @@ export class TowerIcon extends React.Component<Props, State> {
                 <div className="cost">
                     Cost: {config.tower[towerType].cost}
                 </div>
-                <img src={config.tower[towerType].sprite}></img>
+                <img src={config.tower[towerType].sprite?.path?.toString()}></img>
                 { hasDamage ?
                         (<div className="cost">
                             Damage: {config.tower[towerType].bulletDamage}

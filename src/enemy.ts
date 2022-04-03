@@ -45,6 +45,7 @@ export class Enemy extends Actor {
 
         // @ts-ignore
         const enemySprite = config.enemy[this.type].sprite?.toSprite();
+        console.log(enemySprite);
         if (enemySprite) this.graphics.use(enemySprite);
 
           // draw health bar
