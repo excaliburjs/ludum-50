@@ -52,11 +52,11 @@ export class Level extends Scene {
 
         // Initial towers
         const tutorialDefaultTower = new Tower(TowerType.default, this.grid, 4, 3);
-        this.grid.tileMap.getTile(3, 3).data.set("tower", tutorialDefaultTower);
+        this.grid.tileMap.getTile(4, 3).data.set("tower", tutorialDefaultTower);
         this.add(tutorialDefaultTower);
 
         const tutorialSandbucketTower = new Tower(TowerType.sandBucket, this.grid, 0, 3);
-        this.grid.tileMap.getTile(3, 3).data.set("sandBucket", tutorialSandbucketTower);
+        this.grid.tileMap.getTile(0, 3).data.set("tower", tutorialSandbucketTower);
         this.add(tutorialSandbucketTower);
         
         // Initial enemy (aligned with the initial default tower)
