@@ -125,7 +125,7 @@ export class Enemy extends Actor {
     onPostUpdate(_engine: Engine, deltaMs: number) {
         if (this._stopped) return;
         this._damageTimer -= deltaMs;
-        const curTile = this._grid.tileMap.getTileByPoint(this.pos);
+        const curTile = this._grid.tileMap.getTileByPoint(this.pos.sub(vec(this.width/2, 0)));
         this.claimTile(curTile);
 
         if (!this.isAttacking()) {

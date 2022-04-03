@@ -6,7 +6,7 @@ export class Healthbar extends Actor {
     public MaxHealth: number;
     public CurHealth: number;
     private _fillColor;
-    private healthBarOpacity: number = 1;
+    private healthBarOpacity: number = 0;
     private healthBarOpacityFade : number = 3;
     constructor(maxHealth: number) {
             super({name: 'Healthbar',
@@ -30,7 +30,7 @@ export class Healthbar extends Actor {
     }
 
     onPostUpdate(_engine: Engine, updateMs: number) {
-        if(this.healthBarOpacity > 0){
+        if(this.healthBarOpacity >= 0){
             this.healthBarOpacity =  this.healthBarOpacity - 1 * updateMs / 1000 / this.healthBarOpacityFade;
             this.graphics.opacity = this.healthBarOpacity;
             this._fillColor.graphics.opacity = this.healthBarOpacity;
