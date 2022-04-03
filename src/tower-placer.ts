@@ -80,6 +80,17 @@ export class TowerPlacer {
   }
 
   onConfirm(evt: Input.PointerEvent) {
+    // On touch devices we need to set the highlighted tile if not already
+    if (evt.pointerType === Input.PointerType.Touch) {
+        const maybeTile = this._grid.tileMap.getTileByPoint(evt.worldPos);
+        if (maybeTile) {
+            this._highlightedTile = maybeTile;
+            this._highlight.pos = this._highlightedTile.pos.add(
+              vec(config.grid.tileWidth / 2, config.grid.tileHeight / 2)
+            );
+          }
+    }
+
     // Ignore right clicks
     if (evt.pointerType === Input.PointerType.Mouse) {
         const mouse = evt.nativeEvent as MouseEvent;
