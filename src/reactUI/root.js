@@ -1,8 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import {TowerPickerUI} from './towerPickerUI'
 
-ReactDOM.render(
+const container = document.getElementById('reactUI');
+const root = ReactDOMClient.createRoot(container);
+root.render(
     <TowerPickerUI ref={(TowerPickerUI) => {window.TowerPickerUI = TowerPickerUI}}/>,
-    document.getElementById('reactUI')
 );
