@@ -2,5 +2,12 @@
     font-weight: bold;
 }
 .tower {
+    padding: 5px;
     font-size: 48px;
+}
+
+#towerSelection {
+    display: none;
+    flex-direction: row;
+    position: absolute;
 }
