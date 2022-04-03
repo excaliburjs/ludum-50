@@ -33,6 +33,7 @@
     font-size: 20px;
     text-align: center;
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: center;
 }
@@ -40,6 +41,11 @@
 
 .costText {
     margin-block: auto;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-55%, -50%);
+    text-shadow: -1px 1px 0 #FFF, 1px 1px 0 #FFF, 1px -1px 0 #FFF, -1px -1px 0 #FFF;
 }
 
 #towerSelection {

@@ -43,7 +43,7 @@ export class TowerIcon extends React.Component<Props, State> {
                 <div className='towerInfo'>
                     <div className="cost">
                         <img src={Resources.CompactedSand.path.toString()}></img>
-                        <div className="costText">: {config.tower[towerType].cost}</div>
+                        <div className="costText">{config.tower[towerType].cost}</div>
                     </div>
                     { hasDamage ?
                         (<div className="cost">
