@@ -16,6 +16,7 @@ import bgAmbiance from './sounds/bg-beach.mp3';
 import bgMusic from './sounds/bg-music.mp3';
 import waveAppear from './sounds/wave-appear.ogg';
 import impactEnemyRock from './sounds/impact-enemy-rock.ogg';
+import impactTower from './sounds/impact-tower.ogg';
 
 export const Resources = {
     // Images
@@ -32,5 +33,6 @@ export const Resources = {
     BackgroundAmbiance: new Sound(bgAmbiance),
     BackgroundMusic: new Sound(bgMusic),
     FxWaveAppear: new Sound(waveAppear),
-    FxImpactEnemyRock: new Sound(impactEnemyRock)
+    FxImpactEnemyRock: new Sound(impactEnemyRock),
+    FxImpactTowerByEnemy: new Sound(impactTower)
 }

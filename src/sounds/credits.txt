@@ -1,2 +1,5 @@
 bg-beach.mp3: https://freesound.org/people/John%20Sipos/sounds/191444/
 bg-music.mp3: https://freemusicarchive.org/music/crowander/from-the-garage-funkrock/night-surfing
+impact-enemy-rock.ogg: kenny.nl; kenny_impactsounds - impactWood_medium_003.ogg
+wave-appear.ogg: kenny.nl; kenny_musicjingles - jingles_STEEL03.ogg
+impact-tower.ogg: kenny.nl; kenny_impactsounds - impactSoft_medium_004.ogg
