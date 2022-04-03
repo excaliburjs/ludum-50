@@ -109,7 +109,7 @@ export class Tower extends Actor {
         this.currentHp -= damage;
         this.healthBar.takeDamage(damage);
         if (this.currentHp <= 0) {
-            this._grid.tileMap.getTileByPoint(this.pos).data.delete("tower");
+            this._tile.data.delete("tower");
             this.kill();
         }
     }
