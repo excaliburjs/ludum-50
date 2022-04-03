@@ -74,7 +74,7 @@ export default {
             maxHealth: 5, 
             resourceSpawnTimer: 15,
             resourceSpawnValue: 1,
-            sprite: null,
+            sprite: Resources.BucketTower,
             spriteBroken: null,
         },
         sandWall: {
