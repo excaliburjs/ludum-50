@@ -47,7 +47,8 @@ export class TowerIcon extends React.Component<Props, State> {
                     </div>
                     { hasDamage ?
                         (<div className="cost">
-                            Damage: {config.tower[towerType].bulletDamage}
+                            <img src={Resources.Beachball.path.toString()}></img>
+                            <div className="costText">{config.tower[towerType].bulletDamage}</div>
                         </div>)
                     : makesMoney ? 
                         (<div className='cost'>
