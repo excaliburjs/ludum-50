@@ -6,21 +6,45 @@
 .tower {
     padding: 5px;
     font-size: 48px;
+    display: flex;
+    flex-direction: row;
 }
 
 .imageOuter {
     text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.towerInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.towerIcon {
+    display: block;
+    height: auto;
+    margin: auto;
+    width: 100%;
 }
 
 .cost {
-    font-weight:normal;
-    font-size: 16px;
+    font-weight:bold;
+    font-size: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.costText {
+    margin-block: auto;
 }
 
 #towerSelection {
     display: none;
-    flex-direction: row;
+    flex-direction: column;
     position: absolute;
 }
 

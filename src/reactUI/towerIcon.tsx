@@ -3,6 +3,7 @@ import * as React from 'react';
 import { MouseEventHandler } from 'react';
 import { TowerType } from 'tower';
 import './towerControl.css'
+import { Resources, FxTowerFlings } from "../resources";
 
 type Props = {
     towerName: string,
@@ -36,26 +37,28 @@ export class TowerIcon extends React.Component<Props, State> {
             <>
             <div className={selectedClass}
                 onClick={this.handleClick}>
-                {/* {this.props.towerName} */}
                 <div className='imageOuter'>
                     <img className='towerIcon' src={config.tower[towerType].sprite?.path?.toString()}></img>
                 </div>
-                <div className="cost">
-                    Cost: {config.tower[towerType].cost}
+                <div className='towerInfo'>
+                    <div className="cost">
+                        <img src={Resources.CompactedSand.path.toString()}></img>
+                        <div className="costText">: {config.tower[towerType].cost}</div>
+                    </div>
+                    { hasDamage ?
+                        (<div className="cost">
+                            Damage: {config.tower[towerType].bulletDamage}
+                        </div>)
+                    : makesMoney ? 
+                        (<div className='cost'>
+                            Generates: {config.tower[towerType].resourceSpawnValue} per {config.tower[towerType].resourceSpawnTimer}s
+                        </div>) 
+                    : (<></>) }
+                    <div className='cost'>
+                        Health: {config.tower[towerType].maxHealth}
+                    </div>
+                    <div className='towerHoverText'>{config.tower[towerType].hoverText}</div>
                 </div>
-                { hasDamage ?
-                    (<div className="cost">
-                        Damage: {config.tower[towerType].bulletDamage}
-                    </div>)
-                : makesMoney ? 
-                    (<div className='cost'>
-                        Generates: {config.tower[towerType].resourceSpawnValue} per {config.tower[towerType].resourceSpawnTimer}s
-                    </div>) 
-                : (<></>) }
-                <div className='cost'>
-                    Health: {config.tower[towerType].maxHealth}
-                </div>
-                <div className='towerHoverText'>{config.tower[towerType].hoverText}</div>
             </div>
             </>
         )    
