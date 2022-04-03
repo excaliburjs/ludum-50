@@ -29,7 +29,7 @@ export class Level extends Scene {
         config.Seed = this.random.seed as number;
 
         // Sand grid
-        this.grid = new Grid(vec(config.grid.tileWidth, config.grid.tileHeight/2), config.grid.height, config.grid.width, config.grid.tileWidth, config.grid.tileHeight);
+        this.grid = new Grid(vec(config.grid.tileWidth, 0), config.grid.height, config.grid.width, config.grid.tileWidth, config.grid.tileHeight);
         this.add(this.grid.tileMap);
 
         // Water waves at the end
