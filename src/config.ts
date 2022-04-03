@@ -78,7 +78,7 @@ export default {
             resourceSpawnTimer: 15,
             resourceSpawnValue: 1,
             sprite: Resources.BucketTower,
-            spriteBroken: null,
+            spriteBroken: Resources.BucketTowerBroken,
         },
         sandWall: {
             bulletSpeedPixelsPerSecond: 0,
