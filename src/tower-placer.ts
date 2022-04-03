@@ -50,7 +50,7 @@ export class TowerPlacer {
                 console.log("Enemy already there!")
             }
             else {
-                const selectedTower = window.TowerPickerUI.selectedTower();
+                const selectedTower = (window as any).TowerPickerUI.selectedTower(); // TODO a way to get types?
                 const tower = new Tower(selectedTower, this._grid, this._highlightedTile.x, this._highlightedTile.y);
                 if(PlayerState.SubtractMoney(tower.cost)){
                     this._highlightedTile.data.set("tower", tower);
