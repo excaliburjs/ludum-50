@@ -50,7 +50,8 @@ export class TowerPlacer {
                 console.log("Enemy already there!")
             }
             else {
-                const tower = new Tower(this.selectedTowerType, this._grid, this._highlightedTile.x, this._highlightedTile.y);
+                const selectedTower = window.TowerPickerUI.selectedTower();
+                const tower = new Tower(selectedTower, this._grid, this._highlightedTile.x, this._highlightedTile.y);
                 if(PlayerState.SubtractMoney(tower.cost)){
                     this._highlightedTile.data.set("tower", tower);
                     this._engine.add(tower);

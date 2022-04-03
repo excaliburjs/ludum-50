@@ -35,30 +35,30 @@ export default {
 
     tower: {
         default: { // rename this tower type?
-            bulletSpeedPixelsPerSecond: 100,
-            bulletRadius: 10,
             baseTowerFireRateMs: 5000,
             bulletDamage: 1,
-            maxHealth: 5, 
+            bulletRadius: 10,
+            bulletSpeedPixelsPerSecond: 100,
+            color: Color.Orange,
             cost: 1,
+            firesBullets: true,
+            maxHealth: 5, 
             resourceSpawnTimer: 0,
             resourceSpawnValue: 0,
             sprite: Resources.BaseTower,
-            firesBullets: true,
-            color: Color.Orange
         },
         sandBucket: {
             bulletSpeedPixelsPerSecond: 0,
             bulletRadius: 0,
             baseTowerFireRateMs: 0,
             bulletDamage: 0,
-            maxHealth: 5, 
+            color: Color.Azure,
             cost: 1,
+            firesBullets: false,
+            maxHealth: 5, 
             resourceSpawnTimer: 5,
             resourceSpawnValue: 1,
             sprite: null,
-            firesBullets: false,
-            color: Color.Azure
         }
         // other tower types?
     },
