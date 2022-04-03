@@ -3,6 +3,7 @@
     flex-direction: row;
     position: absolute;
     font-family: 'Kanit', sans-serif;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .tower {
@@ -10,6 +11,9 @@
     font-size: 48px;
     display: flex;
     flex-direction: row;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: thin;
 }
 
 .selected {
