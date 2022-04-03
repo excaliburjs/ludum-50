@@ -9,6 +9,7 @@ import { Tower, TowerType } from "./tower";
 import { TowerPlacer } from "./tower-placer";
 import { WaveDispatcher } from "./wave-dispatcher";
 import { GameOver } from "./game-over";
+import { SoundManager } from "./sound-manager";
 
 export class Level extends Scene {
     random = new Random(Date.now());
@@ -20,6 +21,8 @@ export class Level extends Scene {
     gameOver!: GameOver;
 
     onInitialize(engine: Engine): void {
+        SoundManager.startBackgroundMusic();
+        
         // Grab the random seed
         config.Seed = this.random.seed as number;
 

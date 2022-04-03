@@ -8,6 +8,7 @@ import towerUrl from "./images/tower-placeholder.png";
 
 // Sounds
 import clankUrl from "./sounds/clank.wav";
+import bgAmbiance from './sounds/bg-beach.mp3';
 
 export const Resources = {
     // Images
@@ -17,5 +18,6 @@ export const Resources = {
     BaseTower: new ImageSource(towerUrl, false, ImageFiltering.Pixel),
 
     // Sounds
-    Clank: new Sound(clankUrl)
+    Clank: new Sound(clankUrl),
+    BackgroundAmbiance: new Sound(bgAmbiance)
 }
