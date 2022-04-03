@@ -51,20 +51,29 @@ export class Tower extends Actor {
         this._engine = engine;
     }
 
-    private _currentFireTimer: number = 0;
+    // Note: Doesn't restrict to only tiles we can fire upon.
+    // I.E. We place this and there are enemies to the left - it will still fire
+    hasEnemyToFireOn() : boolean {
+        return this.row.find(tile => Enemy.enemiesInTile(tile) > 0) != undefined;
+    }
+
+    private _currentFireTimer: number = 0; // Counts down, when <= 0 the tower can fire.
     private _resourceTimer: number = 0;
     onPostUpdate(_engine: Engine, updateMs: number) {
         this._resourceTimer += updateMs / 1000;
-        if(this.row.find(tile => Enemy.enemiesInTile(tile))){
-            this._currentFireTimer += updateMs;
-        }
+        this._currentFireTimer -= updateMs;
         if(this.healthBarOpacity > 0){
             this.healthBarOpacity =  this.healthBarOpacity - 1 * updateMs / 1000 / this.healthBarOpacityFade;
             this.healthBar.graphics.opacity = this.healthBarOpacity;
         }
-        if (this._currentFireTimer > config.tower[this.type].baseTowerFireRateMs) {
-            this.fire();
-            this._currentFireTimer = 0;
+        if (this._currentFireTimer <= 0) {
+            if(this.hasEnemyToFireOn()) {
+                this.fire();
+                this._currentFireTimer = config.tower[this.type].baseTowerFireRateMs;
+            }
+            else {
+                this._currentFireTimer = 0;
+            }
         }
         if (this._resourceTimer > config.tower[this.type].resourceSpawnTimer) {
             this._resourceTimer = 0;
