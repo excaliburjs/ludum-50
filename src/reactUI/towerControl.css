@@ -17,3 +17,26 @@
     flex-direction: row;
     position: absolute;
 }
+
+.tower .towerHoverText {
+    visibility: hidden;
+    width: max-content;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    padding: 5px 5px;
+    transition: opacity 1s ease-in-out;
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+    left: 10%;
+    top: -100%;
+    opacity: 0;
+}
+
+.tower:hover .towerHoverText{
+    visibility: visible;
+    opacity: 1;
+}

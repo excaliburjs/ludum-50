@@ -43,6 +43,7 @@ export default {
             color: Color.Orange,
             cost: 1,
             firesBullets: true,
+            hoverText: "A sand turret to spray",
             maxHealth: 5, 
             resourceSpawnTimer: 0,
             resourceSpawnValue: 0,
@@ -57,6 +58,7 @@ export default {
             color: Color.DarkGray,
             cost: 3,
             firesBullets: true,
+            hoverText: "Seas the day to fling sand!",
             maxHealth: 2, 
             resourceSpawnTimer: 0,
             resourceSpawnValue: 0,
@@ -71,6 +73,7 @@ export default {
             color: Color.Azure,
             cost: 1,
             firesBullets: false,
+            hoverText: "All the kids need sand to build!",
             maxHealth: 5, 
             resourceSpawnTimer: 15,
             resourceSpawnValue: 1,
@@ -85,6 +88,7 @@ export default {
             color: Color.Orange,
             cost: 2,
             firesBullets: false,
+            hoverText: "Piled sand to hold the nastys at bay!",
             maxHealth: 10, 
             resourceSpawnTimer: 0,
             resourceSpawnValue: 0,
@@ -169,7 +173,7 @@ export default {
             offsets: {
                 2: [
                     {type: 'crab', count: 5 },
-                    { type: 'turtle', count: 3 }
+                    { type: 'turtle', count: 6 }
                 ],
                 7: [
                     {type: 'crab', count: 5 },
@@ -185,11 +189,11 @@ export default {
                 ],
                 22: [
                     {type: 'crab', count: 5 },
-                    { type: 'turtle', count: 3 }
+                    { type: 'turtle', count: 15 }
                 ],
                 27: [
                     {type: 'crab', count: 5 },
-                    { type: 'turtle', count: 3 }
+                    { type: 'turtle', count: 18 }
                 ]
             }
         }
