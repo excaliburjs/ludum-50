@@ -10,6 +10,7 @@ import { TowerPlacer } from "./tower-placer";
 import { WaveDispatcher } from "./wave-dispatcher";
 import { GameOver } from "./game-over";
 import { SoundManager } from "./sound-manager";
+import { Water } from "./water-edge";
 
 export class Level extends Scene {
     random = new Random(Date.now());
@@ -27,8 +28,24 @@ export class Level extends Scene {
         config.Seed = this.random.seed as number;
 
         // Sand grid
-        this.grid = new Grid(vec(config.grid.tileWidth/2, config.grid.tileHeight/2), config.grid.height, config.grid.width, config.grid.tileWidth, config.grid.tileHeight);
+        this.grid = new Grid(vec(config.grid.tileWidth, config.grid.tileHeight/2), config.grid.height, config.grid.width, config.grid.tileWidth, config.grid.tileHeight);
         this.add(this.grid.tileMap);
+
+        // Water waves at the end
+        for (let y = 0; y < config.grid.height * 2; y++) {
+            const wave = new Water(this.grid, config.grid.tileWidth/2, y, 0, 0);
+            wave.z = 0;
+            this.add(wave);
+            const wave2 = new Water(this.grid, config.grid.tileWidth, y, config.grid.tileHeight/2, 500);
+            wave2.z = 5;
+            this.add(wave2);
+
+            // Make water unbuildable
+            const tile = this.grid.tileMap.getTile(config.grid.width - 1, y);
+            if (tile) {
+                tile.data.set("water", true);
+            }
+        }
 
         this.enemyGenerator = new EnemyGenerator(this, this.random);
 

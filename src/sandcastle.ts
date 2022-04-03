@@ -13,7 +13,7 @@ export class SandCastle extends Actor {
     constructor(grid: Grid, private gameOver: GameOver, row: number) {
         super({
             name: 'Sand Castle',
-            pos: grid.tileMap.pos.add(vec(0, row * config.grid.tileHeight + config.grid.tileHeight/2)),
+            pos: grid.tileMap.pos.add(vec(-config.grid.tileWidth/2, row * config.grid.tileHeight + config.grid.tileHeight/2)),
             width: config.grid.tileWidth,
             height: config.grid.tileHeight,
             collisionType: CollisionType.Fixed,

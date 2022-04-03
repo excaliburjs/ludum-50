@@ -12,6 +12,7 @@ export class Grid {
             tileWidth,
             tileHeight
         });
+        this.tileMap.z = -1;
         
         const sandSprite = Resources.Sand.toSprite();
         for (let tile of this.tileMap.tiles) {
