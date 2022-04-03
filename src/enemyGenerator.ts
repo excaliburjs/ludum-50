@@ -40,7 +40,7 @@ export class EnemyGenerator {
     }
 
     public spawnEnemies(type: EnemyType, count: number) {
-        const set = this.random.pickSet(range(0, this.possibleSpawnTiles.length - 1), count, false);
+        const set = this.random.pickSet(range(0, this.possibleSpawnTiles.length - 1), count, true);
         let enemies = [];
         for (let index of set) {
             enemies.push(this.spawnEnemy(type, config.grid.width - 1, index));

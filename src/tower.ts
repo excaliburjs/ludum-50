@@ -117,5 +117,7 @@ export class Tower extends Actor {
 
 export enum TowerType {
     default = 'default',
-    sandBucket = 'sandBucket'
+    sandBucket = 'sandBucket',
+    upgradeCatapult = 'upgradeCatapult',
+    sandWall = 'sandWall'
 }
