@@ -14,6 +14,7 @@ import sandWall from "./images/sandwall.png"
 import clankUrl from "./sounds/clank.wav";
 import bgAmbiance from './sounds/bg-beach.mp3';
 import bgMusic from './sounds/bg-music.mp3';
+import waveAppear from './sounds/wave-appear.ogg';
 
 export const Resources = {
     // Images
@@ -28,5 +29,6 @@ export const Resources = {
     // Sounds
     Clank: new Sound(clankUrl),
     BackgroundAmbiance: new Sound(bgAmbiance),
-    BackgroundMusic: new Sound(bgMusic)
+    BackgroundMusic: new Sound(bgMusic),
+    FxWaveAppear: new Sound(waveAppear)
 }

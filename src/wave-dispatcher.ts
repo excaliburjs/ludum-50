@@ -1,7 +1,8 @@
 import config from "./config";
-import { Engine, Entity, TransformComponent, Text, Font, Actor, vec, Color, EasingFunctions} from "excalibur";
+import { Engine, Text, Font, Actor, vec, EasingFunctions} from "excalibur";
 import { EnemyGenerator } from './enemyGenerator';
 import { Enemy, EnemyType } from "./enemy";
+import { Resources } from './resources';
 
 export class WaveDispatcher extends Actor {
     private _spawner: EnemyGenerator;
@@ -87,6 +88,7 @@ export class WaveDispatcher extends Actor {
     }
 
     showWaveBanner() {
+        Resources.FxWaveAppear.play();
         const waveConfig = config.waves[this._currentWave];
         this._text.text = waveConfig.name;
         this._textActor.actions.easeTo(this._textActor.pos.add(vec(200, 0)), 1000, EasingFunctions.EaseInOutCubic);

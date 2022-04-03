@@ -7,6 +7,7 @@ import Config from "./config";
 export class SoundManager {
   static setSoundSpecificVolume() {
     Resources.Clank.volume = 0.5;
+    Resources.FxWaveAppear.volume = 0.8;
   }
 
   static init() {
