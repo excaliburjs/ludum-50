@@ -18,6 +18,7 @@ import waveAppear from './sounds/wave-appear.ogg';
 import impactEnemyRock from './sounds/impact-enemy-rock.ogg';
 import impactTower from './sounds/impact-tower.ogg';
 import pickTower from './sounds/pick-tower.ogg';
+import placeTower from './sounds/place-tower.mp3';
 
 export const Resources = {
     // Images
@@ -36,5 +37,6 @@ export const Resources = {
     FxWaveAppear: new Sound(waveAppear),
     FxImpactEnemyRock: new Sound(impactEnemyRock),
     FxImpactTowerByEnemy: new Sound(impactTower),
+    FxPlaceTower: new Sound(placeTower),
     UiPickTower: new Sound(pickTower)
 }
