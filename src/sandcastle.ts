@@ -38,6 +38,9 @@ export class SandCastle extends Actor {
         const damage = 1;
         this.currentHp -= damage;
         this.healthBar.takeDamage(damage);
+        
+        Resources.FxImpactCastleByEnemy.play();
+
         if (this.currentHp <= 0) {
             this.kill();
             this.gameOver.triggerGameOver();

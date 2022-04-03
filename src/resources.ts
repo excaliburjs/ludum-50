@@ -17,6 +17,7 @@ import bgMusic from "./sounds/bg-music.mp3";
 import waveAppear from "./sounds/wave-appear.ogg";
 import impactEnemyRock from "./sounds/impact-enemy-rock.ogg";
 import impactTower from "./sounds/impact-tower.ogg";
+import impactCastle from "./sounds/impact-castle.ogg";
 import pickTower from "./sounds/pick-tower.ogg";
 import placeTower from "./sounds/place-tower.mp3";
 import fling01 from "./sounds/fling-01.mp3";
@@ -47,6 +48,7 @@ export const Resources = {
   FxWaveAppear: new Sound(waveAppear),
   FxImpactEnemyRock: new Sound(impactEnemyRock),
   FxImpactTowerByEnemy: new Sound(impactTower),
+  FxImpactCastleByEnemy: new Sound(impactCastle),
   FxPlaceTower: new Sound(placeTower),
   FxTowerFlings01: new Sound(fling01),
   FxTowerFlings02: new Sound(fling02),
