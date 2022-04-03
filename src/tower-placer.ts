@@ -30,14 +30,15 @@ export class TowerPlacer {
 
       if (this._highlightedTile.data.has("tower")) {
         this._rect.strokeColor = Color.Yellow;
-        this.ghostTower.graphics.visible = false;
+        this._placeable = false;
       } else if (Enemy.enemiesInTile(this._highlightedTile) > 0 || this._highlightedTile.data.has("water")) {
-        this.ghostTower.graphics.visible = !this._highlightedTile.data.has("water");
+        this._placeable = !this._highlightedTile.data.has("water");
         this._rect.strokeColor = Color.Red;
       } else {
         this._rect.strokeColor = Color.Green;
-        this.ghostTower.graphics.visible = true;
+        this._placeable = true;
       }
+      this.updateGhostTowerVisibility();
     };
     this._rect = new Rectangle({
       width: config.grid.tileWidth,
@@ -52,11 +53,22 @@ export class TowerPlacer {
     engine.add(this.ghostTower);
   }
 
+  private _placeable: boolean = true;
+  private _hasSprite: boolean = true;
+  showGhostTower(): boolean { return this._placeable && this._hasSprite; }
+
+  updateGhostTowerVisibility() { this.ghostTower.graphics.visible = this.showGhostTower(); }
+
   onPointerMove(evt: Input.PointerEvent) {
     // TODO add tile highlight
     const maybeTile = this._grid.tileMap.getTileByPoint(evt.worldPos);
     const sprite = config.tower[(window as any).TowerPickerUI.selectedTower() as TowerType]?.sprite?.toSprite();
-    if(sprite) this.ghostTower.graphics.use(sprite);
+    if(sprite) {
+        this.ghostTower.graphics.use(sprite);
+        this._hasSprite = true;
+    }
+    else this._hasSprite = false;
+    this.updateGhostTowerVisibility();
 
     if (maybeTile) {
       this._highlightedTile = maybeTile;
