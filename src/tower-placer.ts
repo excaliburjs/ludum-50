@@ -4,6 +4,7 @@ import { Grid } from "./grid";
 import config from "./config";
 import { Enemy } from "./enemy";
 import {PlayerState} from "./playerState";
+import { TowerBroken } from "./towerbroken";
 
 export class TowerPlacer {
     private _grid: Grid;
@@ -68,6 +69,7 @@ export class TowerPlacer {
                 const tower = new Tower(selectedTower, this._grid, this._highlightedTile.x, this._highlightedTile.y);
                 if(PlayerState.SubtractMoney(tower.cost)){
                     this._highlightedTile.data.set("tower", tower);
+                    TowerBroken.removeBrokenTower(this._highlightedTile);
                     this._engine.add(tower);
                 }
             }

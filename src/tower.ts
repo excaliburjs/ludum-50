@@ -1,12 +1,14 @@
 import config from "./config";
-import { Actor, CollisionGroup, CollisionType, Color, Engine, ImageSource, Tile, vec, Vector } from "excalibur";
+import { Actor, CollisionGroup, CollisionType, Color, Engine, ImageSource, Tile, vec, Vector, KillEvent } from "excalibur";
 import { Grid } from "./grid";
 import { Enemy } from "./enemy";
 import { PlayerState } from "./playerState";
 import { Healthbar } from "./healthbar"
+import { TowerBroken } from "./towerbroken";
 export class Tower extends Actor {
     private _engine!: Engine;
     private _grid: Grid;
+    private _tile: Tile;
     healthBar: Healthbar;
     currentHp: number = 5;
     maxHealth: number;
@@ -27,6 +29,7 @@ export class Tower extends Actor {
         });
 
         this._grid = grid;
+        this._tile = grid.tileMap.getTile(x, y);
         this.row = this._grid.tileMap.getRows()[y];
         this.type = towerType;
         this.maxHealth = config.tower[this.type].maxHealth;
@@ -38,6 +41,7 @@ export class Tower extends Actor {
         // draw health bar
         this.healthBar = new Healthbar(5);
         this.addChild(this.healthBar);
+        this.on('kill', (ke) => this.onKill(ke));
     }
 
     onInitialize(engine: Engine) {
@@ -68,6 +72,11 @@ export class Tower extends Actor {
             this._resourceTimer = 0;
             PlayerState.AddMoney(config.tower[this.type].resourceSpawnValue);
         }
+    }
+
+    onKill(killEvent: KillEvent) {
+        const broken = new TowerBroken(this.type, this._tile, this._grid, this.pos.x, this.pos.y);
+        this._engine.add(broken);
     }
 
     fire = () => {

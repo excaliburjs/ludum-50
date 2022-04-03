@@ -47,6 +47,7 @@ export default {
             resourceSpawnTimer: 0,
             resourceSpawnValue: 0,
             sprite: Resources.BaseTower,
+            spriteBroken: Resources.BaseTowerBroken,
         },
         upgradeCatapult: { // rename this tower type?
             baseTowerFireRateMs: 5000,
@@ -60,6 +61,7 @@ export default {
             resourceSpawnTimer: 0,
             resourceSpawnValue: 0,
             sprite: null,
+            spriteBroken: null,
         },
         sandBucket: {
             bulletSpeedPixelsPerSecond: 0,
@@ -73,6 +75,7 @@ export default {
             resourceSpawnTimer: 15,
             resourceSpawnValue: 1,
             sprite: null,
+            spriteBroken: null,
         }
         // other tower types?
     },
