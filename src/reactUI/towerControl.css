@@ -1,13 +1,21 @@
-.selected {
-    font-weight: bold;
-    border-radius: 6px;
-    border-style: solid;
+#towerSelection {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    font-family: 'Kanit', sans-serif;
 }
+
 .tower {
     padding: 5px;
     font-size: 48px;
     display: flex;
     flex-direction: row;
+}
+
+.selected {
+    font-weight: bold;
+    border-radius: 6px;
+    border-style: solid;
 }
 
 .imageOuter {
@@ -16,16 +24,16 @@
     display: flex;
 }
 
-.towerInfo {
-    display: flex;
-    flex-direction: column;
-}
-
 .towerIcon {
     display: block;
     height: auto;
     margin: auto;
     width: 100%;
+}
+
+.towerInfo {
+    display: flex;
+    flex-direction: column;
 }
 
 .cost {
@@ -38,7 +46,6 @@
     justify-content: center;
 }
 
-
 .costText {
     margin-block: auto;
     position: absolute;
@@ -46,12 +53,6 @@
     left: 50%;
     transform: translate(-55%, -50%);
     text-shadow: -1px 1px 0 #FFF, 1px 1px 0 #FFF, 1px -1px 0 #FFF, -1px -1px 0 #FFF;
-}
-
-#towerSelection {
-    display: none;
-    flex-direction: column;
-    position: absolute;
 }
 
 .tower .towerHoverText {
