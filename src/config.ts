@@ -73,6 +73,19 @@ export default {
             resourceSpawnTimer: 15,
             resourceSpawnValue: 1,
             sprite: null,
+        },
+        sandWall: {
+            bulletSpeedPixelsPerSecond: 0,
+            bulletRadius: 0,
+            baseTowerFireRateMs: 0,
+            bulletDamage: 0,
+            color: Color.Orange,
+            cost: 2,
+            firesBullets: false,
+            maxHealth: 10, 
+            resourceSpawnTimer: 0,
+            resourceSpawnValue: 0,
+            sprite: null,
         }
         // other tower types?
     },
@@ -151,22 +164,28 @@ export default {
             name: "Wave INEVITABLE",
             offsets: {
                 2: [
-                    {type: 'crab', count: 5 }
+                    {type: 'crab', count: 5 },
+                    { type: 'turtle', count: 3 }
                 ],
                 7: [
-                    {type: 'crab', count: 5 }
+                    {type: 'crab', count: 5 },
+                    { type: 'turtle', count: 6 }
                 ],
                 12: [
-                    {type: 'crab', count: 5 }
+                    {type: 'crab', count: 5 },
+                    { type: 'turtle', count: 9 }
                 ],
                 17: [
-                    {type: 'crab', count: 5 }
+                    {type: 'crab', count: 5 },
+                    { type: 'turtle', count: 12 }
                 ],
                 22: [
-                    {type: 'crab', count: 5 }
+                    {type: 'crab', count: 5 },
+                    { type: 'turtle', count: 3 }
                 ],
                 27: [
-                    {type: 'crab', count: 5 }
+                    {type: 'crab', count: 5 },
+                    { type: 'turtle', count: 3 }
                 ]
             }
         }

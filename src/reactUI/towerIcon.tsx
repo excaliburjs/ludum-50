@@ -48,6 +48,9 @@ export class TowerIcon extends React.Component<Props, State> {
                     : (<div className='cost'>
                             Generates: {config.tower[towerType].resourceSpawnValue} per {config.tower[towerType].resourceSpawnTimer}s
                     </div>) }
+                <div className='cost'>
+                    Health: {config.tower[towerType].maxHealth}
+                </div>
             </div>
         )    
     }
