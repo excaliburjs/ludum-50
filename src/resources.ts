@@ -10,6 +10,8 @@ import towerUrl from "./images/tower-placeholder.png";
 import towerBrokenUrl from "./images/tower-placeholder-broken.png";
 import sandWall from "./images/sandwall.png";
 import waterUrl from './images/waves.png';
+import bucketSheetUrl from './images/tower-bucket.png';
+import compactedSandUrl from './images/sand.png';
 
 // Sounds
 import clankUrl from "./sounds/clank.wav";
@@ -43,6 +45,8 @@ export const Resources = {
   ),
   Sandwall: new ImageSource(sandWall, false, ImageFiltering.Pixel),
   Water: new ImageSource(waterUrl, false, ImageFiltering.Pixel),
+  BucketSheet: new ImageSource(bucketSheetUrl, false, ImageFiltering.Pixel),
+  CompactedSand: new ImageSource(compactedSandUrl, false, ImageFiltering.Pixel),
   // Sounds
   Clank: new Sound(clankUrl),
   BackgroundAmbiance: new Sound(bgAmbiance),

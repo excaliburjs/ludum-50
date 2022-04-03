@@ -11,6 +11,13 @@ import {
   Vector,
   KillEvent,
   Random,
+  Animation,
+  AnimationStrategy,
+  range,
+  SpriteSheet,
+  Sprite,
+  Input,
+  EasingFunctions
 } from "excalibur";
 import { Grid } from "./grid";
 import { Enemy } from "./enemy";
@@ -34,6 +41,10 @@ export class Tower extends Actor {
   private healthBarOpacity: number = 1;
   private healthBarOpacityFade: number = 3;
   private row: Tile[];
+  bucketSheet: SpriteSheet;
+  bucketGlow: Animation;
+  bucketLoadingFrames: number;
+  sand: Sprite;
   constructor(towerType: TowerType, grid: Grid, x: number, y: number) {
     super({
       name: "Base Tower",
@@ -57,10 +68,25 @@ export class Tower extends Actor {
     const towerSprite = config.tower[this.type].sprite?.toSprite();
     if (towerSprite) this.graphics.use(towerSprite);
 
+    // For resource tower
+    this.sand = Resources.CompactedSand.toSprite();
+    this.bucketSheet = SpriteSheet.fromImageSource({
+      image: Resources.BucketSheet,
+      grid: {
+        spriteWidth: 64,
+        spriteHeight: 64,
+        rows: 1,
+        columns: 9
+      }
+    });
+    this.bucketLoadingFrames = 4;
+    this.bucketGlow = Animation.fromSpriteSheet(this.bucketSheet, range(5, 8), 200, AnimationStrategy.Loop);
+
     // draw health bar
     this.healthBar = new Healthbar(5);
     this.addChild(this.healthBar);
     this.on("kill", (ke) => this.onKill(ke));
+    this.on('pointerdown', (evt) => this.onClick(evt));
   }
 
   onInitialize(engine: Engine) {
@@ -75,6 +101,7 @@ export class Tower extends Actor {
 
   private _currentFireTimer: number = 0; // Counts down, when <= 0 the tower can fire.
   private _resourceTimer: number = 0;
+  private _resourceAvailable: boolean = false;
   onPostUpdate(_engine: Engine, updateMs: number) {
     this._resourceTimer += updateMs / 1000;
     this._currentFireTimer -= updateMs;
@@ -86,9 +113,53 @@ export class Tower extends Actor {
         this._currentFireTimer = 0;
       }
     }
-    if (this._resourceTimer > config.tower[this.type].resourceSpawnTimer) {
-      this._resourceTimer = 0;
+
+    if (this.isResourceType()) {
+      // Resource tower charging up
+      if (this._resourceTimer <= config.tower[this.type].resourceSpawnTimer && !this._resourceAvailable) {
+        const percentLoaded = this._resourceTimer / config.tower[this.type].resourceSpawnTimer;
+        const bucketFrame = Math.floor(percentLoaded * this.bucketLoadingFrames);
+        const maybeFrame = this.bucketSheet.getSprite(bucketFrame, 0);
+        if (maybeFrame) {
+          this.graphics.use(maybeFrame);
+        }
+      }
+
+      // Resource is available for player to click, doesn't reset until click
+      if (this._resourceTimer > config.tower[this.type].resourceSpawnTimer && !this._resourceAvailable) {
+        this._resourceTimer = 0;
+        this._resourceAvailable = true;
+        this.graphics.use(this.bucketGlow);
+        
+      }
+    }
+  }
+
+  isResourceType() {
+    return config.tower[this.type].resourceSpawnTimer !== 0;
+  }
+
+  onClick(evt: Input.PointerEvent) {
+    if (this.isResourceType() && this._resourceAvailable) {
       PlayerState.AddMoney(config.tower[this.type].resourceSpawnValue);
+      this._resourceAvailable = false;
+      this._resourceTimer = 0;
+
+      const collectedActor = new Actor({
+        name: 'Collected Sand',
+        pos: this.pos,
+        z: 10
+      });
+      collectedActor.graphics.use(this.sand);
+      this._engine.add(collectedActor);
+
+      collectedActor.actions
+        .easeTo(vec(config.grid.tileWidth/2, config.grid.tileHeight/2), 500, EasingFunctions.EaseOutCubic)
+        .delay(200)
+        .callMethod(() => {
+          collectedActor.kill();
+        });
+
     }
   }
 
