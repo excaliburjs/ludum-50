@@ -11,6 +11,7 @@ import { WaveDispatcher } from "./wave-dispatcher";
 import { GameOver } from "./game-over";
 import { SoundManager } from "./sound-manager";
 import { Water } from "./water-edge";
+import { PlayerState } from "./playerState";
 
 export class Level extends Scene {
     random = new Random(Date.now());
@@ -92,6 +93,7 @@ export class Level extends Scene {
     restart() {
         this.engine.currentScene.entities.forEach(e => e.kill());
         this.engine.currentScene.onInitialize(this.engine);
+        PlayerState.moneyResource = config.player.startingMonies;
     }
 
 }
