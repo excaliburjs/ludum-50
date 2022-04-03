@@ -33,7 +33,7 @@ export default {
     healthBarWidthPixels: 64 - 10,
 
     player: {
-        startingMonies: 5,
+        startingMonies: 100,
     },
 
     tower: {
