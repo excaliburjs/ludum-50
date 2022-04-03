@@ -1,6 +1,6 @@
 #towerSelection {
     display: none;
-    flex-direction: column;
+    flex-direction: row;
     position: absolute;
     font-family: 'Kanit', sans-serif;
 }
@@ -34,6 +34,7 @@
 .towerInfo {
     display: flex;
     flex-direction: column;
+    width: 100px;
 }
 
 .cost {

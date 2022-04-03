@@ -52,11 +52,13 @@ export class TowerIcon extends React.Component<Props, State> {
                         </div>)
                     : makesMoney ? 
                         (<div className='cost'>
-                            Generates: {config.tower[towerType].resourceSpawnValue} per {config.tower[towerType].resourceSpawnTimer}s
+                            <img src={Resources.CompactedSand.path.toString()}></img>
+                            <div className="costText">+{config.tower[towerType].resourceSpawnValue}/{config.tower[towerType].resourceSpawnTimer}s</div>
                         </div>) 
                     : (<></>) }
                     <div className='cost'>
-                        Health: {config.tower[towerType].maxHealth}
+                        <img src={Resources.Sandwall.path.toString()}></img>
+                        <div className="costText">{config.tower[towerType].maxHealth}</div>
                     </div>
                     <div className='towerHoverText'>{config.tower[towerType].hoverText}</div>
                 </div>

@@ -88,7 +88,7 @@ export class Level extends Scene {
         }
 
         const towerMenu = document.getElementById("towerSelection")!;
-        const pos = engine.screen.worldToScreenCoordinates(vec(0, 150));//engine.screen.viewport.height - 250));
+        const pos = engine.screen.worldToScreenCoordinates(vec(0, engine.screen.viewport.height - 250));
         towerMenu.style.left = pos.x.toString();
         towerMenu.style.top = pos.y.toString() + "px";
         towerMenu.style.display = "flex";
