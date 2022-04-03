@@ -10,13 +10,17 @@ import {
   vec,
   Vector,
   KillEvent,
+  Random,
 } from "excalibur";
 import { Grid } from "./grid";
 import { Enemy } from "./enemy";
 import { PlayerState } from "./playerState";
 import { Healthbar } from "./healthbar";
 import { TowerBroken } from "./towerbroken";
-import { Resources } from "./resources";
+import { Resources, FxTowerFlings } from "./resources";
+import Config from "./config";
+
+const randFling = new Random(Config.Seed);
 
 export class Tower extends Actor {
   private _engine!: Engine;
@@ -122,8 +126,15 @@ export class Tower extends Actor {
       bullet.kill();
     });
 
+    this.playBulletFling();
+
     this._engine.add(bullet);
   };
+
+  playBulletFling() {
+    var sound = randFling.pickOne(FxTowerFlings);
+    sound.play();
+  }
 
   takeDamage(damage: number) {
     this.currentHp -= damage;
