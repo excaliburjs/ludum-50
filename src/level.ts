@@ -1,4 +1,4 @@
-import { Actor, Engine, Random, Scene, vec } from "excalibur";
+import { Actor, Engine, Random, Scene, vec, Timer } from "excalibur";
 import { Resources } from "./resources";
 import config from "./config";
 import { Grid } from "./grid";
@@ -17,7 +17,7 @@ export class Level extends Scene {
     random = new Random(Date.now());
     grid!: Grid;
     sandCastles: SandCastle[] = [];
-    enemyGenerator: EnemyGenerator | undefined;
+    enemyGenerator!: EnemyGenerator;
     towerPlacer!: TowerPlacer;
     waveDispatcher!: WaveDispatcher;
     gameOver!: GameOver;
@@ -50,14 +50,26 @@ export class Level extends Scene {
 
         this.enemyGenerator = new EnemyGenerator(this, this.random);
 
-        // Tower Test
-        const tutorialDefaultTower = new Tower(TowerType.default, this.grid, 3, 3);
+        // Initial towers
+        const tutorialDefaultTower = new Tower(TowerType.default, this.grid, 4, 3);
         this.grid.tileMap.getTile(3, 3).data.set("tower", tutorialDefaultTower);
         this.add(tutorialDefaultTower);
 
         const tutorialSandbucketTower = new Tower(TowerType.sandBucket, this.grid, 0, 3);
         this.grid.tileMap.getTile(3, 3).data.set("sandBucket", tutorialSandbucketTower);
         this.add(tutorialSandbucketTower);
+        
+        // Initial enemy (aligned with the initial default tower)
+        const addTutorialEnemy = () => {
+            console.log('adding tutorial enemy');
+            const enemy = this.enemyGenerator.spawnEnemy(EnemyType.Crab, 7, 3);
+            this.add(enemy);
+        }
+        const tutorialEnemyTimer = new Timer({interval: 5000, fcn: () => {
+            addTutorialEnemy();
+        }});
+        this.add(tutorialEnemyTimer);
+        tutorialEnemyTimer.start();
 
         // Tower placement
         this.towerPlacer = new TowerPlacer(this.grid, engine)

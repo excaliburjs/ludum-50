@@ -42,7 +42,7 @@ export class WaveDispatcher extends Actor {
     }
 
     private _currentTime: number = 0;
-    private _currentWave: number = 1; // TODO skip to end for testing
+    private _currentWave: number = 0; // TODO skip to end for testing
     private _currentEnemies: Enemy[] = [];
     private _dispatched: number[] = [];
     override onPostUpdate(_engine: Engine, deltaMs: number) {

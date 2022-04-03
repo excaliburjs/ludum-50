@@ -128,11 +128,21 @@ export default {
 
     waves: {
         0: {
-            name: "Wave 0",
+            name: "The Beginning", // tutorial
             offsets: {
-                10: [
-                    // give the player 10 seconds to figure everything out
+                2: [
+                    { type: 'crab', count: 0}, // we hardcode the first enemy in level.ts so that it's on the path of the existing default tower
                 ],
+                15: [
+                    { type: 'crab', count: 1},
+                ],
+                25: [
+                    {type: 'crab', count: 2},
+                ],
+                35: [
+                    {type: 'turtle', count: 1},
+                    {type: 'crab', count: 2},
+                ]
             },
         },
         1: {
@@ -149,7 +159,7 @@ export default {
                 20 : [
                     { type: 'crab', count: 2 },
                     { type: 'turtle', count: 3 }
-                ]
+                ],
             }
         },
         2: {
@@ -163,7 +173,7 @@ export default {
                 ],
                 20: [
                     {type: 'crab', count: 5 }
-                ]
+                ],
             }
         },
         3: {
@@ -177,7 +187,7 @@ export default {
                 ],
                 20: [
                     {type: 'crab', count: 4 }
-                ]
+                ],
             }
         },
         4: {
@@ -206,7 +216,7 @@ export default {
                 27: [
                     {type: 'crab', count: 5 },
                     { type: 'turtle', count: 18 }
-                ]
+                ],
             }
         }
     } as WavesDescriptor
