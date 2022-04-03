@@ -127,18 +127,26 @@ export default {
     },
 
     waves: {
+        0: {
+            name: "Wave 0",
+            offsets: {
+                10: [
+                    // give the player 10 seconds to figure everything out
+                ],
+            },
+        },
         1: {
             name: "Wave 1",
-            offsets: {
-                2 : [
+            offsets: { // in seconds
+                7 : [
                     { type: 'crab', count: 1 },
                     // { type: 'turtle', count: 3 }
                 ],
-                6 : [
+                11 : [
                     // { type: 'crab', count: 3 },
                     { type: 'turtle', count: 2 }
                 ],
-                15 : [
+                20 : [
                     { type: 'crab', count: 2 },
                     { type: 'turtle', count: 3 }
                 ]
@@ -147,27 +155,27 @@ export default {
         2: {
             name: "Wave 2",
             offsets: {
-                2: [
+                7: [
                     {type: 'crab', count: 5 }
                 ],
-                5: [
+                11: [
                     {type: 'crab', count: 5 }
                 ],
-                15: [
+                20: [
                     {type: 'crab', count: 5 }
                 ]
             }
         },
         3: {
-            name: "Wave Butts",
+            name: "Wave 3",
             offsets: {
-                2: [
+                7: [
                     {type: 'crab', count: 4 }
                 ],
-                5: [
+                11: [
                     {type: 'crab', count: 4 }
                 ],
-                15: [
+                20: [
                     {type: 'crab', count: 4 }
                 ]
             }

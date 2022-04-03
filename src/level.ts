@@ -51,9 +51,13 @@ export class Level extends Scene {
         this.enemyGenerator = new EnemyGenerator(this, this.random);
 
         // Tower Test
-        const tower = new Tower(TowerType.default, this.grid, 5, 3);
-        this.grid.tileMap.getTile(5, 3).data.set("tower", tower);
-        this.add(tower);
+        const tutorialDefaultTower = new Tower(TowerType.default, this.grid, 3, 3);
+        this.grid.tileMap.getTile(3, 3).data.set("tower", tutorialDefaultTower);
+        this.add(tutorialDefaultTower);
+
+        const tutorialSandbucketTower = new Tower(TowerType.sandBucket, this.grid, 0, 3);
+        this.grid.tileMap.getTile(3, 3).data.set("sandBucket", tutorialSandbucketTower);
+        this.add(tutorialSandbucketTower);
 
         // Tower placement
         this.towerPlacer = new TowerPlacer(this.grid, engine)
