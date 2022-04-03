@@ -21,7 +21,6 @@ export class TowerIcon extends React.Component<Props, State> {
 
     handleClick = (event: any) =>{
         event.preventDefault();
-        console.log("Clicky clicky!");
         this.props.selectHandler(this.props.towerName);
     }
 

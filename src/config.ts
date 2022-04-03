@@ -92,7 +92,7 @@ export default {
             maxHealth: 10, 
             resourceSpawnTimer: 0,
             resourceSpawnValue: 0,
-            sprite: null,
+            sprite: Resources.Sandwall,
             spriteBroken: null,
         }
         // other tower types?
