@@ -46,9 +46,9 @@ export class TowerIcon extends React.Component<Props, State> {
                             Damage: {config.tower[towerType].bulletDamage}
                         </div>)
                     : (<div className='cost'>
-                            Generates: {config.tower[this.props.towerName as TowerType].resourceSpawnValue} per {config.tower[towerType].resourceSpawnTimer}s
+                            Generates: {config.tower[towerType].resourceSpawnValue} per {config.tower[towerType].resourceSpawnTimer}s
                     </div>) }
             </div>
         )    
     }
-}
+}0
