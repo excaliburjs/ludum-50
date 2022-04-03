@@ -8,6 +8,7 @@ import { Enemy, EnemyType } from "./enemy";
 import { Tower, TowerType } from "./tower";
 import { TowerPlacer } from "./tower-placer";
 import { WaveDispatcher } from "./wave-dispatcher";
+import { GameOver } from "./game-over";
 
 export class Level extends Scene {
     random = new Random(config.Seed);
@@ -16,6 +17,7 @@ export class Level extends Scene {
     enemyGenerator: EnemyGenerator | undefined;
     towerPlacer!: TowerPlacer;
     waveDispatcher!: WaveDispatcher;
+    gameOver!: GameOver;
 
     onInitialize(engine: Engine): void {
         // Sand grid
@@ -23,13 +25,6 @@ export class Level extends Scene {
         this.add(this.grid.tileMap);
 
         this.enemyGenerator = new EnemyGenerator(this, this.random);
-
-        // Sandcastle(s)
-        for (let y = 0; y < config.grid.height; y++) {
-            const sandcastle = new SandCastle(this.grid, y);
-            this.sandCastles.push(sandcastle);
-            this.add(sandcastle);
-        }
 
         // Tower Test
         const tower = new Tower(TowerType.default, this.grid, 5, 3);
@@ -42,6 +37,16 @@ export class Level extends Scene {
         this.waveDispatcher = new WaveDispatcher(this.enemyGenerator);
         this.add(this.waveDispatcher);
 
+        // Game over handler
+        this.gameOver = new GameOver(engine, this, this.waveDispatcher);
+
+        // Sandcastle(s)
+        for (let y = 0; y < config.grid.height; y++) {
+            const sandcastle = new SandCastle(this.grid, this.gameOver, y);
+            this.sandCastles.push(sandcastle);
+            this.add(sandcastle);
+        }
+
         // enemy spawn test
         // this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.grid.width - 1, 0);
         // this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.grid.width - 1, 1);
@@ -53,6 +58,11 @@ export class Level extends Scene {
         // this.enemyGenerator.spawnEnemyAtRandomTile(EnemyType.Crab);
         // this.enemyGenerator.spawnEnemyAtRandomTile(EnemyType.Crab);
         // this.enemyGenerator.spawnEnemyAtRandomTile(EnemyType.Crab);
+    }
+
+    restart() {
+        this.engine.currentScene.entities.forEach(e => e.kill());
+        this.engine.currentScene.onInitialize(this.engine);
     }
 
 }

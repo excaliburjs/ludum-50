@@ -3,12 +3,13 @@ import config from "./config";
 import { Actor, CollisionGroup, CollisionType, Color, vec, PostCollisionEvent } from "excalibur";
 import { Resources } from "./resources";
 import { Enemy } from "./enemy";
+import { GameOver } from "./game-over";
 
 export class SandCastle extends Actor {
     maxHp: number = config.sandcastle.maxHealth;
     currentHp: number = this.maxHp;
     healthBar: Actor;
-    constructor(grid: Grid, row: number) {
+    constructor(grid: Grid, private gameOver: GameOver, row: number) {
         super({
             name: 'Sand Castle',
             pos: grid.tileMap.pos.add(vec(0, row * config.grid.tileHeight + config.grid.tileHeight/2)),
@@ -45,6 +46,7 @@ export class SandCastle extends Actor {
         graphic.width = this.currentHp * pixelsPerHp;
         if (this.currentHp <= 0) {
             this.kill();
+            this.gameOver.triggerGameOver();
         }
     }
 }

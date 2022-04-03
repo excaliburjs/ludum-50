@@ -31,6 +31,7 @@ export class Enemy extends Actor {
             collisionGroup: Enemy.CollisionGroup,
             vel: new Vector(-1 * configValues.speed, 0), // moves horizontally, right to left
         });
+        this.addTag('enemy');
         this.type = type;
         this._grid = grid;
         this._configValues = configValues;
@@ -64,6 +65,11 @@ export class Enemy extends Actor {
         const graphic = this.healthBar.graphics.current[0].graphic;
         graphic.width = this.currentHp * pixelsPerHp;
         this.healthBarOpacity = 1;
+    }
+
+    private _stopped = false;
+    stop() {
+        this._stopped = true;
     }
 
     isAttacking() {
@@ -130,6 +136,7 @@ export class Enemy extends Actor {
     }
 
     onPostUpdate(_engine: Engine, deltaMs: number) {
+        if (this._stopped) return;
         this._damageTimer -= deltaMs;
         const curTile = this._grid.tileMap.getTileByPoint(this.pos);
         this.claimTile(curTile);

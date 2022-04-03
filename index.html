@@ -47,6 +47,24 @@
             font-size: 64px;
             position: absolute;
         }
+        #restart-game {
+            position: absolute;
+            visibility: hidden;
+            background-color: #00b233;
+            color: #fff;
+            text-decoration: none;
+            font-size: 4rem;
+            padding: 5px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            top: 50%;
+        }
+        #restart-game:hover {
+            background: #00982c;
+        }
     </style>
 </head>
 <body>
@@ -64,6 +82,7 @@
         <div id="moneyDisplay"></div>
         <div id="reactUI"></div>
         <a id="commitRef" href="https://github.com/excaliburjs/ludum-50/commit/{{ commitRef }}">{{ commitRef }}</a>
+        <button id="restart-game">Restart</button>
     </main>
     <script type="module" src="./src/main.ts"></script>
 </body>

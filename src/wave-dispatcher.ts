@@ -22,7 +22,7 @@ export class WaveDispatcher extends Actor {
             text: 'Wave 1',
             font: new Font({
                 size: 32,
-                family: 'Sans Serif',
+                family: 'Kanit, sans-serif',
                 quality: 8,
                 smoothing: true
             }),
@@ -35,11 +35,17 @@ export class WaveDispatcher extends Actor {
         // this._engine = engine;
     }
 
+    private _stopped = false;
+    public stop() {
+        this._stopped = true;
+    }
+
     private _currentTime: number = 0;
     private _currentWave: number = 1; // TODO skip to end for testing
     private _currentEnemies: Enemy[] = [];
     private _dispatched: number[] = [];
     override onPostUpdate(_engine: Engine, deltaMs: number) {
+        if (this._stopped) return;
         this._currentTime += deltaMs;
 
         if (config.waves[this._currentWave]) {
