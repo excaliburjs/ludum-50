@@ -26,6 +26,7 @@ import { Healthbar } from "./healthbar";
 import { TowerBroken } from "./towerbroken";
 import { Resources, FxTowerFlings } from "./resources";
 import Config from "./config";
+import { Resource } from "../lib/excalibur/src/engine";
 
 const randFling = new Random(Config.Seed);
 
@@ -45,6 +46,7 @@ export class Tower extends Actor {
   bucketGlow: Animation;
   bucketLoadingFrames: number;
   sand: Sprite;
+  beachball: Sprite;
   constructor(towerType: TowerType, grid: Grid, x: number, y: number) {
     super({
       name: "Base Tower",
@@ -67,6 +69,9 @@ export class Tower extends Actor {
 
     const towerSprite = config.tower[this.type].sprite?.toSprite();
     if (towerSprite) this.graphics.use(towerSprite);
+
+    this.beachball = Resources.Beachball.toSprite();
+    this.beachball.scale = vec(0.5, 0.5);
 
     // For resource tower
     this.sand = Resources.CompactedSand.toSprite();
@@ -183,9 +188,12 @@ export class Tower extends Actor {
       vel: vec(config.tower[this.type].bulletSpeedPixelsPerSecond, 0),
       radius: config.tower[this.type].bulletRadius,
       color: Color.Black,
+      angularVelocity: Math.PI * 2,
       collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
       collisionType: CollisionType.Passive,
     });
+
+    bullet.graphics.use(this.beachball);
 
     bullet.on("precollision", (evt) => {
       const enemy = evt.other as Enemy;
