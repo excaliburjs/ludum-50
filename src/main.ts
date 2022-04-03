@@ -23,9 +23,9 @@ const buildGui = (gui: any, folder: any,  obj: any) => {
                 } else { //otherwise, calculate the limits and step based on # of digits in the number
                     const numDigits = getNumDigits(Math.round(val)); //to establish a step and limit, we'll use a base number that is an integer
                     limit = Math.pow(10, numDigits); //make the limit one digit higher than the number of digits of the itself, i.e. '150' would have a range of -1000 to 1000...
-                    step = Math.pow(10, numDigits - 2); //...with a step one less than the number of digits, i.e. '10'
+                    step = 1; //...with a step one less than the number of digits, i.e. '10'
                 }
-                folder.add(obj, key, -limit, limit).step(step); //add the value to your GUI folder
+                folder.add(obj, key, 0, limit).step(step); //add the value to your GUI folder
             } else if (typeof val === 'object') {
                 let subfolder = folder.addFolder(key);
                 buildGui(gui, subfolder, val); //if the key is an object itself, call this function again to loop through that subobject, assigning it to the same folder
@@ -38,7 +38,7 @@ const buildGui = (gui: any, folder: any,  obj: any) => {
 
 if(true){
     const gui = new dat.GUI({name: "Ludum 50"});
-    let folder= gui.addFolder("myFolder");
+    let folder= gui.addFolder("Ludum 50");
     buildGui(gui, folder, config);
 }
 
