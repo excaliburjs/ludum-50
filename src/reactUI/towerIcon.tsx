@@ -47,9 +47,9 @@ export class TowerIcon extends React.Component<Props, State> {
                         (<div className="cost">
                             Damage: {config.tower[towerType].bulletDamage}
                         </div>)
-                    : (<div className='cost'>
+                    : makesMoney ? (<div className='cost'>
                             Generates: {config.tower[towerType].resourceSpawnValue} per {config.tower[towerType].resourceSpawnTimer}s
-                </div>) }
+                </div>) : (<></>) }
                 <div className='cost'>
                     Health: {config.tower[towerType].maxHealth}
                 </div>
