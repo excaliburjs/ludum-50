@@ -67,7 +67,6 @@ export class Game extends Engine {
         }
         this.start(loader).then(() => {
             // game start stuff
-           this.setupDevTool();           
         });
 
     }
@@ -136,6 +135,9 @@ game.input.keyboard.on('release', (event) => {
             break;
         case Input.Keys.Semicolon :
             game.toggleDebug();
+            break;
+        case Input.Keys.Equal :
+            game.setupDevTool();
             break;
     }
 });
