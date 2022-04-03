@@ -35,6 +35,7 @@ export class TowerPickerUI extends React.Component<Props, State> {
          <div id="towerSelection">
             {Object.keys(config.tower).map((key) => {
                 return (<TowerIcon 
+                    key={key}
                     towerName={key.toString()}
                     selectedTower={this.state.selectedTower.toString()}
                     selectHandler={this.setSelectedTower}/>);
