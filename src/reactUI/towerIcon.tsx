@@ -34,11 +34,10 @@ export class TowerIcon extends React.Component<Props, State> {
         const hasDamage = config.tower[towerType].bulletDamage > 0;
         const makesMoney = config.tower[towerType].resourceSpawnValue > 0;
         return (
-
+            <>
             <div className={selectedClass}
                 onClick={this.handleClick}>
                 {this.props.towerName}
-                <div className='towerHoverText'>{config.tower[towerType].hoverText}</div>
                 <div className="cost">
                     Cost: {config.tower[towerType].cost}
                 </div>
@@ -52,7 +51,9 @@ export class TowerIcon extends React.Component<Props, State> {
                 <div className='cost'>
                     Health: {config.tower[towerType].maxHealth}
                 </div>
+                <div className='towerHoverText'>{config.tower[towerType].hoverText}</div>
             </div>
+            </>
         )    
     }
 }0
