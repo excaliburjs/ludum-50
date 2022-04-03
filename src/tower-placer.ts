@@ -72,6 +72,5 @@ export class TowerPlacer {
                 }
             }
         }
-        this._highlightedTile = null;
     }
 }
