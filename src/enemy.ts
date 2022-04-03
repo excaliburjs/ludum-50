@@ -2,6 +2,7 @@ import config from "./config";
 import { Actor, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, KillEvent, Engine, Tile, Color, vec } from "excalibur";
 import { Tower } from "./tower";
 import { Grid } from "grid";
+import { Healthbar } from "./healthbar";
 
 export class Enemy extends Actor {
     public static CollisionGroup = CollisionGroupManager.create("enemy");
@@ -15,9 +16,7 @@ export class Enemy extends Actor {
     private _currentAttackingTower: Tower | null = null;
     private _occupiedTile: Tile | null = null;
     private static TileDataEnemyCounterKey = "enemies";
-    healthBar: Actor;
-    private healthBarOpacity: number = 1;
-    private healthBarOpacityFade : number = 3;
+    healthBar: Healthbar;
 
     constructor(type: EnemyType, grid: Grid, x: number, y: number) {
         const configValues = config.enemy[type];
@@ -42,29 +41,17 @@ export class Enemy extends Actor {
         this.on('kill', (ke) => this.onKill(ke));
 
           // draw health bar
-          this.healthBar = new Actor({
-            name: 'Healthbar',
-            pos: vec(0, -10),
-            width: config.healthBarWidthPixels,
-            height: 5,
-            color: Color.Green,
-            collisionType: CollisionType.PreventCollision
-        });
-
+        this.healthBar = new Healthbar(this.maxHealth);
         this.addChild(this.healthBar);
     }
 
     takeDamage(damage: number) {
         this.currentHp-= damage;
+        this.healthBar.takeDamage(damage);
       
         if (this.currentHp <= 0) {
             this.kill();
         }
-
-        const pixelsPerHp = config.healthBarWidthPixels / this.maxHealth;
-        const graphic = this.healthBar.graphics.current[0].graphic;
-        graphic.width = this.currentHp * pixelsPerHp;
-        this.healthBarOpacity = 1;
     }
 
     private _stopped = false;
@@ -143,10 +130,6 @@ export class Enemy extends Actor {
 
         if (!this.isAttacking()) {
             this.vel = new Vector(-1 * config.enemy[this.type].speed, 0)
-        }
-        if(this.healthBarOpacity > 0){
-            this.healthBarOpacity =  this.healthBarOpacity - 1 * deltaMs / 1000 / this.healthBarOpacityFade;
-            this.healthBar.graphics.opacity = this.healthBarOpacity;
         }
     }
 }

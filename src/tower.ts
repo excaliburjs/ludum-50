@@ -3,10 +3,11 @@ import { Actor, CollisionGroup, CollisionType, Color, Engine, ImageSource, Tile,
 import { Grid } from "./grid";
 import { Enemy } from "./enemy";
 import { PlayerState } from "./playerState";
+import { Healthbar } from "./healthbar"
 export class Tower extends Actor {
     private _engine!: Engine;
     private _grid: Grid;
-    healthBar: Actor;
+    healthBar: Healthbar;
     currentHp: number = 5;
     maxHealth: number;
     cost: number;
@@ -35,15 +36,7 @@ export class Tower extends Actor {
         if(towerSprite) this.graphics.use(towerSprite);
 
         // draw health bar
-        this.healthBar = new Actor({
-            name: 'Healthbar',
-            pos: vec(0, -10),
-            width: config.healthBarWidthPixels,
-            height: 5,
-            color: Color.Green,
-            collisionType: CollisionType.PreventCollision
-        });
-
+        this.healthBar = new Healthbar(5);
         this.addChild(this.healthBar);
     }
 
@@ -62,10 +55,6 @@ export class Tower extends Actor {
     onPostUpdate(_engine: Engine, updateMs: number) {
         this._resourceTimer += updateMs / 1000;
         this._currentFireTimer -= updateMs;
-        if(this.healthBarOpacity > 0){
-            this.healthBarOpacity =  this.healthBarOpacity - 1 * updateMs / 1000 / this.healthBarOpacityFade;
-            this.healthBar.graphics.opacity = this.healthBarOpacity;
-        }
         if (this._currentFireTimer <= 0) {
             if(this.hasEnemyToFireOn()) {
                 this.fire();
@@ -109,20 +98,10 @@ export class Tower extends Actor {
 
     takeDamage(damage: number) {
         this.currentHp -= damage;
-        const pixelsPerHp = config.healthBarWidthPixels / this.maxHealth;
-        const graphic = this.healthBar.graphics.current[0].graphic;
-        graphic.width = this.currentHp * pixelsPerHp;
-        this.healthBarOpacity = 1;
-
+        this.healthBar.takeDamage(damage);
         if (this.currentHp <= 0) {
             this._grid.tileMap.getTileByPoint(this.pos).data.delete("tower");
             this.kill();
-        }
-        else if (this.currentHp <= (this.maxHealth/4)) {
-            this.healthBar.color = Color.Red;
-        }
-        else if (this.currentHp <= (this.maxHealth/2)) {
-            this.healthBar.color = Color.Yellow;
         }
     }
 }
