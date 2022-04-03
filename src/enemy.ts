@@ -3,6 +3,7 @@ import { Actor, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent
 import { Tower } from "./tower";
 import { Grid } from "grid";
 import { Healthbar } from "./healthbar";
+import { Resources } from './resources';
 
 export class Enemy extends Actor {
     public static CollisionGroup = CollisionGroupManager.create("enemy");
@@ -18,7 +19,8 @@ export class Enemy extends Actor {
     private static TileDataEnemyCounterKey = "enemies";
     healthBar: Healthbar;
 
-    constructor(type: EnemyType, grid: Grid, x: number, y: number) {
+    // @ts-ignore
+    constructor(type: EnemyType, grid: Grid, x: number, y: number) {        
         const configValues = config.enemy[type];
         super({
             name: "Enemy",
@@ -48,6 +50,8 @@ export class Enemy extends Actor {
     takeDamage(damage: number) {
         this.currentHp-= damage;
         this.healthBar.takeDamage(damage);
+
+        Resources.FxImpactEnemyRock.play();
       
         if (this.currentHp <= 0) {
             this.kill();

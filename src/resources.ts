@@ -15,6 +15,7 @@ import clankUrl from "./sounds/clank.wav";
 import bgAmbiance from './sounds/bg-beach.mp3';
 import bgMusic from './sounds/bg-music.mp3';
 import waveAppear from './sounds/wave-appear.ogg';
+import impactEnemyRock from './sounds/impact-enemy-rock.ogg';
 
 export const Resources = {
     // Images
@@ -30,5 +31,6 @@ export const Resources = {
     Clank: new Sound(clankUrl),
     BackgroundAmbiance: new Sound(bgAmbiance),
     BackgroundMusic: new Sound(bgMusic),
-    FxWaveAppear: new Sound(waveAppear)
+    FxWaveAppear: new Sound(waveAppear),
+    FxImpactEnemyRock: new Sound(impactEnemyRock)
 }
