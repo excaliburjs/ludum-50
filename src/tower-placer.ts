@@ -10,6 +10,7 @@ export class TowerPlacer {
     private _engine: Engine;
     private _highlightedTile: Tile | null = null;
     private _highlight: Actor;
+    private _rect: Rectangle;
     selectedTowerType: TowerType = TowerType.default;
     constructor(grid: Grid, engine: Engine) {
         this._grid = grid;
@@ -19,7 +20,20 @@ export class TowerPlacer {
         this._highlight = new Actor({
             pos: vec(-100, -100) // default offscreen
         })
-        const rect = new Rectangle({
+        this._highlight.onPostUpdate = () => {
+            if(this._highlightedTile == null) return;
+
+            if (this._highlightedTile.data.has("tower")) {
+                this._rect.strokeColor = Color.Yellow;
+            } 
+            else if (Enemy.enemiesInTile(this._highlightedTile) > 0) {
+                this._rect.strokeColor = Color.Red;
+            }
+            else {
+                this._rect.strokeColor = Color.Green;
+            }
+        }
+        this._rect = new Rectangle({
             width: config.grid.tileWidth,
             height: config.grid.tileHeight,
             color: Color.Transparent,
@@ -27,7 +41,7 @@ export class TowerPlacer {
             lineWidth: 3,
             lineDash: [3, 3]
         })
-        this._highlight.graphics.use(rect);
+        this._highlight.graphics.use(this._rect);
         engine.add(this._highlight);
     }
 

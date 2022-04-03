@@ -48,6 +48,19 @@ export default {
             resourceSpawnValue: 0,
             sprite: Resources.BaseTower,
         },
+        upgradeCatapult: { // rename this tower type?
+            baseTowerFireRateMs: 5000,
+            bulletDamage: 3,
+            bulletRadius: 10,
+            bulletSpeedPixelsPerSecond: 750,
+            color: Color.DarkGray,
+            cost: 3,
+            firesBullets: true,
+            maxHealth: 2, 
+            resourceSpawnTimer: 0,
+            resourceSpawnValue: 0,
+            sprite: null,
+        },
         sandBucket: {
             bulletSpeedPixelsPerSecond: 0,
             bulletRadius: 0,
@@ -57,7 +70,7 @@ export default {
             cost: 1,
             firesBullets: false,
             maxHealth: 5, 
-            resourceSpawnTimer: 5,
+            resourceSpawnTimer: 15,
             resourceSpawnValue: 1,
             sprite: null,
         }

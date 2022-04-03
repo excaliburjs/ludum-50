@@ -1,4 +1,4 @@
-import { DisplayMode, Engine, Loader, Input, Logger } from "excalibur";
+import { DisplayMode, Engine, Loader, Input, Logger, Color } from "excalibur";
 import { loadPreferences } from "./preferences";
 import { Level } from "./level";
 import { Resources } from "./resources";
@@ -49,14 +49,36 @@ export class Game extends Engine {
                 }]
             })
             let configPage = configTab.pages[0];
-            for (let key in config) {
-                configPage.addInput(config, key as any, {
-                    disabled: true // config not editable yet
-                })
+
+            const recurse = (config: any, currentKey: string, maxDepth: number) => {
+                for (let key in config) {
+                    if (maxDepth <= 0) return;
+                    const newKey = (currentKey === '' ? '' : currentKey + '_') + key;
+
+                    if (config[key] instanceof Color) {
+                        configPage.addInput(config, key, {
+                            label: newKey
+                        });
+                        return;
+                    }
+
+                    if (typeof config[key] === 'object') {
+                        recurse(config[key], newKey, maxDepth - 1);
+                    } else {
+                        configPage.addInput(config, key as any, {
+                            disabled: true, // config not editable yet,
+                            label: newKey
+                        })
+                    }
+                }
             }
+
+            recurse(config, '', 6);
         }
     }
 }
+
+
 
 export const game = new Game();
 
