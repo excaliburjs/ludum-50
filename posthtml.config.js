@@ -5,6 +5,9 @@ module.exports = {
                 commitRef() {
                     return process.env.GITHUB_SHA || "local";
                 },
+                commitRefShort() {
+                    return (process.env.GITHUB_SHA || "local").substring(0, 7)
+                }
             },
         },
     },
