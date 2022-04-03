@@ -18,6 +18,16 @@ export class TowerBroken extends Actor {
         TowerBroken.removeBrokenTower(tile);
         tile.data.set(TowerBroken.DataKey, this);
     }
+
+    private towerOpacity: number = 1;
+    private towerOpacityFade: number = 5;
+    onPostUpdate(_engine: Engine, updateMs: number) {
+        if(this.towerOpacity >= 0){
+            this.towerOpacity =  this.towerOpacity - 1 * updateMs / 1000 / this.towerOpacityFade;
+            this.graphics.opacity = this.towerOpacity;
+        }
+    }
+
     private static DataKey = "BrokenTower";
     static removeBrokenTower(tile: Tile) {
         if(tile.data.has(TowerBroken.DataKey))
