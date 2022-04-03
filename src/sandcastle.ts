@@ -4,11 +4,12 @@ import { Actor, CollisionGroup, CollisionType, Color, vec, PostCollisionEvent } 
 import { Resources } from "./resources";
 import { Enemy } from "./enemy";
 import { GameOver } from "./game-over";
+import { Healthbar } from "./healthbar";
 
 export class SandCastle extends Actor {
     maxHp: number = config.sandcastle.maxHealth;
     currentHp: number = this.maxHp;
-    healthBar: Actor;
+    healthBar: Healthbar;
     constructor(grid: Grid, private gameOver: GameOver, row: number) {
         super({
             name: 'Sand Castle',
@@ -24,13 +25,7 @@ export class SandCastle extends Actor {
         this.graphics.use(sandcastle);
 
         // draw health bar
-        this.healthBar = new Actor({
-            name: 'Healthbar',
-            width: config.healthBarWidthPixels,
-            height: 5,
-            color: Color.Green,
-            collisionType: CollisionType.PreventCollision
-        });
+        this.healthBar = new Healthbar(this.maxHp);
         this.addChild(this.healthBar);
     }
 
@@ -40,10 +35,9 @@ export class SandCastle extends Actor {
     }
 
     takeDamage() {
-        this.currentHp -= 1;
-        const pixelsPerHp = config.healthBarWidthPixels / config.sandcastle.maxHealth;
-        const graphic = this.healthBar.graphics.current[0].graphic;
-        graphic.width = this.currentHp * pixelsPerHp;
+        const damage = 1;
+        this.currentHp -= damage;
+        this.healthBar.takeDamage(damage);
         if (this.currentHp <= 0) {
             this.kill();
             this.gameOver.triggerGameOver();
