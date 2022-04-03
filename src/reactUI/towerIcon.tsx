@@ -38,6 +38,7 @@ export class TowerIcon extends React.Component<Props, State> {
             <div className={selectedClass}
                 onClick={this.handleClick}>
                 {this.props.towerName}
+                <div className='towerHoverText'>{config.tower[towerType].hoverText}</div>
                 <div className="cost">
                     Cost: {config.tower[towerType].cost}
                 </div>
