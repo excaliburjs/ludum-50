@@ -10,6 +10,8 @@ export class SoundManager {
     Resources.FxWaveAppear.volume = 0.8;
     Resources.FxImpactEnemyRock.volume = 0.4;
     Resources.FxImpactTowerByEnemy.volume = 0.5;
+
+    Resources.UiPickTower.volume = 0.3;
   }
 
   static init() {
