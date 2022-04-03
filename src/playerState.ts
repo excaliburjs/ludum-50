@@ -13,11 +13,13 @@ export class PlayerState {
     }
 
     private static updateDisplay(){
-        const display = document.getElementById("moneyDisplay")!;
-        display.innerText = `Sand: ${this.moneyResource.toString()}`;
-        const pos = game.screen.worldToScreenCoordinates(vec(0,0));
-        display.style.left = pos.x.toString();
-        display.style.top = pos.y.toString();
+        const moneyContainer = document.getElementById("moneyContainer")!;
+        moneyContainer.style.visibility = 'visible';
+        const moneyText = document.getElementById("moneyDisplay")!;
+        moneyText.innerText = `${this.moneyResource.toString()}`;
+        const pos = game.screen.worldToScreenCoordinates(vec(175,30));
+        moneyContainer.style.left = pos.x.toString()+'px';
+        moneyContainer.style.top = pos.y.toString()+'px';
 
     }
 

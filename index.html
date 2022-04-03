@@ -42,10 +42,23 @@
             margin: 0 0.5em;
         }
 
+        #moneyContainer {
+            position: absolute;
+            visibility: hidden;
+        }
+
+        #moneyImage {
+            transform: scale(2.5);
+        }
         #moneyDisplay {
             font-family: 'Kanit', sans-serif;
-            font-size: 64px;
+            font-size: 36px;
+            margin-block: auto;
             position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-55%, -50%);
+            text-shadow: -1px 1px 0 #FFF, 1px 1px 0 #FFF, 1px -1px 0 #FFF, -1px -1px 0 #FFF;
         }
         #restart-game {
             position: absolute;
@@ -79,7 +92,10 @@
             <li><a href="credits.html">Credits</a></li>
         </ul>
         <canvas id="game"></canvas>
-        <div id="moneyDisplay"></div>
+        <div id="moneyContainer">
+            <img id="moneyImage" src="./src/images/sand.png"/>
+            <div id="moneyDisplay"></div>
+        </div>
         <div id="reactUI"></div>
         <a id="commitRef" href="https://github.com/excaliburjs/ludum-50/commit/{{ commitRef }}">{{ commitRef }}</a>
         <button id="restart-game">Restart</button>
