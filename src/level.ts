@@ -11,7 +11,7 @@ import { WaveDispatcher } from "./wave-dispatcher";
 import { GameOver } from "./game-over";
 
 export class Level extends Scene {
-    random = new Random(config.Seed);
+    random = new Random(Date.now());
     grid!: Grid;
     sandCastles: SandCastle[] = [];
     enemyGenerator: EnemyGenerator | undefined;
@@ -20,6 +20,9 @@ export class Level extends Scene {
     gameOver!: GameOver;
 
     onInitialize(engine: Engine): void {
+        // Grab the random seed
+        config.Seed = this.random.seed as number;
+
         // Sand grid
         this.grid = new Grid(vec(config.grid.tileWidth/2, config.grid.tileHeight/2), config.grid.height, config.grid.width, config.grid.tileWidth, config.grid.tileHeight);
         this.add(this.grid.tileMap);
