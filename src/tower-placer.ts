@@ -14,6 +14,7 @@ export class TowerPlacer {
   private _highlight: Actor;
   private _rect: Rectangle;
   selectedTowerType: TowerType = TowerType.default;
+  private ghostTower: Actor;
   constructor(grid: Grid, engine: Engine) {
     this._grid = grid;
     this._engine = engine;
@@ -22,6 +23,8 @@ export class TowerPlacer {
     this._highlight = new Actor({
       pos: vec(-100, -100), // default offscreen
     });
+    this.ghostTower = new Actor();
+    this.ghostTower.graphics.opacity = 0.5;
     this._highlight.onPostUpdate = () => {
       if (this._highlightedTile == null) return;
 
@@ -43,17 +46,21 @@ export class TowerPlacer {
     });
     this._highlight.graphics.use(this._rect);
     engine.add(this._highlight);
+    engine.add(this.ghostTower);
   }
 
   onPointerMove(evt: Input.PointerEvent) {
     // TODO add tile highlight
     const maybeTile = this._grid.tileMap.getTileByPoint(evt.worldPos);
+    const sprite = config.tower[(window as any).TowerPickerUI.selectedTower() as TowerType]?.sprite?.toSprite();
+    if(sprite) this.ghostTower.graphics.use(sprite);
 
     if (maybeTile) {
       this._highlightedTile = maybeTile;
       this._highlight.pos = this._highlightedTile.pos.add(
         vec(config.grid.tileWidth / 2, config.grid.tileHeight / 2)
       );
+      this.ghostTower.pos = this._highlight.pos;
     }
   }
 

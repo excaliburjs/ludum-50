@@ -1,9 +1,15 @@
 .selected {
     font-weight: bold;
+    border-radius: 6px;
+    border-style: solid;
 }
 .tower {
     padding: 5px;
     font-size: 48px;
+}
+
+.imageOuter {
+    text-align: center;
 }
 
 .cost {
