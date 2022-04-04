@@ -143,6 +143,7 @@ export class Tower extends Actor {
 
   onClick(evt: Input.PointerEvent) {
     if (this.isResourceType() && this._resourceAvailable) {
+      Resources.FxHarvestTower.play();
       PlayerState.AddMoney(config.tower[this.type].resourceSpawnValue);
       this._resourceAvailable = false;
       this._resourceTimer = 0;

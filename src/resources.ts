@@ -66,6 +66,7 @@ export const Resources = {
   FxImpactTowerByEnemy: new Sound(impactTowerMp3, impactTower),
   FxImpactCastleByEnemy: new Sound(impactCastleMp3, impactCastle),
   FxPlaceTower: new Sound(placeTower),
+  FxHarvestTower: new Sound(placeTower),
   FxTowerFlings01: new Sound(fling01),
   FxTowerFlings02: new Sound(fling02),
   FxTowerFlings03: new Sound(fling03),
