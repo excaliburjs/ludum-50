@@ -44,7 +44,7 @@ export class WaveDispatcher extends Actor {
     }
     
     private _currentTime: number = 0;
-    private _currentWave: number = 5; // TODO skip to end for testing
+    private _currentWave: number = 0; // TODO skip to end for testing
     private _currentEnemies: Enemy[] = [];
     private _dispatched: number[] = [];
     override onPostUpdate(_engine: Engine, deltaMs: number) {
@@ -90,8 +90,6 @@ export class WaveDispatcher extends Actor {
             this._currentEnemies.length = 0;
             console.log('Wave Complete');
         }
-        
-        
         
         if (waveConfig) {
             for (let offset in waveConfig.offsets) {
