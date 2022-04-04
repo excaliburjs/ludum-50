@@ -34,7 +34,7 @@ export class Enemy extends Actor {
             height: configValues.height, 
             color: configValues.color, 
             collisionType: CollisionType.Active,
-            collisionGroup: (configValues.collisionGroup == "enemy_flying" ? Enemy.CollisionGroupFlying : Enemy.CollisionGroupGround),
+            collisionGroup: (CollisionGroupManager.groupByName(configValues.collisionGroup)),
             vel: new Vector(-1 * configValues.speed, 0), // moves horizontally, right to left
         });
         this.addTag('enemy');

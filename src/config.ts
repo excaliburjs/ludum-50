@@ -58,7 +58,7 @@ export default {
         },
         upgradeCatapult: { // rename this tower type?
             baseTowerFireRateMs: 5000,
-            bulletDamage: 3,
+            bulletDamage: 2,
             bulletRadius: 10,
             bulletSpeedPixelsPerSecond: 750,
             color: Color.DarkGray,
@@ -158,7 +158,6 @@ export default {
                 ],
                 15: [
                     { type: 'crab', count: 1},
-                    { type: 'seagull', count: 15},
                 ],
                 25: [
                     {type: 'crab', count: 2},
@@ -173,16 +172,16 @@ export default {
             name: "Wave 1",
             offsets: { // in seconds
                 7 : [
-                    { type: 'crab', count: 1 },
-                    // { type: 'turtle', count: 3 }
+                    // { type: 'crab', count: 1 },
+                    { type: 'turtle', count: 3 }
                 ],
                 11 : [
                     // { type: 'crab', count: 3 },
-                    { type: 'turtle', count: 2 }
+                    { type: 'turtle', count: 2 },
                 ],
                 20 : [
                     { type: 'crab', count: 2 },
-                    { type: 'turtle', count: 3 }
+                    { type: 'turtle', count: 3 },
                 ],
             }
         },
@@ -190,13 +189,17 @@ export default {
             name: "Wave 2",
             offsets: {
                 7: [
-                    {type: 'crab', count: 5 }
+                    {type: 'crab', count: 5 },
+                    { type: 'seagull', count: 3 },
                 ],
                 11: [
-                    {type: 'crab', count: 5 }
+                    {type: 'crab', count: 5 },
+                    { type: 'seagull', count: 3 },
                 ],
                 20: [
-                    {type: 'crab', count: 5 }
+                    {type: 'crab', count: 5 },
+                    { type: 'turtle', count: 3 },
+                    { type: 'seagull', count: 3 }
                 ],
             }
         },
@@ -204,13 +207,19 @@ export default {
             name: "Wave 3",
             offsets: {
                 7: [
-                    {type: 'crab', count: 4 }
+                    {type: 'crab', count: 4 },
+                    { type: 'turtle', count: 4 },
+                    { type: 'seagull', count: 4 }
                 ],
                 11: [
-                    {type: 'crab', count: 4 }
+                    {type: 'crab', count: 4 },
+                    { type: 'turtle', count: 4 },
+                    { type: 'seagull', count: 4 }
                 ],
                 20: [
-                    {type: 'crab', count: 4 }
+                    {type: 'crab', count: 8 },
+                    { type: 'turtle', count: 6 },
+                    { type: 'seagull', count: 4 }
                 ],
             }
         },
@@ -218,28 +227,34 @@ export default {
             name: "Wave INEVITABLE",
             offsets: {
                 2: [
-                    {type: 'crab', count: 5 },
-                    { type: 'turtle', count: 6 }
+                    { type: 'crab', count: 5 },
+                    { type: 'turtle', count: 6 },
+                    { type: 'seagull', count: 6 },
                 ],
                 7: [
-                    {type: 'crab', count: 5 },
-                    { type: 'turtle', count: 6 }
+                    { type: 'crab', count: 5 },
+                    { type: 'turtle', count: 6 },
+                    { type: 'seagull', count: 6 },
                 ],
                 12: [
-                    {type: 'crab', count: 5 },
-                    { type: 'turtle', count: 9 }
+                    { type: 'crab', count: 5 },
+                    { type: 'turtle', count: 9 },
+                    { type: 'seagull', count: 6 },
                 ],
                 17: [
-                    {type: 'crab', count: 5 },
-                    { type: 'turtle', count: 12 }
+                    { type: 'crab', count: 5 },
+                    { type: 'turtle', count: 12 },
+                    { type: 'seagull', count: 8 },
                 ],
                 22: [
-                    {type: 'crab', count: 5 },
-                    { type: 'turtle', count: 15 }
+                    { type: 'crab', count: 12 },
+                    { type: 'turtle', count: 15 },
+                    { type: 'seagull', count: 12 },
                 ],
                 27: [
-                    {type: 'crab', count: 5 },
-                    { type: 'turtle', count: 18 }
+                    { type: 'crab', count: 15 },
+                    { type: 'turtle', count: 18 },
+                    { type: 'seagull', count: 12 },
                 ],
             }
         }
