@@ -16,7 +16,7 @@ export class WaveDispatcher extends Actor {
         })
         this._spawner = spawner;
         this._textActor = new Actor({
-            pos: vec(config.grid.width * config.grid.tileWidth + 500, (config.grid.height + 1) * config.grid.tileHeight),
+            pos: vec(config.grid.width * config.grid.tileWidth + 500, (config.grid.height / 2) * config.grid.tileHeight),
             z: 10
         });
         this._text = new Text({
@@ -91,11 +91,11 @@ export class WaveDispatcher extends Actor {
         Resources.FxWaveAppear.play();
         const waveConfig = config.waves[this._currentWave];
         this._text.text = waveConfig.name;
-        this._textActor.actions.easeTo(vec(config.grid.tileWidth * config.grid.width / 1.33,  (config.grid.height + 1) * config.grid.tileHeight), 1000, EasingFunctions.EaseInOutCubic);
+        this._textActor.actions.easeTo(vec(config.grid.tileWidth * config.grid.width / 1.33,  (config.grid.height / 2) * config.grid.tileHeight), 1000, EasingFunctions.EaseInOutCubic);
         this._textActor.actions.delay(1000);
         this._textActor.actions.easeTo(this._textActor.pos.add(vec(1000, 0)), 1000, EasingFunctions.EaseInOutCubic);
         this._textActor.actions.callMethod(() =>{
-            this._textActor.pos = vec(config.grid.width * config.grid.tileWidth + 500, (config.grid.height + 1) * config.grid.tileHeight);
+            this._textActor.pos = vec(config.grid.width * config.grid.tileWidth + 500, (config.grid.height / 2) * config.grid.tileHeight);
         })
     }
 }
