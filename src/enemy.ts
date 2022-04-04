@@ -146,10 +146,26 @@ export class Enemy extends Actor {
     this.currentHp -= damage;
     this.healthBar.takeDamage(damage);
 
-    Resources.FxImpactEnemyRock.play();
+    Resources.FxImpactEnemyBall.play();
+    this.actions.blink(50, 50, 2);
 
     if (this.currentHp <= 0) {
       this.kill();
+      this.playDeathSound();
+    }
+  }
+
+  playDeathSound() {
+    switch (this.type) {
+      case EnemyType.Turtle:
+        Resources.FxDeathTurtle.play();
+        break;
+      case EnemyType.Seagull:
+        Resources.FxDeathGull.play();
+        break;
+      case EnemyType.Crab:
+        Resources.FxDeathCrabForCutie.play();
+        break;
     }
   }
 
@@ -195,8 +211,8 @@ export class Enemy extends Actor {
       Enemy.removeEnemyFromTile(this._occupiedTile);
     }
     if (this._leavingTile != null) {
-        Enemy.removeEnemyFromTile(this._leavingTile);
-      }
+      Enemy.removeEnemyFromTile(this._leavingTile);
+    }
   }
 
   claimTiles(enteringTile: Tile, leavingTile: Tile) {

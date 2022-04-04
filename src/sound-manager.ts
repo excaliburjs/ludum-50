@@ -8,10 +8,14 @@ export class SoundManager {
   static setSoundSpecificVolume() {
     Resources.Clank.volume = 0.5;
     Resources.FxWaveAppear.volume = 0.8;
-    Resources.FxImpactEnemyRock.volume = 0.4;
+    Resources.FxImpactEnemyBall.volume = 0.7;
     Resources.FxImpactTowerByEnemy.volume = 0.5;
     Resources.FxImpactCastleByEnemy.volume = 0.7;
+    Resources.FxDeathCrabForCutie.volume = 0.6;
+    Resources.FxDeathGull.volume = 0.6;
+    Resources.FxDeathTurtle.volume = 0.6;
     Resources.FxPlaceTower.volume = 1.0;
+    Resources.FxHarvestTower.volume = 0.5;
 
     Resources.UiPickTower.volume = 0.3;
   }

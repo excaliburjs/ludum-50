@@ -19,7 +19,7 @@ export default {
 
   z: {
     towers: 3,
-    bullets: 5,
+    bullets: 6,
     enemies: 4,
     healthbar: 10
   },

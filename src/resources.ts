@@ -26,16 +26,12 @@ import sideBorderUrl from './images/beneath-castle.png';
 import clankUrl from "./sounds/clank.wav";
 import bgAmbiance from "./sounds/bg-beach.mp3";
 import bgMusic from "./sounds/bg-music.mp3";
-import waveAppear from "./sounds/wave-appear.ogg";
-import waveAppearMp3 from "./sounds/wave-appear.mp3";
-import impactEnemyRock from "./sounds/impact-enemy-rock.ogg";
-import impactEnemyRockMp3 from "./sounds/impact-enemy-rock.mp3";
-import impactTower from "./sounds/impact-tower.ogg";
-import impactTowerMp3 from "./sounds/impact-tower.mp3";
-import impactCastle from "./sounds/impact-castle.ogg";
-import impactCastleMp3 from "./sounds/impact-castle.mp3";
-import pickTower from "./sounds/pick-tower.ogg";
-import pickTowerMp3 from "./sounds/pick-tower.mp3";
+import waveAppear from "./sounds/wave-appear.mp3";
+import impactEnemyBall from "./sounds/impact-enemy-ball.mp3";
+import impactTower from "./sounds/impact-tower.mp3";
+import impactCastle from "./sounds/impact-castle.mp3";
+import pickTower from "./sounds/pick-tower.mp3";
+import harvestTower from "./sounds/harvest-tower.mp3";
 import placeTower from "./sounds/place-tower.mp3";
 import fling01 from "./sounds/fling-01.mp3";
 import fling02 from "./sounds/fling-02.mp3";
@@ -43,6 +39,9 @@ import fling03 from "./sounds/fling-03.mp3";
 import fling04 from "./sounds/fling-04.mp3";
 import fling05 from "./sounds/fling-05.mp3";
 import fling06 from "./sounds/fling-06.mp3";
+import dieTurtle from './sounds/die-turtle.mp3';
+import dieGull from './sounds/die-gull.mp3';
+import dieCrab from './sounds/die-crab.mp3';
 
 export const Resources = {
   // Images
@@ -75,19 +74,22 @@ export const Resources = {
   Clank: new Sound(clankUrl),
   BackgroundAmbiance: new Sound(bgAmbiance),
   BackgroundMusic: new Sound(bgMusic),
-  FxWaveAppear: new Sound(waveAppearMp3, waveAppear),
-  FxImpactEnemyRock: new Sound(impactEnemyRockMp3, impactEnemyRock),
-  FxImpactTowerByEnemy: new Sound(impactTowerMp3, impactTower),
-  FxImpactCastleByEnemy: new Sound(impactCastleMp3, impactCastle),
+  FxWaveAppear: new Sound(waveAppear),
+  FxImpactEnemyBall: new Sound(impactEnemyBall),
+  FxImpactTowerByEnemy: new Sound(impactTower),
+  FxImpactCastleByEnemy: new Sound(impactCastle),
   FxPlaceTower: new Sound(placeTower),
-  FxHarvestTower: new Sound(placeTower),
+  FxHarvestTower: new Sound(harvestTower),
   FxTowerFlings01: new Sound(fling01),
   FxTowerFlings02: new Sound(fling02),
   FxTowerFlings03: new Sound(fling03),
   FxTowerFlings04: new Sound(fling04),
   FxTowerFlings05: new Sound(fling05),
   FxTowerFlings06: new Sound(fling06),
-  UiPickTower: new Sound(pickTowerMp3, pickTower),
+  FxDeathGull: new Sound(dieGull),
+  FxDeathCrabForCutie: new Sound(dieCrab),
+  FxDeathTurtle: new Sound(dieTurtle),
+  UiPickTower: new Sound(pickTower),
 };
 
 export const FxTowerFlings = [

@@ -1,9 +1,13 @@
 bg-beach.mp3: https://freesound.org/people/John%20Sipos/sounds/191444/
 bg-music.mp3: https://freemusicarchive.org/music/crowander/from-the-garage-funkrock/night-surfing
-impact-enemy-rock.ogg: kenny.nl; kenny_impactsounds - impactWood_medium_003.ogg
-wave-appear.ogg: kenny.nl; kenny_musicjingles - jingles_STEEL03.ogg
-impact-tower.ogg: kenny.nl; kenny_impactsounds - impactSoft_medium_004.ogg
-impact-castle.ogg: kenny.nl; kenny_impactsounds - impactPunch_heavy_004.ogg
-pick-tower.ogg: kenny.nl; kenny_interfacesounds - select_007.ogg
+impact-enemy-ball.mp3: kenny.nl; kenny_impactsounds - impactSoft_heavy_003.ogg
+wave-appear.mp3: kenny.nl; kenny_musicjingles - jingles_STEEL03.ogg
+impact-tower.mp3: kenny.nl; kenny_impactsounds - impactSoft_medium_004.ogg
+impact-castle.mp3: kenny.nl; kenny_impactsounds - impactPunch_heavy_004.ogg
+pick-tower.mp3: kenny.nl; kenny_interfacesounds - select_007.ogg
 place-tower.wav: https://freesound.org/people/doorajar/sounds/427074/
 fling-[n].wav: https://freesound.org/people/PhilStrahl/sounds/497037/
+die-crab.mp3: https://freesound.org/people/Clearwavsound/sounds/524608/
+die-gull.mp3: https://freesound.org/people/nigelcoop/sounds/73497/
+die-turtle.mp3: https://freesound.org/people/pfranzen/sounds/339791/
+harvest-tower.mp3: kenny.nl; kenny_interfacesounds - jingles_STEEL10.ogg
