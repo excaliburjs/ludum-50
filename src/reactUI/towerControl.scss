@@ -1,14 +1,21 @@
+#reactUI {
+    position: absolute;
+    max-height: 14%;
+    bottom: 1%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #towerSelection {
     display: none;
-    flex-direction: row;
-    position: fixed;
     font-family: 'Kanit', sans-serif;
-    background-color: rgba(0, 0, 0, 0.3);
-    max-height: 15vh;
-    top: 85vh;
-    left: 10vw;
+    justify-content: center;
+    width: 166vh;
 
     .tower {
+        background-color: rgba(0, 0, 0, 0.3);
         padding: 5px;
         font-size: 48px;
         display: flex;
@@ -21,6 +28,7 @@
         max-height: 100%;
         max-width: 100%;
         position: relative;
+        margin-right: 1%;
 
         &.selected {
             font-weight: bold;
