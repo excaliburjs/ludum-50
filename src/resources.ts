@@ -6,7 +6,7 @@ import sandUrl from "./images/sand-placeholder.png";
 import sandCastleUrl from "./images/sandcastle-placeholder.png";
 import towerBucketUrl from "./images/tower-bucket-placeholder.png";
 import towerBucketBrokenUrl from "./images/tower-bucket-broken-placeholder.png";
-import towerUrl from "./images/tower-placeholder.png";
+import towerUrl from "./images/base-tower.png";
 import towerBrokenUrl from "./images/tower-placeholder-broken.png";
 import catapultUrl from "./images/catapult.png";
 import catapultBrokenUrl from "./images/catapult-broken.png";
