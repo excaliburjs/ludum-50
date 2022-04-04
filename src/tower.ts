@@ -15,7 +15,7 @@ import {
   SpriteSheet,
   Sprite,
   Input,
-  EasingFunctions
+  EasingFunctions,
 } from "excalibur";
 import { Grid } from "./grid";
 import { Enemy } from "./enemy";
@@ -79,17 +79,22 @@ export class Tower extends Actor {
         spriteWidth: 64,
         spriteHeight: 64,
         rows: 1,
-        columns: 9
-      }
+        columns: 9,
+      },
     });
     this.bucketLoadingFrames = 4;
-    this.bucketGlow = Animation.fromSpriteSheet(this.bucketSheet, range(5, 8), 200, AnimationStrategy.Loop);
+    this.bucketGlow = Animation.fromSpriteSheet(
+      this.bucketSheet,
+      range(5, 8),
+      200,
+      AnimationStrategy.Loop
+    );
 
     // draw health bar
     this.healthBar = new Healthbar(this.maxHealth);
     this.addChild(this.healthBar);
     this.on("kill", (ke) => this.onKill(ke));
-    this.on('pointerdown', (evt) => this.onClick(evt));
+    this.on("pointerdown", (evt) => this.onClick(evt));
   }
 
   onInitialize(engine: Engine) {
@@ -103,16 +108,16 @@ export class Tower extends Actor {
   }
 
   setSprite() {
-    if(this.readyToFire()) {
-        const towerSprite = config.tower[this.type].spriteReady?.toSprite();
-        if (towerSprite) this.graphics.use(towerSprite);
+    if (this.readyToFire()) {
+      const towerSprite = config.tower[this.type].spriteReady?.toSprite();
+      if (towerSprite) this.graphics.use(towerSprite);
     } else {
-        const towerSprite = config.tower[this.type].sprite?.toSprite();
-        if (towerSprite) this.graphics.use(towerSprite);
+      const towerSprite = config.tower[this.type].sprite?.toSprite();
+      if (towerSprite) this.graphics.use(towerSprite);
     }
   }
 
-  readyToFire() { 
+  readyToFire() {
     return this._currentFireTimer <= 0;
   }
 
@@ -122,22 +127,28 @@ export class Tower extends Actor {
   onPostUpdate(_engine: Engine, updateMs: number) {
     this._resourceTimer += updateMs / 1000;
     this._currentFireTimer -= updateMs;
-    if(!this.isResourceType()) {
-        if (this.readyToFire()) {
-            if (this.hasEnemyToFireOn()) {
-                this.fire();
-                this._currentFireTimer = config.tower[this.type].baseTowerFireRateMs;
-                this.setSprite();
-            } else {
-                this._currentFireTimer = 0;
-                this.setSprite();
-            }
+    if (!this.isResourceType()) {
+      if (this.readyToFire()) {
+        if (this.hasEnemyToFireOn()) {
+          this.fire();
+          this._currentFireTimer = config.tower[this.type].baseTowerFireRateMs;
+          this.setSprite();
+        } else {
+          this._currentFireTimer = 0;
+          this.setSprite();
         }
+      }
     } else {
       // Resource tower charging up
-      if (this._resourceTimer <= config.tower[this.type].resourceSpawnTimer && !this._resourceAvailable) {
-        const percentLoaded = this._resourceTimer / config.tower[this.type].resourceSpawnTimer;
-        const bucketFrame = Math.floor(percentLoaded * this.bucketLoadingFrames);
+      if (
+        this._resourceTimer <= config.tower[this.type].resourceSpawnTimer &&
+        !this._resourceAvailable
+      ) {
+        const percentLoaded =
+          this._resourceTimer / config.tower[this.type].resourceSpawnTimer;
+        const bucketFrame = Math.floor(
+          percentLoaded * this.bucketLoadingFrames
+        );
         const maybeFrame = this.bucketSheet.getSprite(bucketFrame, 0);
         if (maybeFrame) {
           this.graphics.use(maybeFrame);
@@ -145,11 +156,13 @@ export class Tower extends Actor {
       }
 
       // Resource is available for player to click, doesn't reset until click
-      if (this._resourceTimer > config.tower[this.type].resourceSpawnTimer && !this._resourceAvailable) {
+      if (
+        this._resourceTimer > config.tower[this.type].resourceSpawnTimer &&
+        !this._resourceAvailable
+      ) {
         this._resourceTimer = 0;
         this._resourceAvailable = true;
         this.graphics.use(this.bucketGlow);
-        
       }
     }
   }
@@ -166,20 +179,40 @@ export class Tower extends Actor {
       this._resourceTimer = 0;
 
       const collectedActor = new Actor({
-        name: 'Collected Sand',
+        name: "Collected Sand",
         pos: this.pos,
-        z: 10
+        z: 10,
+        scale: vec(0.8, 0.8)
       });
-      collectedActor.graphics.use(this.sand);
+
+      collectedActor.on("initialize", (evt) => {
+        evt.target.graphics.use(this.sand);
+
+        // NOT KILLING EVEN THOUGH IT WORKS
+        // const moneyPos = $("#moneyContainer").offset();
+        // const moneyWidth = $("#moneyContainer").width();
+        // const moneyHeight = $("#moneyContainer").height();
+        // const screenMoneyPos = evt.engine.screen.pageToScreenCoordinates(
+        //   vec(
+        //     Math.round(moneyPos.left + moneyWidth / 2),
+        //     Math.round(moneyPos.top + moneyHeight / 2)
+        //   )
+        // );
+        var screenMoneyPos = vec(
+          Math.round(config.grid.tileWidth + config.grid.tileWidth / 4),
+          Math.round(config.grid.tileHeight * config.grid.height +
+            config.grid.tileHeight / 2)
+        );
+
+        evt.target.actions
+          .easeTo(screenMoneyPos, 500, EasingFunctions.EaseOutCubic)
+          .delay(200)
+          .callMethod(() => {
+            evt.target.kill();
+          });
+      });
+
       this._engine.add(collectedActor);
-
-      collectedActor.actions
-        .easeTo(vec(config.grid.tileWidth/2, config.grid.tileHeight/2), 500, EasingFunctions.EaseOutCubic)
-        .delay(200)
-        .callMethod(() => {
-          collectedActor.kill();
-        });
-
     }
   }
 
@@ -204,7 +237,10 @@ export class Tower extends Actor {
       radius: config.tower[this.type].bulletRadius,
       color: Color.Black,
       angularVelocity: Math.PI * 2,
-      collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroupGround, Enemy.CollisionGroupFlying]),
+      collisionGroup: CollisionGroup.collidesWith([
+        Enemy.CollisionGroupGround,
+        Enemy.CollisionGroupFlying,
+      ]),
       collisionType: CollisionType.Passive,
     });
 
