@@ -14,6 +14,7 @@ import {
   Animation,
   range,
   AnimationStrategy,
+  CollisionGroup,
 } from "excalibur";
 import { Tower } from "./tower";
 import { Grid } from "grid";
@@ -53,10 +54,10 @@ export class Enemy extends Actor {
       width: configValues.width,
       height: configValues.height,
       color: configValues.color,
-      collisionType: CollisionType.Active,
+      collisionType: configValues.collisionGroup == "enemy_flying" ? CollisionType.Passive :  CollisionType.Active,
       collisionGroup:
         configValues.collisionGroup == "enemy_flying"
-          ? Enemy.CollisionGroupFlying
+          ? Enemy.CollisionGroupFlying  
           : Enemy.CollisionGroupGround,
       vel: new Vector(-1 * configValues.speed, 0), // moves horizontally, right to left
     });
