@@ -8,6 +8,8 @@ import towerBucketUrl from "./images/tower-bucket-placeholder.png";
 import towerBucketBrokenUrl from "./images/tower-bucket-broken-placeholder.png";
 import towerUrl from "./images/tower-placeholder.png";
 import towerBrokenUrl from "./images/tower-placeholder-broken.png";
+import catapultUrl from "./images/catapult.png";
+import catapultBrokenUrl from "./images/catapult-broken.png";
 import sandWall from "./images/sandwall.png";
 import wall from "./images/wall.png";
 import waterUrl from './images/waves.png';
@@ -45,6 +47,8 @@ export const Resources = {
   SandCastle: new ImageSource(sandCastleUrl, false, ImageFiltering.Pixel),
   BaseTower: new ImageSource(towerUrl, false, ImageFiltering.Pixel),
   BaseTowerBroken: new ImageSource(towerBrokenUrl, false, ImageFiltering.Pixel),
+  CatapultTower: new ImageSource(catapultUrl, false, ImageFiltering.Pixel),
+  CatapultTowerBroken: new ImageSource(catapultBrokenUrl, false, ImageFiltering.Pixel),
   BucketTower: new ImageSource(towerBucketUrl, false, ImageFiltering.Pixel),
   BucketTowerBroken: new ImageSource(
     towerBucketBrokenUrl,

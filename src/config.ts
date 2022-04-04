@@ -64,8 +64,8 @@ export default {
             maxHealth: 2, 
             resourceSpawnTimer: 0,
             resourceSpawnValue: 0,
-            sprite: null,
-            spriteBroken: null,
+            sprite: Resources.CatapultTower,
+            spriteBroken: Resources.CatapultTowerBroken,
         },
         sandBucket: {
             bulletSpeedPixelsPerSecond: 0,
