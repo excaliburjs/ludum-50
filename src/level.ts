@@ -82,9 +82,9 @@ export class Level extends Scene {
         tutorialEnemyTimer.start();
 
         // Tower placement
-        this.towerPlacer = new TowerPlacer(this.grid, engine)
+        this.towerPlacer = new TowerPlacer(this.grid, engine);
 
-        this.waveDispatcher = new WaveDispatcher(this.enemyGenerator);
+        this.waveDispatcher = new WaveDispatcher(this.enemyGenerator, this.random);
         this.add(this.waveDispatcher);
 
         // Game over handler
