@@ -21,6 +21,16 @@ export class Level extends Scene {
     waveDispatcher!: WaveDispatcher;
     gameOver!: GameOver;
 
+    private _playerWealthTick = 0;
+    private _playerWealthGeneration = config.player.passiveWealthTick;
+    onPostUpdate(_engine: Engine, _delta: number): void {
+        this._playerWealthTick += _delta / 1000;
+        if(this._playerWealthTick >= this._playerWealthGeneration) {
+            PlayerState.AddMoney(config.player.passiveWealthAmt);
+            this._playerWealthTick = 0;
+        }
+    }
+
     onInitialize(engine: Engine): void {
         SoundManager.startBackgroundMusic();
         

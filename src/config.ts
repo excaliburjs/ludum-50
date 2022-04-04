@@ -34,6 +34,8 @@ export default {
 
     player: {
         startingMonies: 100,
+        passiveWealthTick: 15,
+        passiveWealthAmt: 1
     },
 
     tower: {
