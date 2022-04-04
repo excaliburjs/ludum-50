@@ -1,12 +1,12 @@
 import { Color } from "excalibur";
 import { Resources } from "./resources";
 export interface WavesDescriptor {
-  [waveIndex: number]: {
-    name: string;
-    offsets: {
-      [offsetTimeSeconds: number]: { type: "crab" | "turtle"; count: number }[];
-    };
-  };
+    [waveIndex: number] : {
+        name: string;
+        offsets: {
+            [offsetTimeSeconds: number]: { type: 'crab' | 'turtle' | 'seagull', count: number}[]
+        }
+    }
 }
 
 export default {
@@ -21,6 +21,7 @@ export default {
     towers: 3,
     bullets: 5,
     enemies: 4,
+    healthbar: 10
   },
 
   // Grid (the "board" of the game)

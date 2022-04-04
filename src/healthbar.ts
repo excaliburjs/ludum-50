@@ -13,7 +13,8 @@ export class Healthbar extends Actor {
             width: config.healthBarWidthPixels,
             height: 5,
             color: Color.Black,
-            collisionType: CollisionType.PreventCollision
+            collisionType: CollisionType.PreventCollision,
+            z: config.z.healthbar
         });
         this.MaxHealth = maxHealth;
         this.CurHealth = maxHealth;
@@ -23,7 +24,8 @@ export class Healthbar extends Actor {
             width: this.width-2,
             height: this.height-2,
             color: Color.Green,
-            collisionType: CollisionType.PreventCollision
+            collisionType: CollisionType.PreventCollision,
+            z: config.z.healthbar
             });
         this.addChild(this._fillColor);
     }
