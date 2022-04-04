@@ -53,6 +53,7 @@ export default {
             resourceSpawnValue: 0,
             sprite: Resources.BaseTower,
             spriteBroken: Resources.BaseTowerBroken,
+            spriteReady: Resources.BaseTower,
         },
         upgradeCatapult: { // rename this tower type?
             baseTowerFireRateMs: 5000,
@@ -68,6 +69,7 @@ export default {
             resourceSpawnValue: 0,
             sprite: Resources.CatapultTower,
             spriteBroken: Resources.CatapultTowerBroken,
+            spriteReady: Resources.CatapultTowerLoaded,
         },
         sandBucket: {
             bulletSpeedPixelsPerSecond: 0,
@@ -83,6 +85,7 @@ export default {
             resourceSpawnValue: 1,
             sprite: Resources.BucketTower,
             spriteBroken: Resources.BucketTowerBroken,
+            spriteReady: Resources.BucketTower,
         },
         sandWall: {
             bulletSpeedPixelsPerSecond: 0,
@@ -98,6 +101,7 @@ export default {
             resourceSpawnValue: 0,
             sprite: Resources.Sandwall,
             spriteBroken: null,
+            spriteReady: Resources.Sandwall,
         }
         // other tower types?
     },

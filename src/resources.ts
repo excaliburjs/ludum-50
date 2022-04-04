@@ -10,6 +10,7 @@ import towerUrl from "./images/base-tower.png";
 import towerBrokenUrl from "./images/tower-placeholder-broken.png";
 import catapultUrl from "./images/catapult.png";
 import catapultBrokenUrl from "./images/catapult-broken.png";
+import catapultLoadedUrl from "./images/catapult-loaded.png";
 import sandWall from "./images/sandwall.png";
 import wall from "./images/wall.png";
 import waterUrl from './images/waves.png';
@@ -49,6 +50,7 @@ export const Resources = {
   BaseTower: new ImageSource(towerUrl, false, ImageFiltering.Pixel),
   BaseTowerBroken: new ImageSource(towerBrokenUrl, false, ImageFiltering.Pixel),
   CatapultTower: new ImageSource(catapultUrl, false, ImageFiltering.Pixel),
+  CatapultTowerLoaded: new ImageSource(catapultLoadedUrl, false, ImageFiltering.Pixel),
   CatapultTowerBroken: new ImageSource(catapultBrokenUrl, false, ImageFiltering.Pixel),
   BucketTower: new ImageSource(towerBucketUrl, false, ImageFiltering.Pixel),
   BucketTowerBroken: new ImageSource(

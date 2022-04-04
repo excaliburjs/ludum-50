@@ -102,18 +102,36 @@ export class Tower extends Actor {
     return this.row.find((tile) => Enemy.enemiesInTile(tile) > 0) != undefined;
   }
 
+  setSprite() {
+    if(this.readyToFire())
+    {
+        const towerSprite = config.tower[this.type].spriteReady?.toSprite();
+        if (towerSprite) this.graphics.use(towerSprite);
+    }
+    else {
+        const towerSprite = config.tower[this.type].sprite?.toSprite();
+        if (towerSprite) this.graphics.use(towerSprite);
+    }
+  }
+
+  readyToFire() { 
+    return this._currentFireTimer <= 0;
+  }
+
   private _currentFireTimer: number = 0; // Counts down, when <= 0 the tower can fire.
   private _resourceTimer: number = 0;
   private _resourceAvailable: boolean = false;
   onPostUpdate(_engine: Engine, updateMs: number) {
     this._resourceTimer += updateMs / 1000;
     this._currentFireTimer -= updateMs;
-    if (this._currentFireTimer <= 0) {
+    if (this.readyToFire()) {
       if (this.hasEnemyToFireOn()) {
         this.fire();
         this._currentFireTimer = config.tower[this.type].baseTowerFireRateMs;
+        this.setSprite();
       } else {
         this._currentFireTimer = 0;
+        this.setSprite();
       }
     }
 
