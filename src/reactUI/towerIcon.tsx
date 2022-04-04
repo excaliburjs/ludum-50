@@ -58,7 +58,7 @@ export class TowerIcon extends React.Component<Props, State> {
                         </div>) 
                     : (<></>) }
                     <div className='cost armor'>
-                        <img className='towerInfoIcon' src={Resources.Sandwall.path.toString()}></img>
+                        <img className='towerInfoIcon' src={Resources.Shield.path.toString()}></img>
                         <div className="costText">{config.tower[towerType].maxHealth}</div>
                     </div>
                     <div className='towerHoverText'>{config.tower[towerType].hoverText}</div>

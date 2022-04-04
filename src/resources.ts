@@ -22,6 +22,8 @@ import crabUrl from './images/crab.png';
 import seagullUrl from './images/seagull.png';
 import bottomBorderUrl from './images/bottom-border.png';
 import sideBorderUrl from './images/beneath-castle.png';
+import shieldUrl from './images/shield.png';
+
 // Sounds
 import clankUrl from "./sounds/clank.wav";
 import bgAmbiance from "./sounds/bg-beach.mp3";
@@ -69,6 +71,7 @@ export const Resources = {
   SeagullSheet: new ImageSource(seagullUrl, false, ImageFiltering.Pixel),
   BottomBorder: new ImageSource(bottomBorderUrl, false, ImageFiltering.Pixel),
   SideBorder: new ImageSource(sideBorderUrl, false, ImageFiltering.Pixel),
+  Shield: new ImageSource(shieldUrl, false, ImageFiltering.Pixel),
 
   // Sounds
   Clank: new Sound(clankUrl),
