@@ -16,11 +16,7 @@ export class PlayerState {
         const moneyContainer = document.getElementById("moneyContainer")!;
         moneyContainer.style.visibility = 'visible';
         const moneyText = document.getElementById("moneyDisplay")!;
-        moneyText.innerText = `${this.moneyResource.toString()}`;
-        const pos = game.screen.worldToScreenCoordinates(vec(config.grid.tileWidth / 2, config.grid.tileHeight / 2));
-        moneyContainer.style.left = pos.x.toString()+'px';
-        moneyContainer.style.top = pos.y.toString()+'px';
-
+        moneyText.innerText = `${this.moneyResource.toString()}`;        
     }
 
     static AddMoney(amt: number): void {

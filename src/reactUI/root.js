@@ -1,9 +1,19 @@
-import React from 'react'
-import * as ReactDOMClient from 'react-dom/client';
-import {TowerPickerUI} from './towerPickerUI'
+import React from "react";
+import * as ReactDOMClient from "react-dom/client";
+import { TowerPickerUI } from "./towerPickerUI";
+import { MoneyContainer } from "./money";
 
-const container = document.getElementById('reactUI');
+import "./root.scss";
+
+const container = document.getElementById("reactUI");
 const root = ReactDOMClient.createRoot(container);
 root.render(
-    <TowerPickerUI ref={(TowerPickerUI) => {window.TowerPickerUI = TowerPickerUI}}/>,
+  <>
+    <MoneyContainer />
+    <TowerPickerUI
+      ref={(TowerPickerUI) => {
+        window.TowerPickerUI = TowerPickerUI;
+      }}
+    />
+  </>
 );

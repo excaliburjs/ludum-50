@@ -1,20 +1,9 @@
-#reactUI {
-    position: absolute;
-    height: 14%;
-    bottom: 1%;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
 
 #towerSelection {
     display: none;
     font-family: 'Kanit', sans-serif;
     justify-content: center;
-    width: 166vh;
-    padding-left: 10%;
-    padding-right: 10%;
+    flex: 1;
 
     .tower {
         background-color: rgba(0, 0, 0, 0.3);
