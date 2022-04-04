@@ -19,6 +19,7 @@ export class Enemy extends Actor {
     private static TileDataEnemyCounterKey = "enemies";
     healthBar: Healthbar;
     turtleAnim: Animation;
+    crabAnim: Animation;
 
     // @ts-ignore
     constructor(type: EnemyType, grid: Grid, x: number, y: number) {        
@@ -60,11 +61,24 @@ export class Enemy extends Actor {
         });
         this.turtleAnim = Animation.fromSpriteSheet(turtleSheet, range(0, 7), 200, AnimationStrategy.Loop);
 
+        // crab type
+        const crabSheet = SpriteSheet.fromImageSource({
+            image: Resources.CrabSheet,
+            grid: {
+                rows: 1,
+                columns: 3,
+                spriteHeight: 64,
+                spriteWidth: 64
+            }
+        })
+        this.crabAnim = Animation.fromSpriteSheet(crabSheet, range(0, 2), 200, AnimationStrategy.PingPong);
+
         switch(this.type) {
             case EnemyType.Turtle:
                 this.graphics.use(this.turtleAnim);
                 break;
             case EnemyType.Crab:
+                this.graphics.use(this.crabAnim);
                 break;
         }
 
