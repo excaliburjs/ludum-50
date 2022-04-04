@@ -1,6 +1,6 @@
 import { Grid } from "./grid";
 import config from "./config";
-import { Actor, CollisionGroup, CollisionType, vec, PostCollisionEvent } from "excalibur";
+import { Sprite, Actor, CollisionGroup, CollisionType, vec, PostCollisionEvent } from "excalibur";
 import { Resources } from "./resources";
 import { Enemy } from "./enemy";
 import { GameOver } from "./game-over";
@@ -10,6 +10,7 @@ export class SandCastle extends Actor {
     maxHp: number = config.sandcastle.maxHealth;
     currentHp: number = this.maxHp;
     healthBar: Healthbar;
+    sandcastle: Sprite;
     constructor(grid: Grid, private gameOver: GameOver, row: number) {
         super({
             name: 'Sand Castle',
@@ -21,8 +22,8 @@ export class SandCastle extends Actor {
         });
         this.on('postcollision', evt => this.onPostCollision(evt));
 
-        const sandcastle = Resources.SandCastle.toSprite();
-        this.graphics.use(sandcastle);
+        this.sandcastle = Resources.SandCastle.toSprite();
+        this.graphics.use(this.sandcastle);
 
         // draw health bar
         this.healthBar = new Healthbar(this.maxHp);
@@ -38,6 +39,13 @@ export class SandCastle extends Actor {
         const damage = 1;
         this.currentHp -= damage;
         this.healthBar.takeDamage(damage);
+
+        const origPos = this.pos.clone();
+
+        this.actions
+            .easeTo(origPos.add(vec(3, 0)), 50)
+            .easeTo(origPos.add(vec(-3, 0)), 70)
+            .easeTo(origPos, 50);
         
         Resources.FxImpactCastleByEnemy.play();
 
