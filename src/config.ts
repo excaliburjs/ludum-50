@@ -34,14 +34,14 @@ export default {
   },
 
   sandcastle: {
-    maxHealth: 10,
+    maxHealth: 2,
   },
 
   healthBarWidthPixels: 64 - 10,
 
   player: {
     startingMonies: 5,
-    passiveWealthTick: 15,
+    passiveWealthTick: 30, // seconds before next passive wealth accumulation
     passiveWealthAmt: 1,
   },
 
@@ -50,7 +50,7 @@ export default {
       // rename this tower type?
       baseTowerFireRateMs: 5000,
       bulletDamage: 1,
-      bulletRadius: 10,
+      bulletRadius: 5,
       bulletSpeedPixelsPerSecond: 100,
       color: Color.Orange,
       cost: 1,
@@ -68,7 +68,7 @@ export default {
       // rename this tower type?
       baseTowerFireRateMs: 5000,
       bulletDamage: 2,
-      bulletRadius: 10,
+      bulletRadius: 5,
       bulletSpeedPixelsPerSecond: 750,
       color: Color.DarkGray,
       cost: 3,
@@ -93,7 +93,7 @@ export default {
       displayName: "Buckaroo",
       hoverText: "All the kids need sand to build!",
       maxHealth: 5,
-      resourceSpawnTimer: 15,
+      resourceSpawnTimer: 20,
       resourceSpawnValue: 1,
       sprite: Resources.BucketTower,
       spriteBroken: Resources.BucketTowerBroken,
@@ -130,7 +130,6 @@ export default {
       color: Color.Red, // the color of the actor when it doesn't have any art applied
       sprite: null,
       collisionGroup: "enemy_ground",
-      // TODO art and animations?
     },
     turtle: {
       width: 50,
@@ -142,12 +141,11 @@ export default {
       color: Color.Green,
       sprite: null,
       collisionGroup: "enemy_ground",
-      // TODO art and animations?
     },
     seagull: {
       width: 50,
       height: 50,
-      health: 1,
+      health: 2,
       damage: 1,
       damageTimerMs: 1000,
       speed: 26,
@@ -160,19 +158,18 @@ export default {
 
   waves: {
     0: {
-      name: "The Beginning", // tutorial
+      name: "A day at the beach", // tutorial
       offsets: {
         2: [
           { type: "crab", count: 0 }, // we hardcode the first enemy in level.ts so that it's on the path of the existing default tower
         ],
         15: [
           { type: "crab", count: 1 },
-        //   { type: "seagull", count: 15 },
         ],
         25: [{ type: "crab", count: 2 }],
         35: [
-          { type: "turtle", count: 1 },
-          { type: "crab", count: 2 },
+        //   { type: "turtle", count: 1 },
+          { type: "crab", count: 3 },
         ],
       },
     },
@@ -182,11 +179,11 @@ export default {
         // in seconds
         7: [
           { type: "crab", count: 1 },
-          { type: 'turtle', count: 3 }
+          { type: 'turtle', count: 1 }
         ],
         11: [
           // { type: 'crab', count: 3 },
-          { type: "turtle", count: 2 },
+          { type: "turtle", count: 1 },
         ],
         20: [
           { type: "crab", count: 2 },
@@ -197,7 +194,8 @@ export default {
     2: {
       name: "Wave 2",
       offsets: {
-        7: [{ type: "crab", count: 5 },
+        7: [
+            // { type: "crab", count: 5 },
             { type: "seagull", count: 3 },
         ],
         11: [{ type: "crab", count: 5 },
@@ -227,37 +225,37 @@ export default {
       },
     },
     4: {
-      name: "Wave INEVITABLE",
+      name: "Wave 3",
       offsets: {
         2: [
           { type: "crab", count: 5 },
           { type: "turtle", count: 6 },
           { type: "seagull", count: 3 },
         ],
-        7: [
+        10: [
           { type: "crab", count: 5 },
           { type: "turtle", count: 6 },
           { type: "seagull", count: 6 },
         ],
-        12: [
+        20: [
           { type: "crab", count: 5 },
           { type: "turtle", count: 9 },
           { type: "seagull", count: 6 },
         ],
-        17: [
+        30: [
           { type: "crab", count: 5 },
-          { type: "turtle", count: 12 },
+          { type: "turtle", count: 5 },
           { type: "seagull", count: 8 },
         ],
-        22: [
-          { type: "crab", count: 12 },
-          { type: "turtle", count: 15 },
-          { type: "seagull", count: 12 },
+        40: [
+          { type: "crab", count: 10 },
+          { type: "turtle", count: 5 },
+          { type: "seagull", count: 5 },
         ],
         27: [
-          { type: "crab", count: 15 },
-          { type: "turtle", count: 18 },
-          { type: "seagull", count: 12 },
+          { type: "crab", count: 10 },
+          { type: "turtle", count: 10 },
+          { type: "seagull", count: 7 },
         ],
       },
     },
