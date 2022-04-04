@@ -9,6 +9,7 @@ import towerBucketBrokenUrl from "./images/tower-bucket-broken-placeholder.png";
 import towerUrl from "./images/tower-placeholder.png";
 import towerBrokenUrl from "./images/tower-placeholder-broken.png";
 import sandWall from "./images/sandwall.png";
+import wall from "./images/wall.png";
 import waterUrl from './images/waves.png';
 import bucketSheetUrl from './images/tower-bucket.png';
 import compactedSandUrl from './images/sand.png';
@@ -50,7 +51,7 @@ export const Resources = {
     false,
     ImageFiltering.Pixel
   ),
-  Sandwall: new ImageSource(sandWall, false, ImageFiltering.Pixel),
+  Sandwall: new ImageSource(wall, false, ImageFiltering.Pixel),
   Water: new ImageSource(waterUrl, false, ImageFiltering.Pixel),
   BucketSheet: new ImageSource(bucketSheetUrl, false, ImageFiltering.Pixel),
   CompactedSand: new ImageSource(compactedSandUrl, false, ImageFiltering.Pixel),
