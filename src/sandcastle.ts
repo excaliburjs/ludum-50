@@ -1,6 +1,6 @@
 import { Grid } from "./grid";
 import config from "./config";
-import { Actor, CollisionGroup, CollisionType, Color, vec, PostCollisionEvent } from "excalibur";
+import { Actor, CollisionGroup, CollisionType, vec, PostCollisionEvent } from "excalibur";
 import { Resources } from "./resources";
 import { Enemy } from "./enemy";
 import { GameOver } from "./game-over";

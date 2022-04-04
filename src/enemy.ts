@@ -1,5 +1,5 @@
 import config from "./config";
-import { Actor, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, KillEvent, Engine, Tile, Color, vec } from "excalibur";
+import { Actor, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, KillEvent, Engine, Tile, vec } from "excalibur";
 import { Tower } from "./tower";
 import { Grid } from "grid";
 import { Healthbar } from "./healthbar";

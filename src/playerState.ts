@@ -1,6 +1,6 @@
 import config from "./config";
 import {game} from "./main";
-import { Actor, CollisionGroup, CollisionType, Color, Engine, Tile, vec, Vector } from "excalibur";
+import { vec } from "excalibur";
 
 export class PlayerState {
     static moneyResource = config.player.startingMonies;

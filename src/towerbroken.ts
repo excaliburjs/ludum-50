@@ -1,6 +1,6 @@
 import config from "./config";
-import { Actor, CollisionGroup, CollisionType, Color, Engine, ImageSource, Tile, vec, Vector} from "excalibur";
-import { Tower, TowerType } from "./tower"
+import { Actor, CollisionType, Engine, Tile, vec} from "excalibur";
+import { TowerType } from "./tower"
 import { Grid } from "./grid";
 
 export class TowerBroken extends Actor {

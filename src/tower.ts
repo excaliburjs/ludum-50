@@ -5,10 +5,8 @@ import {
   CollisionType,
   Color,
   Engine,
-  ImageSource,
   Tile,
   vec,
-  Vector,
   KillEvent,
   Random,
   Animation,
@@ -26,7 +24,6 @@ import { Healthbar } from "./healthbar";
 import { TowerBroken } from "./towerbroken";
 import { Resources, FxTowerFlings } from "./resources";
 import Config from "./config";
-import { Resource } from "../lib/excalibur/src/engine";
 
 const randFling = new Random(Config.Seed);
 

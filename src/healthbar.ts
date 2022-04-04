@@ -1,6 +1,5 @@
 import config from "./config";
 import { Actor, vec, Color, CollisionType, Engine } from "excalibur";
-import { CollisionPostSolveEvent, Vector } from "../lib/excalibur/src/engine";
 
 export class Healthbar extends Actor {
     public MaxHealth: number;

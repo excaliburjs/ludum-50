@@ -1,10 +1,9 @@
-import { Actor, Engine, Random, Scene, vec, Timer } from "excalibur";
-import { Resources } from "./resources";
+import { Engine, Random, Scene, vec, Timer } from "excalibur";
 import config from "./config";
 import { Grid } from "./grid";
 import { SandCastle } from "./sandcastle";
 import { EnemyGenerator } from "./enemyGenerator";
-import { Enemy, EnemyType } from "./enemy";
+import { EnemyType } from "./enemy";
 import { Tower, TowerType } from "./tower";
 import { TowerPlacer } from "./tower-placer";
 import { WaveDispatcher } from "./wave-dispatcher";

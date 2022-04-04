@@ -1,5 +1,5 @@
 import config from "./config";
-import { Tile, randomIntInRange, Random, range } from "excalibur";
+import { Tile, Random, range } from "excalibur";
 import { Level } from "./level";
 import { Enemy, EnemyType } from "./enemy";
 
