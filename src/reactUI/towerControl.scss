@@ -1,0 +1,109 @@
+#towerSelection {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    font-family: 'Kanit', sans-serif;
+    background-color: rgba(0, 0, 0, 0.3);
+    max-height: 15vh;
+    top: 85vh;
+    left: 10vw;
+
+    .tower {
+        padding: 5px;
+        font-size: 48px;
+        display: flex;
+        flex-direction: row;
+        border-radius: 6px;
+        border-style: solid;
+        border-width: thin;
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
+        position: relative;
+
+        &.selected {
+            font-weight: bold;
+            border-radius: 6px;
+            border-style: solid;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .towerHoverText {
+            visibility: hidden;
+            width: max-content;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+            padding: 5px 5px;
+            transition: opacity 1s ease-in-out;
+            font-size: 16px;
+            position: absolute;
+            z-index: 1;
+            left: 25%;
+            top: 0%;
+            transform: translate(-25%, -100%);
+            opacity: 0;
+        }
+        
+        &:hover {
+            .towerHoverText{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        .imageOuter {
+            text-align: center;
+            justify-content: center;
+            display: flex;
+        
+            .towerIcon {
+                display: block;
+                height: auto;
+                margin: auto;
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
+
+        .towerInfo {
+            display: flex;
+            flex-direction: column;
+            width: 100px;
+            max-width: 100%;
+            max-height: 33%;
+            height: auto;
+
+            .cost {
+                font-weight:bold;
+                font-size: 20px;
+                text-align: center;
+                display: flex;
+                position: relative;
+                flex-direction: row;
+                justify-content: center;
+                max-width: 100%;
+                max-height: 100%;
+                height: auto;
+               
+                .towerInfoIcon {
+                    height: auto;
+                    max-height: 100%;
+                    max-width: 100%;
+                }
+                
+                .costText {
+                    margin-block: auto;
+                    position: absolute;
+                    top: 55%;
+                    left: 50%;
+                    transform: translate(-55%, -50%);
+                    text-shadow: -1px 1px 0 #FFF, 1px 1px 0 #FFF, 1px -1px 0 #FFF, -1px -1px 0 #FFF;
+                }
+            }
+        }
+    }
+}

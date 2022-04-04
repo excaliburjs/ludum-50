@@ -88,9 +88,9 @@ export class Level extends Scene {
 
         const towerMenu = document.getElementById("towerSelection")!;
         const pos = engine.screen.worldToScreenCoordinates(vec(0, engine.screen.viewport.height - 250));
-        towerMenu.style.left = pos.x.toString();
-        towerMenu.style.top = pos.y.toString() + "px";
-        towerMenu.style.display = "flex";
+        // towerMenu.style.left = pos.x.toString();
+        // towerMenu.style.top = pos.y.toString() + "px";
+        //towerMenu.style.display = "flex";
 
         // enemy spawn test
         // this.enemyGenerator.spawnEnemy(EnemyType.Crab, config.grid.width - 1, 0);

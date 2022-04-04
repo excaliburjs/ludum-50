@@ -18,6 +18,8 @@
   },
   "devDependencies": {
     "@parcel/transformer-glsl": "^2.4.0",
+    "@parcel/transformer-less": "^2.4.0",
+    "@parcel/transformer-sass": "^2.4.0",
     "@types/classnames": "2.3.1",
     "@types/dat.gui": "^0.7.7",
     "@types/react": "^17.0.43",
