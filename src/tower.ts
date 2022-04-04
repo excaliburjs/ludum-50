@@ -126,14 +126,14 @@ export class Tower extends Actor {
     this._currentFireTimer -= updateMs;
     if(!this.isResourceType()) {
         if (this.readyToFire()) {
-        if (this.hasEnemyToFireOn()) {
-            this.fire();
-            this._currentFireTimer = config.tower[this.type].baseTowerFireRateMs;
-            this.setSprite();
-        } else {
-            this._currentFireTimer = 0;
-            this.setSprite();
-        }
+            if (this.hasEnemyToFireOn()) {
+                this.fire();
+                this._currentFireTimer = config.tower[this.type].baseTowerFireRateMs;
+                this.setSprite();
+            } else {
+                this._currentFireTimer = 0;
+                this.setSprite();
+            }
         }
     }
     else 
