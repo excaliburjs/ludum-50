@@ -13,6 +13,7 @@ import waterUrl from './images/waves.png';
 import bucketSheetUrl from './images/tower-bucket.png';
 import compactedSandUrl from './images/sand.png';
 import beachBallUrl from './images/beachball.png';
+import turtleUrl from './images/turtle.png';
 
 // Sounds
 import clankUrl from "./sounds/clank.wav";
@@ -54,6 +55,7 @@ export const Resources = {
   BucketSheet: new ImageSource(bucketSheetUrl, false, ImageFiltering.Pixel),
   CompactedSand: new ImageSource(compactedSandUrl, false, ImageFiltering.Pixel),
   Beachball: new ImageSource(beachBallUrl, false, ImageFiltering.Pixel),
+  TurtleSheet: new ImageSource(turtleUrl, false, ImageFiltering.Pixel),
   // Sounds
   Clank: new Sound(clankUrl),
   BackgroundAmbiance: new Sound(bgAmbiance),

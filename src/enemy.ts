@@ -1,5 +1,5 @@
 import config from "./config";
-import { Actor, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, KillEvent, Engine, Tile, vec } from "excalibur";
+import { Actor, Vector, CollisionGroupManager, CollisionType, PostCollisionEvent, KillEvent, Engine, Tile, Color, vec, SpriteSheet, Animation, range, AnimationStrategy } from "excalibur";
 import { Tower } from "./tower";
 import { Grid } from "grid";
 import { Healthbar } from "./healthbar";
@@ -18,6 +18,7 @@ export class Enemy extends Actor {
     private _occupiedTile: Tile | null = null;
     private static TileDataEnemyCounterKey = "enemies";
     healthBar: Healthbar;
+    turtleAnim: Animation;
 
     // @ts-ignore
     constructor(type: EnemyType, grid: Grid, x: number, y: number) {        
@@ -46,6 +47,26 @@ export class Enemy extends Actor {
         // @ts-ignore
         const enemySprite = config.enemy[this.type].sprite?.toSprite();
         if (enemySprite) this.graphics.use(enemySprite);
+
+        // turtle type
+        const turtleSheet = SpriteSheet.fromImageSource({
+            image: Resources.TurtleSheet,
+            grid: {
+                rows: 1,
+                columns: 8,
+                spriteHeight: 64,
+                spriteWidth: 64
+            }
+        });
+        this.turtleAnim = Animation.fromSpriteSheet(turtleSheet, range(0, 7), 200, AnimationStrategy.Loop);
+
+        switch(this.type) {
+            case EnemyType.Turtle:
+                this.graphics.use(this.turtleAnim);
+                break;
+            case EnemyType.Crab:
+                break;
+        }
 
           // draw health bar
         this.healthBar = new Healthbar(this.maxHealth);
