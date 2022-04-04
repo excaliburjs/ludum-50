@@ -108,6 +108,15 @@ export class Level extends Scene {
         bottomBorder.graphics.use(Resources.BottomBorder.toSprite());
         this.add(bottomBorder);
 
+        const sideBorder = new Actor({
+            pos: vec(32, engine.screen.resolution.height / 2),
+            height: 50, width: 50,
+            color: Color.Orange,
+            z: -1,
+        })
+        sideBorder.graphics.use(Resources.SideBorder.toSprite());
+        this.add(sideBorder);
+
         const towerMenu = document.getElementById("towerSelection")!;
         towerMenu.style.display = "flex";
 
