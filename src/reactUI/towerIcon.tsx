@@ -39,24 +39,25 @@ export class TowerIcon extends React.Component<Props, State> {
                 onClick={this.handleClick}>
                 <div className='imageOuter'>
                     <img className='towerIcon' src={config.tower[towerType].sprite?.path?.toString()}></img>
+                    <strong className="towerName">{config.tower[towerType].displayName}</strong>
                 </div>
                 <div className='towerInfo'>
-                    <div className="cost">
+                    <div className="cost costs-sand">
                         <img className='towerInfoIcon' src={Resources.CompactedSand.path.toString()}></img>
                         <div className="costText">{config.tower[towerType].cost}</div>
                     </div>
                     { hasDamage ?
-                        (<div className="cost">
+                        (<div className="cost has-damage">
                             <img className='towerInfoIcon' src={Resources.Beachball.path.toString()}></img>
                             <div className="costText">{config.tower[towerType].bulletDamage}</div>
                         </div>)
                     : makesMoney ? 
-                        (<div className='cost'>
+                        (<div className='cost makes-money'>
                             <img className='towerInfoIcon' src={Resources.CompactedSand.path.toString()}></img>
                             <div className="costText">+{config.tower[towerType].resourceSpawnValue}/{config.tower[towerType].resourceSpawnTimer}s</div>
                         </div>) 
                     : (<></>) }
-                    <div className='cost'>
+                    <div className='cost armor'>
                         <img className='towerInfoIcon' src={Resources.Sandwall.path.toString()}></img>
                         <div className="costText">{config.tower[towerType].maxHealth}</div>
                     </div>
