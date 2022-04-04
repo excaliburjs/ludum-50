@@ -34,7 +34,7 @@ export default {
   },
 
   sandcastle: {
-    maxHealth: 2,
+    maxHealth: 3,
   },
 
   healthBarWidthPixels: 64 - 10,
