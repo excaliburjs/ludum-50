@@ -25,6 +25,7 @@ import seagullUrl from './images/seagull.png';
 import bottomBorderUrl from './images/bottom-border.png';
 import sideBorderUrl from './images/beneath-castle.png';
 import shieldUrl from './images/shield.png';
+import blockedCursorUrl from './images/blocked-cursor.png';
 
 // Sounds
 import clankUrl from "./sounds/clank.wav";
@@ -76,6 +77,7 @@ export const Resources = {
   BottomBorder: new ImageSource(bottomBorderUrl, false, ImageFiltering.Pixel),
   SideBorder: new ImageSource(sideBorderUrl, false, ImageFiltering.Pixel),
   Shield: new ImageSource(shieldUrl, false, ImageFiltering.Pixel),
+  BlockedCursor: new ImageSource(blockedCursorUrl, false, ImageFiltering.Pixel),
 
   // Sounds
   Clank: new Sound(clankUrl),

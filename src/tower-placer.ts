@@ -1,4 +1,4 @@
-import { Engine, Input, Tile, Actor, Color, Rectangle, vec } from "excalibur";
+import { Engine, Input, Tile, Actor, Color, Rectangle, vec, Circle } from "excalibur";
 import { Tower, TowerType } from "./tower";
 import { Grid } from "./grid";
 import config from "./config";
@@ -15,6 +15,7 @@ export class TowerPlacer {
   private _rect: Rectangle;
   selectedTowerType: TowerType = TowerType.default;
   private ghostTower: Actor;
+  private towerPlacementBlockedOrDisallowed: boolean = false; // used only for cursor updates for squares blocked by enemy units or ocean waves
   constructor(grid: Grid, engine: Engine) {
     this._grid = grid;
     this._engine = engine;
@@ -31,12 +32,19 @@ export class TowerPlacer {
       if (this._highlightedTile.data.has("tower")) {
         this._rect.strokeColor = Color.Yellow;
         this._placeable = false;
+        this.towerPlacementBlockedOrDisallowed = false;
       } else if (Enemy.enemiesInTile(this._highlightedTile) > 0 || this._highlightedTile.data.has("water")) {
         this._placeable = !this._highlightedTile.data.has("water");
         this._rect.strokeColor = Color.Red;
+        this.towerPlacementBlockedOrDisallowed = true;
+        const blockedSprite = Resources.BlockedCursor.toSprite();
+        this.ghostTower.graphics.use(blockedSprite);
       } else {
         this._rect.strokeColor = Color.Green;
         this._placeable = true;
+        this.towerPlacementBlockedOrDisallowed = false;
+        const sprite = config.tower[(window as any).TowerPickerUI.selectedTower() as TowerType]?.sprite?.toSprite();
+        this.ghostTower.graphics.use(sprite);
       }
       this.updateGhostTowerVisibility();
     };
@@ -64,10 +72,17 @@ export class TowerPlacer {
     const maybeTile = this._grid.tileMap.getTileByPoint(evt.worldPos);
     const sprite = config.tower[(window as any).TowerPickerUI.selectedTower() as TowerType]?.sprite?.toSprite();
     if(sprite) {
+      if (this.towerPlacementBlockedOrDisallowed) {
+        const blockedSprite = Resources.BlockedCursor.toSprite();
+        this.ghostTower.graphics.use(blockedSprite);
+        this._hasSprite = true;
+      } else {
         this.ghostTower.graphics.use(sprite);
         this._hasSprite = true;
+      }
+    } else {
+      this._hasSprite = false;
     }
-    else this._hasSprite = false;
     this.updateGhostTowerVisibility();
 
     if (maybeTile) {
