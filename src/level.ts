@@ -1,4 +1,5 @@
-import { Engine, Random, Scene, vec, Timer } from "excalibur";
+import { Engine, Random, Scene, vec, Timer, Actor, Color } from "excalibur";
+import { Resources } from "./resources";
 import config from "./config";
 import { Grid } from "./grid";
 import { SandCastle } from "./sandcastle";
@@ -95,6 +96,17 @@ export class Level extends Scene {
             this.sandCastles.push(sandcastle);
             this.add(sandcastle);
         }
+
+        const bottomBorder = new Actor({
+            // pos: vec(game.drawWidth / 2, game.drawHeight / 2), // excalibur: this doesn't work
+            // pos: vec(game.canvasWidth / 2, game.canvasHeight / 2), // excalibur: this doesn't work either
+            pos: vec(engine.screen.resolution.width / 2, engine.screen.resolution.height - 32),
+            height: 50, width: 50,
+            color: Color.Orange,
+            z: -1,
+        });
+        bottomBorder.graphics.use(Resources.BottomBorder.toSprite());
+        this.add(bottomBorder);
 
         const towerMenu = document.getElementById("towerSelection")!;
         towerMenu.style.display = "flex";

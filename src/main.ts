@@ -120,6 +120,8 @@ export class Game extends Engine {
 
 export const game = new Game();
 
+game.backgroundColor = Color.fromHex('#eec39a');
+
 // debugging hotkeys
 // Pressing 'p' on the keyboard will toggle pause/resume of the game
 // Pressing ';' will toggle excalibur debug mode (this won't update unless game is running)
