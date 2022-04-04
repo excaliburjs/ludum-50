@@ -4,9 +4,11 @@ import { Tower } from "./tower";
 import { Grid } from "grid";
 import { Healthbar } from "./healthbar";
 import { Resources } from './resources';
+import { EnemyGenerator } from "./enemyGenerator";
 
 export class Enemy extends Actor {
-    public static CollisionGroup = CollisionGroupManager.create("enemy");
+    public static CollisionGroupGround = CollisionGroupManager.create("enemy_ground");
+    public static CollisionGroupFlying = CollisionGroupManager.create("enemy_flying");
 
     public maxHealth: number;
     private currentHp: number;
@@ -32,7 +34,7 @@ export class Enemy extends Actor {
             height: configValues.height, 
             color: configValues.color, 
             collisionType: CollisionType.Active,
-            collisionGroup: Enemy.CollisionGroup,
+            collisionGroup: (configValues.collisionGroup == "enemy_flying" ? Enemy.CollisionGroupFlying : Enemy.CollisionGroupGround),
             vel: new Vector(-1 * configValues.speed, 0), // moves horizontally, right to left
         });
         this.addTag('enemy');

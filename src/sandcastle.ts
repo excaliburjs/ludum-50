@@ -17,7 +17,7 @@ export class SandCastle extends Actor {
             width: config.grid.tileWidth,
             height: config.grid.tileHeight,
             collisionType: CollisionType.Fixed,
-            collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup])
+            collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroupGround, Enemy.CollisionGroupFlying])
         });
         this.on('postcollision', evt => this.onPostCollision(evt));
 

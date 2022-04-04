@@ -53,7 +53,7 @@ export class Tower extends Actor {
       width: config.grid.tileWidth,
       height: config.grid.tileHeight,
       collisionType: CollisionType.Fixed,
-      collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
+      collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroupGround]),
       color: config.tower[towerType].color,
     });
 
@@ -103,12 +103,10 @@ export class Tower extends Actor {
   }
 
   setSprite() {
-    if(this.readyToFire())
-    {
+    if(this.readyToFire()) {
         const towerSprite = config.tower[this.type].spriteReady?.toSprite();
         if (towerSprite) this.graphics.use(towerSprite);
-    }
-    else {
+    } else {
         const towerSprite = config.tower[this.type].sprite?.toSprite();
         if (towerSprite) this.graphics.use(towerSprite);
     }
@@ -135,9 +133,7 @@ export class Tower extends Actor {
                 this.setSprite();
             }
         }
-    }
-    else 
-    {
+    } else {
       // Resource tower charging up
       if (this._resourceTimer <= config.tower[this.type].resourceSpawnTimer && !this._resourceAvailable) {
         const percentLoaded = this._resourceTimer / config.tower[this.type].resourceSpawnTimer;
@@ -208,7 +204,7 @@ export class Tower extends Actor {
       radius: config.tower[this.type].bulletRadius,
       color: Color.Black,
       angularVelocity: Math.PI * 2,
-      collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroup]),
+      collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroupGround, Enemy.CollisionGroupFlying]),
       collisionType: CollisionType.Passive,
     });
 

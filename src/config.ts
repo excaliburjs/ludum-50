@@ -120,6 +120,7 @@ export default {
             speed: 15, // (pixels/second)
             color: Color.Red, // the color of the actor when it doesn't have any art applied
             sprite: null,
+            collisionGroup: "enemy_ground",
             // TODO art and animations?
         },
         turtle: {
@@ -131,6 +132,7 @@ export default {
             speed: 8,
             color: Color.Green,
             sprite: null,
+            collisionGroup: "enemy_ground",
             // TODO art and animations?
         },
         seagull: {
@@ -142,6 +144,7 @@ export default {
             speed: 26,
             color: Color.Blue,
             sprite: null,
+            collisionGroup: "enemy_flying",
         }
         // other enemy types?
     },
@@ -155,7 +158,7 @@ export default {
                 ],
                 15: [
                     { type: 'crab', count: 1},
-                    { type: 'seagull', count: 1},
+                    { type: 'seagull', count: 15},
                 ],
                 25: [
                     {type: 'crab', count: 2},
