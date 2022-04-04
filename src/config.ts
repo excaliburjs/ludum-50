@@ -33,7 +33,7 @@ export default {
     healthBarWidthPixels: 64 - 10,
 
     player: {
-        startingMonies: 100,
+        startingMonies: 5,
         passiveWealthTick: 15,
         passiveWealthAmt: 1
     },
