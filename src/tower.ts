@@ -32,7 +32,7 @@ export class Tower extends Actor {
   private _grid: Grid;
   private _tile: Tile;
   healthBar: Healthbar;
-  currentHp: number = 5;
+  currentHp: number;
   maxHealth: number;
   cost: number;
   type: TowerType;
@@ -62,6 +62,7 @@ export class Tower extends Actor {
     this.row = this._grid.tileMap.getRows()[y];
     this.type = towerType;
     this.maxHealth = config.tower[this.type].maxHealth;
+    this.currentHp = this.maxHealth;
     this.cost = config.tower[this.type].cost;
 
     const towerSprite = config.tower[this.type].sprite?.toSprite();
@@ -85,7 +86,7 @@ export class Tower extends Actor {
     this.bucketGlow = Animation.fromSpriteSheet(this.bucketSheet, range(5, 8), 200, AnimationStrategy.Loop);
 
     // draw health bar
-    this.healthBar = new Healthbar(5);
+    this.healthBar = new Healthbar(this.maxHealth);
     this.addChild(this.healthBar);
     this.on("kill", (ke) => this.onKill(ke));
     this.on('pointerdown', (evt) => this.onClick(evt));
