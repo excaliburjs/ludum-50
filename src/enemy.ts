@@ -49,6 +49,7 @@ export class Enemy extends Actor {
       name: "Enemy",
       x,
       y,
+      z: config.z.enemies,
       width: configValues.width,
       height: configValues.height,
       color: configValues.color,

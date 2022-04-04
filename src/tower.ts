@@ -55,6 +55,7 @@ export class Tower extends Actor {
       collisionType: CollisionType.Fixed,
       collisionGroup: CollisionGroup.collidesWith([Enemy.CollisionGroupGround]),
       color: config.tower[towerType].color,
+      z: config.z.towers,
     });
 
     this._grid = grid;
@@ -182,7 +183,7 @@ export class Tower extends Actor {
         name: "Collected Sand",
         pos: this.pos,
         z: 10,
-        scale: vec(0.8, 0.8)
+        scale: vec(0.8, 0.8),
       });
 
       collectedActor.on("initialize", (evt) => {
@@ -200,8 +201,10 @@ export class Tower extends Actor {
         // );
         var screenMoneyPos = vec(
           Math.round(config.grid.tileWidth + config.grid.tileWidth / 4),
-          Math.round(config.grid.tileHeight * config.grid.height +
-            config.grid.tileHeight / 2)
+          Math.round(
+            config.grid.tileHeight * config.grid.height +
+              config.grid.tileHeight / 2
+          )
         );
 
         evt.target.actions
@@ -242,6 +245,7 @@ export class Tower extends Actor {
         Enemy.CollisionGroupFlying,
       ]),
       collisionType: CollisionType.Passive,
+      z: config.z.bullets,
     });
 
     bullet.graphics.use(this.beachball);
