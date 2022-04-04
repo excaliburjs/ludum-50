@@ -20,6 +20,7 @@ export class Enemy extends Actor {
     healthBar: Healthbar;
     turtleAnim: Animation;
     crabAnim: Animation;
+    seagullAnim: Animation;
 
     // @ts-ignore
     constructor(type: EnemyType, grid: Grid, x: number, y: number) {        
@@ -73,6 +74,19 @@ export class Enemy extends Actor {
         })
         this.crabAnim = Animation.fromSpriteSheet(crabSheet, range(0, 2), 200, AnimationStrategy.PingPong);
 
+        // seagull type
+        const seagullSheet = SpriteSheet.fromImageSource({
+            image: Resources.SeagullSheet,
+            grid: {
+                rows: 1,
+                columns: 3,
+                spriteHeight: 64,
+                spriteWidth: 64
+            }
+        });
+        this.seagullAnim = Animation.fromSpriteSheet(seagullSheet, range(0, 2), 200, AnimationStrategy.PingPong);
+
+
         switch(this.type) {
             case EnemyType.Turtle:
                 this.graphics.use(this.turtleAnim);
@@ -80,7 +94,11 @@ export class Enemy extends Actor {
             case EnemyType.Crab:
                 this.graphics.use(this.crabAnim);
                 break;
+            case EnemyType.Seagull:
+                this.graphics.use(this.seagullAnim);
+                break;
         }
+        
 
           // draw health bar
         this.healthBar = new Healthbar(this.maxHealth);
@@ -182,5 +200,6 @@ export class Enemy extends Actor {
 export enum EnemyType {
     Crab = 'crab',
     Turtle = 'turtle',
+    Seagull = 'seagull',
     // others?
 }

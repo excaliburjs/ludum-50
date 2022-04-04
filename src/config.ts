@@ -133,6 +133,16 @@ export default {
             sprite: null,
             // TODO art and animations?
         },
+        seagull: {
+            width: 50,
+            height: 50,
+            health: 1,
+            damage: 1,
+            damageTimerMs: 1000,
+            speed: 26,
+            color: Color.Blue,
+            sprite: null,
+        }
         // other enemy types?
     },
 
@@ -145,6 +155,7 @@ export default {
                 ],
                 15: [
                     { type: 'crab', count: 1},
+                    { type: 'seagull', count: 1},
                 ],
                 25: [
                     {type: 'crab', count: 2},

@@ -20,6 +20,7 @@ import beachBallUrl from './images/beachball.png';
 import turtleUrl from './images/turtle.png';
 import crabUrl from './images/crab.png';
 import bottomBorderUrl from './images/bottom-border.png';
+import seagullUrl from './images/seagull.png';
 
 // Sounds
 import clankUrl from "./sounds/clank.wav";
@@ -67,7 +68,7 @@ export const Resources = {
   TurtleSheet: new ImageSource(turtleUrl, false, ImageFiltering.Pixel),
   CrabSheet: new ImageSource(crabUrl, false, ImageFiltering.Pixel),
   BottomBorder: new ImageSource(bottomBorderUrl, false, ImageFiltering.Pixel),
-
+  SeagullSheet: new ImageSource(seagullUrl, false, ImageFiltering.Pixel),
   // Sounds
   Clank: new Sound(clankUrl),
   BackgroundAmbiance: new Sound(bgAmbiance),
