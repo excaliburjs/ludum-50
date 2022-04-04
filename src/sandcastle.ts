@@ -23,7 +23,10 @@ export class SandCastle extends Actor {
         this.on('postcollision', evt => this.onPostCollision(evt));
 
         this.sandcastle = Resources.SandCastle.toSprite();
-        this.graphics.use(this.sandcastle);
+        // this.graphics.use(this.sandcastle);
+        this.graphics.add('default', this.sandcastle);
+        // this.graphics.add('damaged', Resources.SandCastleDamaged.toSprite());
+        // this.graphics.add('destroyed', Resources.SandCastleDestroyed.toSprite());
 
         // draw health bar
         this.healthBar = new Healthbar(this.maxHp);
@@ -49,7 +52,16 @@ export class SandCastle extends Actor {
         
         Resources.FxImpactCastleByEnemy.play();
 
+        // TODO for some reason, switching to a new graphic or replacing current graphic for a sandcastle causes a fatal error in Excalibur's draw code
+        // if (this.currentHp = 1) {
+        //     this.graphics.show('damaged');
+        //     // this.graphics.use(Resources.SandCastleDamaged.toSprite());
+        // }
+
         if (this.currentHp <= 0) {
+            // this.graphics.use(Resources.SandCastleDestroyed.toSprite());
+            // this.graphics.show('destroyed');
+            // this.graphics.show('default');
             this.kill();
             this.gameOver.triggerGameOver();
         }

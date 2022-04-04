@@ -4,6 +4,8 @@ import { ImageSource, Sound, ImageFiltering } from "excalibur";
 import swordUrl from "./images/sword.png";
 import sandUrl from "./images/sand-placeholder.png";
 import sandCastleUrl from "./images/sandcastle-placeholder.png";
+import sandCastleDamagedUrl from "./images/sandcastle-damaged.png";
+import sandCastleDestroyedUrl from "./images/sandcastle-destroyed.png";
 import towerBucketUrl from "./images/tower-bucket-placeholder.png";
 import towerBucketBrokenUrl from "./images/tower-bucket-broken-placeholder.png";
 import towerUrl from "./images/base-tower.png";
@@ -50,6 +52,8 @@ export const Resources = {
   Sword: new ImageSource(swordUrl),
   Sand: new ImageSource(sandUrl, false, ImageFiltering.Pixel),
   SandCastle: new ImageSource(sandCastleUrl, false, ImageFiltering.Pixel),
+  SandCastleDamaged: new ImageSource(sandCastleDamagedUrl, false, ImageFiltering.Pixel),
+  SandCastleDestroyed: new ImageSource(sandCastleDestroyedUrl, false, ImageFiltering.Pixel),
   BaseTower: new ImageSource(towerUrl, false, ImageFiltering.Pixel),
   BaseTowerBroken: new ImageSource(towerBrokenUrl, false, ImageFiltering.Pixel),
   CatapultTower: new ImageSource(catapultUrl, false, ImageFiltering.Pixel),
