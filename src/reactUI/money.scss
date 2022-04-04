@@ -1,0 +1,28 @@
+#moneyContainer {
+  visibility: hidden;
+  height: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 15%;
+}
+
+#moneyImage {
+  image-rendering: pixelated;
+  grid-column: 1;
+  grid-row: 1;
+  transform: scale(1.7);
+  z-index: 1;
+}
+#moneyDisplay {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 2;
+  margin-top: 20%;
+  font-family: 'Kanit', sans-serif;
+  font-size: 1.7rem;
+  text-shadow: -1px 1px 0 #FFF, 1px 1px 0 #FFF, 1px -1px 0 #FFF, -1px -1px 0 #FFF;
+}
