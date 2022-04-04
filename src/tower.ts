@@ -124,18 +124,20 @@ export class Tower extends Actor {
   onPostUpdate(_engine: Engine, updateMs: number) {
     this._resourceTimer += updateMs / 1000;
     this._currentFireTimer -= updateMs;
-    if (this.readyToFire()) {
-      if (this.hasEnemyToFireOn()) {
-        this.fire();
-        this._currentFireTimer = config.tower[this.type].baseTowerFireRateMs;
-        this.setSprite();
-      } else {
-        this._currentFireTimer = 0;
-        this.setSprite();
-      }
+    if(!this.isResourceType()) {
+        if (this.readyToFire()) {
+        if (this.hasEnemyToFireOn()) {
+            this.fire();
+            this._currentFireTimer = config.tower[this.type].baseTowerFireRateMs;
+            this.setSprite();
+        } else {
+            this._currentFireTimer = 0;
+            this.setSprite();
+        }
+        }
     }
-
-    if (this.isResourceType()) {
+    else 
+    {
       // Resource tower charging up
       if (this._resourceTimer <= config.tower[this.type].resourceSpawnTimer && !this._resourceAvailable) {
         const percentLoaded = this._resourceTimer / config.tower[this.type].resourceSpawnTimer;
