@@ -10,8 +10,8 @@ export interface WavesDescriptor {
 }
 
 export default {
-  DatGuiMenuEnabled: true,
-  ShowDevTool: true,
+  DatGuiMenuEnabled: false,
+  ShowDevTool: false,
   SoundVolume: 0.3,
   BackgroundAmbianceVolume: 1.0,
   BackgroundMusicVolume: 0.2,

@@ -125,24 +125,24 @@ game.backgroundColor = Color.fromHex('#eec39a');
 // debugging hotkeys
 // Pressing 'p' on the keyboard will toggle pause/resume of the game
 // Pressing ';' will toggle excalibur debug mode (this won't update unless game is running)
-game.input.keyboard.on('release', (event) => {
-    switch(event.key) {
-        case Input.Keys.P : 
-            if (game.isRunning()) {
-                game.stop();
-                Logger.getInstance().info('game paused');
-            } else {
-                game.start();
-                Logger.getInstance().info('game resumed');
-            }
-            break;
-        case Input.Keys.Semicolon :
-            game.toggleDebug();
-            break;
-        case Input.Keys.Equal :
-            game.setupDevTool();
-            break;
-    }
-});
+// game.input.keyboard.on('release', (event) => {
+//     switch(event.key) {
+//         case Input.Keys.P : 
+//             if (game.isRunning()) {
+//                 game.stop();
+//                 Logger.getInstance().info('game paused');
+//             } else {
+//                 game.start();
+//                 Logger.getInstance().info('game resumed');
+//             }
+//             break;
+//         case Input.Keys.Semicolon :
+//             game.toggleDebug();
+//             break;
+//         case Input.Keys.Equal :
+//             game.setupDevTool();
+//             break;
+//     }
+// });
 
 game.init();
