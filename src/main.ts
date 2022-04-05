@@ -36,11 +36,11 @@ const buildGui = (gui: any, folder: any,  obj: any) => {
     }
 }
 
-if(true){
-    const gui = new dat.GUI({name: "Ludum 50"});
-    let folder= gui.addFolder("Ludum 50");
-    buildGui(gui, folder, config);
-}
+// if(true){
+//     const gui = new dat.GUI({name: "Ludum 50"});
+//     let folder= gui.addFolder("Ludum 50");
+//     buildGui(gui, folder, config);
+// }
 
 
 
