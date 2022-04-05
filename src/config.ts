@@ -21,7 +21,9 @@ export default {
     towers: 3,
     bullets: 6,
     enemies: 4,
-    healthbars: 5
+    healthbars: 5,
+    collectedSand: 6,
+    sandpile: 7
   },
 
   // Grid (the "board" of the game)

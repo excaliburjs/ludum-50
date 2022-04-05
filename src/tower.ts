@@ -182,30 +182,14 @@ export class Tower extends Actor {
       const collectedActor = new Actor({
         name: "Collected Sand",
         pos: this.pos,
-        z: 10,
+        z: config.z.collectedSand,
         scale: vec(0.8, 0.8),
       });
 
       collectedActor.on("initialize", (evt) => {
         evt.target.graphics.use(this.sand);
 
-        // NOT KILLING EVEN THOUGH IT WORKS
-        // const moneyPos = $("#moneyContainer").offset();
-        // const moneyWidth = $("#moneyContainer").width();
-        // const moneyHeight = $("#moneyContainer").height();
-        // const screenMoneyPos = evt.engine.screen.pageToScreenCoordinates(
-        //   vec(
-        //     Math.round(moneyPos.left + moneyWidth / 2),
-        //     Math.round(moneyPos.top + moneyHeight / 2)
-        //   )
-        // );
-        var screenMoneyPos = vec(
-          Math.round(config.grid.tileWidth + config.grid.tileWidth / 4),
-          Math.round(
-            config.grid.tileHeight * config.grid.height +
-              config.grid.tileHeight / 2
-          )
-        );
+        const screenMoneyPos = PlayerState.hoard.pos.clone();
 
         evt.target.actions
           .easeTo(screenMoneyPos, 500, EasingFunctions.EaseOutCubic)

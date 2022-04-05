@@ -1,26 +1,30 @@
 import config from "./config";
-import {game} from "./main";
-import { vec } from "excalibur";
+import { Sandpile } from "./sand-pile";
 
 export class PlayerState {
+    static hoard: Sandpile;
+
     static moneyResource = config.player.startingMonies;
+
+    static initialize(hoard: Sandpile) {
+        this.hoard = hoard;
+        this.updateHoard();
+    }
     
     static SubtractMoney(amt: number): boolean {
         if(this.moneyResource < amt) return false;
         this.moneyResource -= amt;
-        this.updateDisplay();
+        this.updateHoard();
         return true;
-    }
-
-    private static updateDisplay(){
-        const moneyContainer = document.getElementById("moneyContainer")!;
-        moneyContainer.style.visibility = 'visible';
-        const moneyText = document.getElementById("moneyDisplay")!;
-        moneyText.innerText = `${this.moneyResource.toString()}`;        
     }
 
     static AddMoney(amt: number): void {
         this.moneyResource += amt;
-        this.updateDisplay();
+        this.updateHoard();
+    }
+
+    private static updateHoard() {
+        if (!this.hoard) throw new Error('Money resource is not initialized');
+        this.hoard.updateAmount(this.moneyResource);
     }
 }

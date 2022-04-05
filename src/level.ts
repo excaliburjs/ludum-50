@@ -12,6 +12,7 @@ import { GameOver } from "./game-over";
 import { SoundManager } from "./sound-manager";
 import { Water } from "./water-edge";
 import { PlayerState } from "./playerState";
+import { Sandpile } from "./sand-pile";
 
 export class Level extends Scene {
     random = new Random(Date.now());
@@ -59,7 +60,11 @@ export class Level extends Scene {
         }
 
         this.enemyGenerator = new EnemyGenerator(this, this.random);
-
+        
+        const sandPile = new Sandpile();
+        this.add(sandPile);
+        PlayerState.initialize(sandPile);
+        
         // Initial towers
         const tutorialDefaultTower = new Tower(TowerType.default, this.grid, 4, 3);
         this.grid.tileMap.getTile(4, 3).data.set("tower", tutorialDefaultTower);
