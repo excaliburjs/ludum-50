@@ -1,13 +1,25 @@
-# Ludum Dare 50
+# :warning: Important Note for future explorers
+
+If you’re looking for good examples of how to build games in Excalibur, please visit the [official sample gallery](https://excaliburjs.com/samples/).
+
+We don’t recommend using this game’s source code as an example for your own work
+- it was built quickly during a game jam; the code likely cuts a few corners and is a bit messy in some places
+- the version of Excalibur it's using is out-of-date; the API may have changed, and there are newer, better design patterns for building games using the Excalibur engine.
+
+If you’d like to explore for curiosity’s sake, go on ahead, and good luck!
+
+*- the Excalibur.js team*
+
+## Ludum Dare 50
 
 Visit https://excaliburjs.com/ludum-50/ to play!
 
-## Prequisites
+### Prequisites
 
 - NodeJS 16.x
 - Git
 
-## Local Development
+### Local Development
 
 Updating your local copy with `git pull -r` to rebase your local commits on top of upstream, makes the `main` easy to follow and merges less difficult.
 
@@ -40,11 +52,11 @@ Updating your local copy with `git pull -r` to rebase your local commits on top 
 
 8. Make your changes, commit directly to the 'main' branch, update your local copy with `git pull -r`, and then push to the remote repository.
 
-### Debugging tools
+#### Debugging tools
 
 We have excalibur dev-tools running by default. It shows up in the top right corner of the browser tab.
 
-### Debugging hotkeys
+#### Debugging hotkeys
 
 - Pressing `p` on the keyboard will toggle pause/resume of the game.
 - Pressing `;` will toggle excalibur debug mode (this won't update unless game is running). This can also be toggled at the top of the excalibur dev-tools window.
